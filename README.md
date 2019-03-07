@@ -10,3 +10,5 @@ This is the repository for project Drucker from ECE 651.
 ## Authors
 
 * **Tianrui Zhang** - *Initial work* - [Email](mailto:tianrui.zhang@duke.edu)
+* **YiFan Xiao** - *Initial work* - [Email](mailto:yifan.xiao@duke.edu)
+
