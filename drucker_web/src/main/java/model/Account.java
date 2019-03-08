@@ -31,13 +31,13 @@ public class Account {
        	  System.out.println("ok");
         String pwd = rs.getString("password");
         if (pwd.equals(password)) {
-            System.out.println("ok1!");
+           // System.out.println("ok1!");
             return "yah!";
         } else if (!pwd.equals(password)) {
-            System.out.println("ok2!");
+            //System.out.println("ok2!");
             return "wha?";
         } else {
-            System.out.println("ok3!");
+           // System.out.println("ok3!");
             return "nay!";
         }
         }
