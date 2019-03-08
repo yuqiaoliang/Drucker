@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="drucker_android/app/src/androidTest/java"/>
+	<classpathentry kind="src" path="drucker_android/app/src/main/java"/>
+	<classpathentry kind="src" path="drucker_android/app/src/test/java"/>
+	<classpathentry kind="src" path="drucker_web/src/main/java"/>
+	<classpathentry kind="lib" path="drucker_android/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="drucker_web/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="/Users/Frank/Documents/java_work_space/test/mysql-connector-java-8.0.15.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
