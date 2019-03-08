@@ -19,6 +19,7 @@ public class Account {
         }
     }
 
+    
     public String validateLogin(String username, String password) throws SQLException {
     	 //get connection with DB
         Connection connect = DriverManager.getConnection(
