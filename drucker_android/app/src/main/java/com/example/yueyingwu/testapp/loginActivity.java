@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -45,39 +46,44 @@ public class loginActivity extends AppCompatActivity {
                 Log.i("Info","Button press");
                 final String username=etUsername.getText().toString();
                 final String password=etPassword.getText().toString();
-                //Response.Listener<String> responseListener = new Response.Listener<String>() {
-                   //@Override
-                   // public void onResponse(String response) {
-                        //try {
-                            //JSONObject jsonResponse =new JSONObject(response);
-                            //boolean success =jsonResponse.getBoolean("success");
-                            boolean success = true;
-                            if(success){
-                                Log.i("Info","success");
-                                //String name=jsonResponse.getString("name");//need modify
-                                //int age=jsonResponse.getInt("age");//need modify
+                if(username.matches("") || password.matches("")){
+                    Toast.makeText(getApplicationContext(),"Username and password are required.",Toast.LENGTH_SHORT).show();
+                }else {
 
-                                Intent intent=new Intent(loginActivity.this,UserActivity.class);
-                                //intent.putExtra("name",name);
-                                //intent.putExtra("username",username);
-                                //intent.putExtra("age",age);
+                    //Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    //@Override
+                    // public void onResponse(String response) {
+                    //try {
+                    //JSONObject jsonResponse =new JSONObject(response);
+                    //boolean success =jsonResponse.getBoolean("success");
+                    boolean success = false;
+                    if (success) {
+                        Log.i("Info", "success");
+                        //String name=jsonResponse.getString("name");//need modify
+                        //int age=jsonResponse.getInt("age");//need modify
 
-                                loginActivity.this.startActivity(intent);
+                        Intent intent = new Intent(loginActivity.this, UserActivity.class);
+                        //intent.putExtra("name",name);
+                        //intent.putExtra("username",username);
+                        //intent.putExtra("age",age);
+
+                        loginActivity.this.startActivity(intent);
 
 
-                            }else{
-                                AlertDialog.Builder builder=new AlertDialog.Builder(loginActivity.this);
-                                builder.setMessage("Wrong username or password").setNegativeButton("Retry",null).create().show();
-                            }
-                       // } catch (JSONException e) {
-                         //   e.printStackTrace();
-                       // }
+                    } else {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(loginActivity.this);
+                        builder.setMessage("Wrong username or password").setNegativeButton("Retry", null).create().show();
+                    }
+                    // } catch (JSONException e) {
+                    //   e.printStackTrace();
+                    // }
                     //}
-                //};
+                    //};
 
-                //LoginRequest loginRequest=new LoginRequest(username,password,responseListener);
-                //RequestQueue queue= Volley.newRequestQueue(loginActivity.this);
-                //queue.add(loginRequest);
+                    //LoginRequest loginRequest=new LoginRequest(username,password,responseListener);
+                    //RequestQueue queue= Volley.newRequestQueue(loginActivity.this);
+                    //queue.add(loginRequest);
+                }
             }
         });
 
