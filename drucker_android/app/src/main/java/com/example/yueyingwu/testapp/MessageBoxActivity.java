@@ -14,14 +14,14 @@ public class MessageBoxActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_box);
 
-        final Button back = findViewById(R.id.back);
-        back.setOnClickListener(new OnClickListener(){
+       /* final Button msgBack = findViewById(R.id.msgBack);
+        msgBack.setOnClickListener(new OnClickListener(){
             public void onClick(View v){
                 Intent userIntent  = new Intent(getApplicationContext(),UserActivity.class);
                 startActivity(userIntent);
             }
 
-        });
+        });*/
 
     }
 }

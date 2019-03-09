@@ -13,13 +13,13 @@ public class PracticeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice);
 
-        final Button back = findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener(){
+      /*  final Button pracBack = findViewById(R.id.pracBack);
+        pracBack.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent userIntent  = new Intent(getApplicationContext(),UserActivity.class);
                 startActivity(userIntent);
             }
 
-        });
+        });*/
     }
 }

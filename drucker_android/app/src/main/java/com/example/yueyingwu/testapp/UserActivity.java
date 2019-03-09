@@ -10,15 +10,22 @@ import android.widget.TextView;
 
 public class UserActivity extends AppCompatActivity {
 
-    /*public void toMsgBox(View view){
+    public void toMsgBox(View view){
         Intent msgIntent  = new Intent(getApplicationContext(),MessageBoxActivity.class);
         startActivity(msgIntent);
     }
     public void toPracticePage(View v){
         Intent pracPageIntent = new Intent(getApplicationContext(),PracticeActivity.class);
         startActivity(pracPageIntent);
-    }*/
-
+    }
+    public void toTraining(View v){
+        Intent trainPageIntent = new Intent(getApplicationContext(),TrainingActivity.class);
+        startActivity(trainPageIntent);
+    }
+    public void toDes(View v){
+        Intent DesPageIntent = new Intent(getApplicationContext(),DesicionActivity.class);
+        startActivity(DesPageIntent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +42,8 @@ public class UserActivity extends AppCompatActivity {
         final Button bDecision = findViewById(R.id.bDecision);
 
 
-		bMessageBox.setOnClickListener(new View.onClickListener(){
-			@Override
+	/*	bMessageBox.setOnClickListener(new View.onClickListener() {
+
 			public void onClick(View v){
 				Intent msgIntent  = new Intent(getApplicationContext(),MessageBoxActivity.class);
 				startActivity(msgIntent);
@@ -45,17 +52,17 @@ public class UserActivity extends AppCompatActivity {
 		});
 		
 		bPracticeGuide.setOnClickListener(new View.onClickListener(){
-			@Override
+
 			public void onClick(View v){
 				Intent pracPageIntent = new Intent(getApplicationContext(),PracticeActivity.class);
 				startActivity(pracPageIntent);
 			}			
-		});
+		});*/
 
         Intent intent=getIntent();
         String name=intent.getStringExtra("name");
         String username=intent.getStringExtra("username");
-        int age =intent.getIntExtra("age",-1);
+        int age =intent.getIntExtra("age",20);
 
         String message=name+"Welcome to user aera!";
         welcomeMessage.setText(message);
