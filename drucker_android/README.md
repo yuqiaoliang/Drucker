@@ -33,6 +33,8 @@ Click Import from an existing Android Studio project and choose build.gradle, ac
 
 ## Tests the App
 
+Before running the project, it's recommended that your Android Studio version is 3.2.1(or higher) for software compatibility reasons.
+
 In Android Studio, click the app module in the Project window and then select Run > Run (or click Run button in the toolbar).
 
 If it is your first time to use an emulator:
@@ -60,7 +62,13 @@ You will also see two text bar empty with hints
 
 ```
 
-You can input the username and password in the two fields and click login.
+You can input the username and password in the two fields and click login. 
+
+Both fields are required, and if either is missing, the system will prompt a toast message with
+
+```
+"Username and password are required."
+```
 
 If you fail to login, the system will display a prompt with 
 
@@ -84,10 +92,13 @@ If you successfully log in, you will see the main user page with a welcome messa
 
 If you press the button, the app will jump to the corresponding page.
 
+Since we need further discussion about the approach to connect to backend server to read JSON file, the default setting for "login" button is "fail".
+
+To test successful log-in behavior, change the variable "success" on line 59(loginActivity.java) to "true". 
 
 ## Deployment
 
-Now the system is test with Nexus 5X API 28.
+Now the system is test with Nexus 5X API 28 and Nexus 4 API 23.
 
 
 ## Authors
