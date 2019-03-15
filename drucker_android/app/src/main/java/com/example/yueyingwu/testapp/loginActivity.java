@@ -2,6 +2,7 @@ package com.example.yueyingwu.testapp;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,8 +19,16 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class loginActivity extends AppCompatActivity {
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
+public class loginActivity extends AppCompatActivity {
+    //public static String isSuccess;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +38,6 @@ public class loginActivity extends AppCompatActivity {
         final EditText etPassword = findViewById(R.id.etPassword);
         final Button bLogin = findViewById(R.id.bLogin);
         final TextView registerLink = findViewById(R.id.tvRegisterHere);
-
 
         //connect registerLink to the register page
         registerLink.setOnClickListener(new View.OnClickListener() {
@@ -49,44 +57,66 @@ public class loginActivity extends AppCompatActivity {
                 if(username.matches("") || password.matches("")){
                     Toast.makeText(getApplicationContext(),"Username and password are required.",Toast.LENGTH_SHORT).show();
                 }else {
-
-                    //Response.Listener<String> responseListener = new Response.Listener<String>() {
-                    //@Override
-                    // public void onResponse(String response) {
-                    //try {
-                    //JSONObject jsonResponse =new JSONObject(response);
-                    //boolean success =jsonResponse.getBoolean("success");
-                    boolean success = false;
-                    if (success) {
-                        Log.i("Info", "success");
-                        //String name=jsonResponse.getString("name");//need modify
-                        //int age=jsonResponse.getInt("age");//need modify
-
-                        Intent intent = new Intent(loginActivity.this, UserActivity.class);
-                        //intent.putExtra("name",name);
-                        //intent.putExtra("username",username);
-                        //intent.putExtra("age",age);
-
-                        loginActivity.this.startActivity(intent);
-
-
-                    } else {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(loginActivity.this);
-                        builder.setMessage("Wrong username or password").setNegativeButton("Retry", null).create().show();
-                    }
-                    // } catch (JSONException e) {
-                    //   e.printStackTrace();
-                    // }
-                    //}
-                    //};
-
-                    //LoginRequest loginRequest=new LoginRequest(username,password,responseListener);
-                    //RequestQueue queue= Volley.newRequestQueue(loginActivity.this);
-                    //queue.add(loginRequest);
+                    requestLogin process = new requestLogin();
+                    process.execute();
                 }
             }
         });
 
 
     }
+
+    private class requestLogin extends AsyncTask<Void,Void,Void> {
+        private String data = "";
+        private boolean isValid;
+        private String username;
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            try {
+                //URL url = new URL("https://api.myjson.com/bins/myjwu");//successful
+                 URL url = new URL("https://api.myjson.com/bins/8snfi");//fail
+                HttpURLConnection response = (HttpURLConnection) url.openConnection();
+                InputStream input = response.getInputStream();
+                BufferedReader buffer = new BufferedReader(new InputStreamReader(input));
+                String line = "";
+                while(line != null){
+                    line = buffer.readLine();
+                    data = data+line;
+                }
+                JSONObject validation = new JSONObject(data);
+                username = validation.getString("username");
+                isValid = validation.getBoolean("valid");
+                //System.out.println(Boolean.toString(isValid));
+
+                //Log.i("inParsing",dataParsed); //comment line38,43; uncomment line40,41,44 to check dataParsed
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            if(isValid){
+                Log.i("Info", "log in successful");
+                Intent intent = new Intent(loginActivity.this, UserActivity.class);
+                intent.putExtra("username",username);
+                loginActivity.this.startActivity(intent);
+
+            }
+            else{
+                AlertDialog.Builder builder = new AlertDialog.Builder(loginActivity.this);
+                builder.setMessage("Wrong username or password").setNegativeButton("Retry", null).create().show();
+            }
+
+        }
+    }
+
 }
