@@ -92,9 +92,9 @@ If you successfully log in, you will see the main user page with a welcome messa
 
 If you press the button, the app will jump to the corresponding page.
 
-Since we need further discussion about the approach to connect to backend server to read JSON file, the default setting for "login" button is "fail".
+For local testing, we created two JSON objects for success/fail login respectively(given by two url). Each JSON object includes a username and a validation field(the same as retrieved from server).
 
-To test successful log-in behavior, change the variable "success" on line 59(loginActivity.java) to "true". 
+The defalt url is fail login. To test successful login behavior, use the first url in loginActivity.java(around line 77) and comment the line below for fail url.
 
 ## Deployment
 
