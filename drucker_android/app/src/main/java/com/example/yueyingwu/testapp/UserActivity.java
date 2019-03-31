@@ -62,12 +62,13 @@ public class UserActivity extends AppCompatActivity {
         Intent intent=getIntent();
         String name=intent.getStringExtra("name");
         String username=intent.getStringExtra("username");
-        int age =intent.getIntExtra("age",20);
+        //int age =intent.getIntExtra("age",20);
 
-        String message=name+"Welcome to user aera!";
+        String message="Welcome to user area!";
         welcomeMessage.setText(message);
         etUsername.setText(username);
-        etAge.setText(age+"");
+        //etAge.setText(age+"");
+        etAge.setText("Property Manager");
 
 
     }

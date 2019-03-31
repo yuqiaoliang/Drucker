@@ -33,8 +33,6 @@ Click Import from an existing Android Studio project and choose build.gradle, ac
 
 ## Tests the App
 
-Before running the project, it's recommended that your Android Studio version is 3.2.1(or higher) for software compatibility reasons.
-
 In Android Studio, click the app module in the Project window and then select Run > Run (or click Run button in the toolbar).
 
 If it is your first time to use an emulator:
@@ -62,13 +60,7 @@ You will also see two text bar empty with hints
 
 ```
 
-You can input the username and password in the two fields and click login. 
-
-Both fields are required, and if either is missing, the system will prompt a toast message with
-
-```
-"Username and password are required."
-```
+You can input the username and password in the two fields and click login.
 
 If you fail to login, the system will display a prompt with 
 
@@ -92,13 +84,10 @@ If you successfully log in, you will see the main user page with a welcome messa
 
 If you press the button, the app will jump to the corresponding page.
 
-For local testing, we created two JSON objects for success/fail login respectively(given by two url). Each JSON object includes a username and a validation field(the same as retrieved from server).
-
-The defalt url is fail login. To test successful login behavior, use the first url in loginActivity.java(around line 77) and comment the line below for fail url.
 
 ## Deployment
 
-Now the system is test with Nexus 5X API 28 and Nexus 4 API 23.
+Now the system is test with Nexus 5X API 28.
 
 
 ## Authors

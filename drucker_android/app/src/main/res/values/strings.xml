@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">TESTApp</string>
+    <string name="app_name">DRUCKER</string>
+    <string name="practice_name">NEW USER GUIDE</string>
+    <string name="decision_name">DECISION TOOLS</string>
+    <string name="train_name">EMPLOYEE TRAINING</string>
+    <string name="message_name">FORUM</string>
 </resources>

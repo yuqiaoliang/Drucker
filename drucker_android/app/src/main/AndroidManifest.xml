@@ -20,10 +20,14 @@
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".UserActivity" />
-        <activity android:name=".PracticeActivity" />
-        <activity android:name=".MessageBoxActivity" />
-        <activity android:name=".TrainingActivity" />
-        <activity android:name=".DesicionActivity"></activity>
+        <activity android:name=".PracticeActivity"
+            android:label="@string/practice_name"/>
+        <activity android:name=".MessageBoxActivity"
+            android:label="@string/message_name"/>
+        <activity android:name=".TrainingActivity"
+            android:label="@string/train_name"/>
+        <activity android:name=".DesicionActivity"
+            android:label="@string/decision_name"></activity>
     </application>
 
 </manifest>

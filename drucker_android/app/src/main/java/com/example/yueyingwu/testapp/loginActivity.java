@@ -74,8 +74,8 @@ public class loginActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
 
             try {
-                //URL url = new URL("https://api.myjson.com/bins/myjwu");//successful
-                 URL url = new URL("https://api.myjson.com/bins/8snfi");//fail
+                URL url = new URL("https://api.myjson.com/bins/myjwu");//successful
+                //URL url = new URL("https://api.myjson.com/bins/8snfi");//fail
                 HttpURLConnection response = (HttpURLConnection) url.openConnection();
                 InputStream input = response.getInputStream();
                 BufferedReader buffer = new BufferedReader(new InputStreamReader(input));
