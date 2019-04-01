@@ -1,6 +1,6 @@
 # Drucker Web
 
-This directory is the web server and frontend for the Drucker tool implemented using Spring framework and managed by Gradle.
+This directory is the web server and frontend for the Drucker tool implemented using Spring framework and managed by Gradle. The database is built in MySQL.
 
 ## Getting Started
 
@@ -46,9 +46,26 @@ Provide a `name` query string parameter with http://localhost:8080/greeting?name
 
 This change demonstrates that the {RequestParam}[`@RequestParam`] arrangement in `GreetingController` is working as expected. The `name` parameter has been given a default value of "World", but can always be explicitly overridden through the query string.
 
+Below are the sample users we have in the database. This Account API will validate an incoming username and password pair with the stored values in the database and return a string containing the password validation result (either 'true' or 'false') to the front end and Android side.
+
+ | username   |      password      |
+|----------|:-------------:|
+| testuser1 |  00000000 |
+| testuser2 |  11111111 |
+| testuser3 |  22222222 |
+| testuser4 |  33333333 |
+| testuser5 |  44444444 |
+
+Below are the sample URLs we have in the database. This URL API will be given a type name (either 'pdf' or 'video') and return an arraylist consisting of all the pdf links or video links we have in the database for the use of training module and best practices module.
+ | id   |      type      |      url      |
+ |----------|:-------------:|:-------------:|
+ | 1 |  pdf |  https://www.druckerandfalk.com/sites/default/files/RTD%20Apartment%20Article.pdf |
+  | 2 |  video |  https://www.druckerandfalk.com/gallery    |
+
 ## Deployment
 
-We plan to migrate the entire project to a docker system.
+Currently, this application is binded to Duke Virtual Computing Manager for remote database access. It shall work normally 24-7. If not, please double check with Rui Sun - [Email](mailto:rui.sun585@duke.edu). 
+For future advancement of the system, we plan to migrate the entire project to a docker system.
 
 ## Built With
 
