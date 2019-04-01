@@ -57,10 +57,11 @@ Below are the sample users we have in the database. This Account API will valida
 | testuser5 |  44444444 |
 
 Below are the sample URLs we have in the database. This URL API will be given a type name (either 'pdf' or 'video') and return an arraylist consisting of all the pdf links or video links we have in the database for the use of training module and best practices module.
- | id   |      type      |      url      |
- |----------|:-------------:|:-------------:|
- | 1 |  pdf |  https://www.druckerandfalk.com/sites/default/files/RTD%20Apartment%20Article.pdf |
-  | 2 |  video |  https://www.druckerandfalk.com/gallery    |
+
+| id   |      type      |      url      |
+|----------|:-------------:|:-------------:|
+| 1 |  pdf |  https://www.druckerandfalk.com/sites/default/files/RTD%20Apartment%20Article.pdf |
+| 2 |  video |  https://www.druckerandfalk.com/gallery    |
 
 ## Deployment
 
