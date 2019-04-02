@@ -22,7 +22,7 @@ public class PracticeActivity extends AppCompatActivity {
         //Log.i("Info","javascriptEnabled");
         guidepdfView.setWebViewClient(new WebViewClient());
         //Log.i("Info","setWebViewClient");
-        guidepdfView.loadUrl("https://docs.google.com/viewerng/viewer?url=https://trinitycommons.com/assets/files/A1-6.pdf");
+        guidepdfView.loadUrl("https://www.wenjuan.in/s/vEJ7Ffu/");
         //guidepdfView.loadUrl("https://doodle.com/poll/i9mi8mus7wxq98qg");
       /*  final Button pracBack = findViewById(R.id.pracBack);
         pracBack.setOnClickListener(new View.OnClickListener(){

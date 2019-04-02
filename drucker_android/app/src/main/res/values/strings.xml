@@ -4,4 +4,8 @@
     <string name="decision_name">DECISION TOOLS</string>
     <string name="train_name">EMPLOYEE TRAINING</string>
     <string name="message_name">FORUM</string>
+    <string name="Guide1_name">Sustainability Guide</string>
+    <string name="Guide2_name">Lighting Retrofit Model</string>
+    <string name="Guide3_name">Pool Management Model</string>
+    <string name="Quiz_name">Quiz</string>
 </resources>

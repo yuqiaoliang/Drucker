@@ -11,6 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".TrainQuizActivity"
+            android:label="@string/Quiz_name"></activity>
+        <activity
+            android:name=".TrainPoolActivity"
+            android:label="@string/Guide3_name" />
+        <activity
+            android:name=".TrainLightActivity"
+            android:label="@string/Guide2_name" />
+        <activity
+            android:name=".TrainSustainActivity"
+            android:label="@string/Guide1_name" />
         <activity android:name=".loginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,14 +31,18 @@
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".UserActivity" />
-        <activity android:name=".PracticeActivity"
-            android:label="@string/practice_name"/>
-        <activity android:name=".MessageBoxActivity"
-            android:label="@string/message_name"/>
-        <activity android:name=".TrainingActivity"
-            android:label="@string/train_name"/>
-        <activity android:name=".DesicionActivity"
-            android:label="@string/decision_name"></activity>
+        <activity
+            android:name=".PracticeActivity"
+            android:label="@string/practice_name" />
+        <activity
+            android:name=".MessageBoxActivity"
+            android:label="@string/message_name" />
+        <activity
+            android:name=".TrainingActivity"
+            android:label="@string/train_name" />
+        <activity
+            android:name=".DesicionActivity"
+            android:label="@string/decision_name" />
     </application>
 
 </manifest>
