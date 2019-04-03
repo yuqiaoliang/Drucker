@@ -18,6 +18,6 @@ public class TrainPoolActivity extends AppCompatActivity {
         //Log.i("Info","javascriptEnabled");
         poolGuideView.setWebViewClient(new WebViewClient());
         //Log.i("Info","setWebViewClient");
-        poolGuideView.loadUrl("https://docs.google.com/document/d/1yD831whAqpJVDJN9a_Eck_5F9ytp6OCIMfUj5ja4RoE/edit#heading=h.gjdgxs");
+        poolGuideView.loadUrl("https://drive.google.com/file/d/11o4j2eP2jU6Oa6YDSBS8tJVn4ELuAn4A/view?usp=sharing");
     }
 }

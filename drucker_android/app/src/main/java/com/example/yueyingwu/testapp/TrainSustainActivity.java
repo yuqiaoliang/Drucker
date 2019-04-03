@@ -18,6 +18,6 @@ public class TrainSustainActivity extends AppCompatActivity {
         //Log.i("Info","javascriptEnabled");
         sustainGuideView.setWebViewClient(new WebViewClient());
         //Log.i("Info","setWebViewClient");
-        sustainGuideView.loadUrl("https://www.wenjuan.in/s/vEJ7Ffu/");
+        sustainGuideView.loadUrl("https://drive.google.com/file/d/18iGcdDR7IpSGe0ofKiPk_xgYuBvVY5ZZ/view?usp=sharing");
     }
 }

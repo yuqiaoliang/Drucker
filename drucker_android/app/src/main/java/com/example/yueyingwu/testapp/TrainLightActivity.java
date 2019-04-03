@@ -18,6 +18,6 @@ public class TrainLightActivity extends AppCompatActivity {
         //Log.i("Info","javascriptEnabled");
         lightGuideView.setWebViewClient(new WebViewClient());
         //Log.i("Info","setWebViewClient");
-        lightGuideView.loadUrl("https://docs.google.com/document/d/16DBSo4yXjmNl9v8OKcULPE0qiuV8y10shNWJ4iUi-ZY/edit#");
+        lightGuideView.loadUrl("https://drive.google.com/file/d/1Vii_EELBf_XG19S0RKlF1rqkzjTwSqSZ/view?usp=sharing");
     }
 }
