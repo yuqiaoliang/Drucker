@@ -8,8 +8,71 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        $(document).ready(function () {
+            var next = 0;
+            $("#add-more").click(function(e){
+                e.preventDefault();
+                var addto = "#field" + next;
+                var addRemove = "#field" + (next);
 
+                next = next + 1;
+
+                var newIn = ' <div id="field'+ next +'" name="field'+ next +'"> <h4 class="mx-5">Current Bulb</h4><div class="form-row"><div class="form-group col-md-4"><label for="inputBulbType">Bulb Type</label><select id="inputBulbType" class="form-control"><option selected>Choose...</option><option>Edison Base</option><option>4 pins</option><option>2 pins</option><option>Tube</option></select></div><div class="form-group col-md-4"><label for="inputNo">Number of Bulbs</label><input type="text" class="form-control" id="inputNo" placeholder="4"> </div><div class="form-group col-md-4"><label for="inputPrice">Price</label> <input type="text" class="form-control" id="inputPrice" placeholder="10.00"> </div></div><div class="form-row"><div class="form-group col-md-6"><label for="inputLumens">Lumens</label><input type="text" class="form-control" id="inputLumens" placeholder="1000"></div><div class="form-group col-md-6"><label for="inputWatts">Watts</label>     <input type="text" class="form-control" id="inputWatts" placeholder="60"></div></div><div class="form-row"><div class="form-group col-md-4"><label for="inputLifespan">Lifespan</label>     <input type="text" class="form-control" id="inputLifespan" placeholder="20 Hrs"></div><div class="form-group col-md-4"><label for="inputHPDWeekday">Hours Used Per Day (Weekday)</label><input type="text" class="form-control" id="inputHPDWeekday" placeholder="12 Hrs"></div><div class="form-group col-md-4"><label for="inputHPDweekend">Hours Used Per Day (Weekend)</label><input type="text" class="form-control" id="inputHPDweekend" placeholder="12 Hrs"></div></div><div style="height: 30px;"></div><h4 class=" mx-5">Replacement Bulb</h4><div class="form-row"><div class="form-group col-md-4"><label for="inputBulbType">Bulb Type</label><select id="inputBulbType" class="form-control"><option selected>Choose...</option><option>Edison Base</option><option>4 pins</option><option>2 pins</option><option>Tube</option></select></div><div class="form-group col-md-4"><label for="inputNo">Number of Bulbs</label><input type="text" class="form-control" id="inputNo" placeholder="4"></div><div class="form-group col-md-4"><label for="inputPrice">Price</label><input type="text" class="form-control" id="inputPrice" placeholder="10.00"></div></div><div class="form-row"><div class="form-group col-md-6"><label for="inputLumens">Lumens</label><input type="text" class="form-control" id="inputLumens" placeholder="1000"></div><div class="form-group col-md-6"><label for="inputWatts">Watts</label><input type="text" class="form-control" id="inputWatts" placeholder="60"></div></div><div class="form-row"><div class="form-group col-md-4"><label for="inputLifespan">Lifespan</label><input type="text" class="form-control" id="inputLifespan" placeholder="20 Hrs"></div><div class="form-group col-md-4"><label for="inputHPDWeekday">Hours Used Per Day (Weekday)</label><input type="text" class="form-control" id="inputHPDWeekday" placeholder="12 Hrs"></div><div class="form-group col-md-4">     <label for="inputHPDweekend">Hours Used Per Day (Weekend)</label><input type="text" class="form-control" id="inputHPDweekend" placeholder="12 Hrs"></div></div><div style="height: 30px;"></div> </div>';
+                var newInput = $(newIn);
+
+                var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >Remove</button></div></div><div id="field">';
+                var removeButton = $(removeBtn);
+
+                $(addto).after(newInput);
+                $(addRemove).after(removeButton);
+
+                $("#field" + next).attr('data-source',$(addto).attr('data-source'));
+                $("#count").val(next);
+
+                $('.remove-me').click(function(e){
+                    e.preventDefault();
+                    var fieldNum = this.id.charAt(this.id.length-1) + 1;
+                        var fieldID = "#field" + fieldNum;
+                        $(this).remove();
+                        $(fieldID).remove();
+                });
+            });
+        });
+        var fieldId = 0; // used by the addField() function to keep track of IDs
+        var next = 0;
+        function addField() {
+            fieldId++;
+            next++;
+//            var newField = document.getElementById('newField');
+//            var html = '<input type="text" placeholder=\'' + newField.value + '\' /> ' +
+//                '<input type="button" value="-" onclick="removeEl(\'field-' + fieldId + '\');"/>';
+            var html = ' <div id="field'+ next +'" name="field'+ next +'"> <h4 class="">Current Bulb</h4><div class="form-row"><div class="form-group col-md-4"><label for="inputBulbType">Bulb Type</label><select id="inputBulbType" class="form-control"><option selected>Choose...</option><option>Edison Base</option><option>4 pins</option><option>2 pins</option><option>Tube</option></select></div><div class="form-group col-md-4"><label for="inputNo">Number of Bulbs</label><input type="text" class="form-control" id="inputNo" placeholder="4"> </div><div class="form-group col-md-4"><label for="inputPrice">Price</label> <input type="text" class="form-control" id="inputPrice" placeholder="10.00"> </div></div><div class="form-row"><div class="form-group col-md-6"><label for="inputLumens">Lumens</label><input type="text" class="form-control" id="inputLumens" placeholder="1000"></div><div class="form-group col-md-6"><label for="inputWatts">Watts</label>     <input type="text" class="form-control" id="inputWatts" placeholder="60"></div></div><div class="form-row"><div class="form-group col-md-4"><label for="inputLifespan">Lifespan</label>     <input type="text" class="form-control" id="inputLifespan" placeholder="20 Hrs"></div><div class="form-group col-md-4"><label for="inputHPDWeekday">Hours Used Per Day (Weekday)</label><input type="text" class="form-control" id="inputHPDWeekday" placeholder="12 Hrs"></div><div class="form-group col-md-4"><label for="inputHPDweekend">Hours Used Per Day (Weekend)</label><input type="text" class="form-control" id="inputHPDweekend" placeholder="12 Hrs"></div></div><div style="height: 30px;"></div><h4 class="">Replacement Bulb</h4><div class="form-row"><div class="form-group col-md-4"><label for="inputBulbType">Bulb Type</label><select id="inputBulbType" class="form-control"><option selected>Choose...</option><option>Edison Base</option><option>4 pins</option><option>2 pins</option><option>Tube</option></select></div><div class="form-group col-md-4"><label for="inputNo">Number of Bulbs</label><input type="text" class="form-control" id="inputNo" placeholder="4"></div><div class="form-group col-md-4"><label for="inputPrice">Price</label><input type="text" class="form-control" id="inputPrice" placeholder="10.00"></div></div><div class="form-row"><div class="form-group col-md-6"><label for="inputLumens">Lumens</label><input type="text" class="form-control" id="inputLumens" placeholder="1000"></div><div class="form-group col-md-6"><label for="inputWatts">Watts</label><input type="text" class="form-control" id="inputWatts" placeholder="60"></div></div><div class="form-row"><div class="form-group col-md-4"><label for="inputLifespan">Lifespan</label><input type="text" class="form-control" id="inputLifespan" placeholder="20 Hrs"></div><div class="form-group col-md-4"><label for="inputHPDWeekday">Hours Used Per Day (Weekday)</label><input type="text" class="form-control" id="inputHPDWeekday" placeholder="12 Hrs"></div><div class="form-group col-md-4">     <label for="inputHPDweekend">Hours Used Per Day (Weekend)</label><input type="text" class="form-control" id="inputHPDweekend" placeholder="12 Hrs"></div></div><div style="height: 30px;"></div> </div>' + '<input type="button" class="btn btn-danger" value="Remove" onclick="removeEl(\'field-' + fieldId + '\');"/>';
+
+            addEl('fields', 'p', 'field-' + fieldId, html);
+        }
+
+        // Add new element to the form
+        function addEl(parentId, elementTag, elementId, html) {
+            var p = document.getElementById(parentId);
+            var newElement = document.createElement(elementTag);
+            newElement.setAttribute('id', elementId);
+            newElement.innerHTML = html;
+            p.appendChild(newElement);
+        }
+
+        // Remove exist element from form
+        function removeEl(elementId) {
+            var element = document.getElementById(elementId);
+            element.parentNode.removeChild(element);
+        }
+    </script>
 </head>
+
+
 <body>
 <nav class="navbar navbar-dark navbar-expand-lg fixed-top text-white" style="background-color: #4CAF50;">
     <a class="navbar-brand" href="#">DRUCKER + FALK</a>
@@ -18,9 +81,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="/best-practice">Best Pracitce</a>
-            <a class="nav-item nav-link" href="/decision">Decision Tool</a>
+            <a class="nav-item nav-link active" href="/decision">Decision Tool</a>
             <a class="nav-item nav-link" href="/training">Training Guide</a>
             <a class="nav-item nav-link" href="/message-board">Message Board</a>
         </div>
@@ -30,16 +93,496 @@
 <div class="jumbotron">
     <h1 class="display-4 mt-5">Decision Tools.</h1>
     <hr class="my-4">
-    <p class="lead">Explore All Decision Tools Here.</p>
+    <p class="lead">Explore All Decision Tools Here, Currently Offering Lighting Retrofit Model and Pool Management Model.</p>
 </div>
 
 <!--Input-->
-<div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="decision string" aria-label="decision string" aria-describedby="button-addon2">
-    <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2">See Result</button>
+<h1 class="display-4 mx-5">Lighting Retrofit Model</h1>
+
+<div class="card mx-5 my-5">
+    <div class="card-body px-5 py-3">
+        <form>
+
+            <h4 class="">General Parameters</h4>
+            <!--<div id="field">-->
+                <!--<div id="field0">-->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputLumens">Elecrticity Rate ($/kWh)</label>
+                            <input type="text" class="form-control" id="inputLumens" placeholder="0.066">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputWatts">Tax Rate</label>
+                            <input type="text" class="form-control" id="inputWatts" placeholder="21.0%">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputLifespan">Minimum Acceptable Return</label>
+                            <input type="text" class="form-control" id="inputLifespan" placeholder="7.9%">
+                        </div>
+                    </div>
+                    <div style="height: 30px;"></div>
+                <!--</div>-->
+
+            <!--</div>-->
+        <!--</form>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="card mx-5 my-5">-->
+    <!--<div class="card-body px-5 py-3">-->
+        <!--<form>-->
+
+            <div id="field">
+                <div id="field0">
+
+                    <h4 class="">Current Bulb</h4>
+                    <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputBulbType">Bulb Type</label>
+                    <select id="inputBulbType" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>Edison Base</option>
+                        <option>4 pins</option>
+                        <option>2 pins</option>
+                        <option>Tube</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputNo">Number of Bulbs</label>
+                    <input type="text" class="form-control" id="inputNo" placeholder="4">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputPrice">Price</label>
+                    <input type="text" class="form-control" id="inputPrice" placeholder="10.00">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputLumens">Lumens</label>
+                    <input type="text" class="form-control" id="inputLumens" placeholder="1000">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputWatts">Watts</label>
+                    <input type="text" class="form-control" id="inputWatts" placeholder="60">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputLifespan">Lifespan</label>
+                    <input type="text" class="form-control" id="inputLifespan" placeholder="20 Hrs">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputHPDWeekday">Hours Used Per Day (Weekday)</label>
+                    <input type="text" class="form-control" id="inputHPDWeekday" placeholder="12 Hrs">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputHPDweekend">Hours Used Per Day (Weekend)</label>
+                    <input type="text" class="form-control" id="inputHPDweekend" placeholder="12 Hrs">
+                </div>
+            </div>
+            <div style="height: 30px;"></div>
+                <!--</div>-->
+                <!--<div class="form-row">-->
+                <!--<div class="form-group">-->
+                    <!--<button id="add-more" name="add-more" class="btn btn-dark">Add More Current</button>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+        <!--</form>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="card mx-5 my-5">-->
+    <!--<div class="card-body px-5 py-3">-->
+        <!--<form>-->
+            <!--<div id="field">-->
+                <!--<div id="field0">-->
+                    <h4 class="">Replacement Bulb</h4>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputBulbType">Bulb Type</label>
+                            <select id="inputBulbType" class="form-control">
+                                <option selected>Choose...</option>
+                                <option>Edison Base</option>
+                                <option>4 pins</option>
+                                <option>2 pins</option>
+                                <option>Tube</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputNo">Number of Bulbs</label>
+                            <input type="text" class="form-control" id="inputNo" placeholder="4">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputPrice">Price</label>
+                            <input type="text" class="form-control" id="inputPrice" placeholder="10.00">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputLumens">Lumens</label>
+                            <input type="text" class="form-control" id="inputLumens" placeholder="1000">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputWatts">Watts</label>
+                            <input type="text" class="form-control" id="inputWatts" placeholder="60">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputLifespan">Lifespan</label>
+                            <input type="text" class="form-control" id="inputLifespan" placeholder="20 Hrs">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputHPDWeekday">Hours Used Per Day (Weekday)</label>
+                            <input type="text" class="form-control" id="inputHPDWeekday" placeholder="12 Hrs">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputHPDweekend">Hours Used Per Day (Weekend)</label>
+                            <input type="text" class="form-control" id="inputHPDweekend" placeholder="12 Hrs">
+                        </div>
+                    </div>
+                    <div style="height: 30px;"></div>
+                </div>
+
+                <span id="fields"></span>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <input name="addFieldButton" class="btn btn-dark" type="button" value="Add More" onclick="addField();" />
+
+                        <!--<button id="add-more" name="add-more" class="btn btn-dark">Add More</button>-->
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
+
+
+<!--<h1 class="display-4 mx-5">Lighting Retrofit Model</h1>-->
+<!--<div class="card mx-5 my-5">-->
+    <!--<div class="card-header">-->
+        <!--Current Bulbs-->
+    <!--</div>-->
+    <!--<div class="card-body px-5 py-3">-->
+    <!--<div class="table-wrapper">-->
+        <!--<div class="table-title">-->
+            <!--<div class="row justify-content-between">-->
+                <!--<div class="col-8">-->
+                    <!--&lt;!&ndash;<h4>Current Bulbs</h4>&ndash;&gt;-->
+                <!--</div>-->
+                <!--<div class="col-4">-->
+                    <!--<a href="#addCurrentBulbModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>-->
+                    <!--<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div style="height: 50px;"></div>-->
+        <!--</div>-->
+        <!--<table class="table table-striped table-hover">-->
+            <!--<thead>-->
+            <!--<tr>-->
+                <!--<th>Fixture Type</th>-->
+                <!--<th>Number of Bulbs</th>-->
+                <!--<th>Price</th>-->
+                <!--<th>Wattage</th>-->
+                <!--<th>Lumens</th>-->
+                <!--<th>Lifespan</th>-->
+                <!--<th>Hours Used Per Day (Weekday)</th>-->
+                <!--<th>Hours Used Per Day (Weekend)</th>-->
+            <!--</tr>-->
+            <!--</thead>-->
+
+            <!--<tbody>-->
+            <!--&lt;!&ndash;AUTO GENERATING TABLE ITEM.&ndash;&gt;-->
+            <!--<tr>-->
+                <!--<td>Edison Base</td>-->
+                <!--<td>4</td>-->
+                <!--<td>$ 10.00</td>-->
+                <!--<td>75 W</td>-->
+                <!--<td>300 lm</td>-->
+                <!--<td>2 hrs</td>-->
+                <!--<td>12</td>-->
+                <!--<td>12</td>-->
+                <!--<td>-->
+                    <!--<a href="#editEmployeeModal" style="color: #FFC107;" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>-->
+                    <!--<a href="#deleteEmployeeModal" style="color: #F44336;" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--&lt;!&ndash;AUTO GENERATING TABLE ITEM.&ndash;&gt;-->
+            <!--<tr>-->
+                <!--<td>Edison Base</td>-->
+                <!--<td>6</td>-->
+                <!--<td>$ 12.00</td>-->
+                <!--<td>60 W</td>-->
+                <!--<td>280 lm</td>-->
+                <!--<td>2.5 hrs</td>-->
+                <!--<td>16</td>-->
+                <!--<td>10</td>-->
+                <!--<td>-->
+                    <!--<a href="#editEmployeeModal" style="color: #FFC107;" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>-->
+                    <!--<a href="#deleteEmployeeModal" style="color: #F44336;" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>-->
+                <!--</td>-->
+            <!--</tr>-->
+
+            <!--</tbody>-->
+        <!--</table>-->
+    <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="card mx-5 my-3">-->
+    <!--<div class="card-header">-->
+        <!--Replacement Bulbs-->
+    <!--</div>-->
+    <!--<div class="card-body px-5 py-3">-->
+        <!--<div class="table-wrapper">-->
+            <!--<div class="table-title">-->
+                <!--<div class="row justify-content-between">-->
+                    <!--<div class="col-8">-->
+                        <!--&lt;!&ndash;<h4>Current Bulbs</h4>&ndash;&gt;-->
+                    <!--</div>-->
+                    <!--<div class="col-4">-->
+                        <!--<a href="#addReplacementBulbModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>-->
+                        <!--<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div style="height: 50px;"></div>-->
+            <!--</div>-->
+            <!--<table class="table table-striped table-hover">-->
+                <!--<thead>-->
+                <!--<tr>-->
+                    <!--<th>Fixture Type</th>-->
+                    <!--<th>Number of Bulbs</th>-->
+                    <!--<th>Price</th>-->
+                    <!--<th>Wattage</th>-->
+                    <!--<th>Lumens</th>-->
+                    <!--<th>Lifespan</th>-->
+                    <!--<th>Hours Used Per Day (Weekday)</th>-->
+                    <!--<th>Hours Used Per Day (Weekend)</th>-->
+                <!--</tr>-->
+                <!--</thead>-->
+
+                <!--<tbody>-->
+                <!--&lt;!&ndash;AUTO GENERATING TABLE ITEM.&ndash;&gt;-->
+                <!--<tr>-->
+                    <!--<td>Edison Base</td>-->
+                    <!--<td>4</td>-->
+                    <!--<td>$ 5.00</td>-->
+                    <!--<td>45 W</td>-->
+                    <!--<td>600 lm</td>-->
+                    <!--<td>5 hrs</td>-->
+                    <!--<td>12</td>-->
+                    <!--<td>12</td>-->
+                    <!--<td>-->
+                        <!--<a href="#editEmployeeModal" style="color: #FFC107;" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>-->
+                        <!--<a href="#deleteEmployeeModal" style="color: #F44336;" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <!--&lt;!&ndash;AUTO GENERATING TABLE ITEM.&ndash;&gt;-->
+                <!--<tr>-->
+                    <!--<td>Edison Base</td>-->
+                    <!--<td>6</td>-->
+                    <!--<td>$ 7.50</td>-->
+                    <!--<td>35 W</td>-->
+                    <!--<td>450 lm</td>-->
+                    <!--<td>4.5 hrs</td>-->
+                    <!--<td>16</td>-->
+                    <!--<td>10</td>-->
+                    <!--<td>-->
+                        <!--<a href="#editEmployeeModal" style="color: #FFC107;" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>-->
+                        <!--<a href="#deleteEmployeeModal" style="color: #F44336;" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>-->
+                    <!--</td>-->
+                <!--</tr>-->
+
+                <!--</tbody>-->
+            <!--</table>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+<!--&lt;!&ndash; Add Modal HTML &ndash;&gt;-->
+<!--<div id="addCurrentBulbModal" class="modal fade">-->
+    <!--<div class="modal-dialog">-->
+        <!--<div class="modal-content">-->
+            <!--<form>-->
+                <!--<div class="modal-header">-->
+                    <!--<h4 class="modal-title">Add Bulb</h4>-->
+                    <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+                <!--</div>-->
+                <!--<div class="modal-body">-->
+                    <!--<div class="form-row">-->
+                        <!--<div class="form-group col-md-4">-->
+                            <!--<label for="inputBulbType">Bulb Type</label>-->
+                            <!--<select id="inputBulbType" class="form-control">-->
+                                <!--<option selected>Choose...</option>-->
+                                <!--<option>Edison Base</option>-->
+                                <!--<option>4 pins</option>-->
+                                <!--<option>2 pins</option>-->
+                                <!--<option>Tube</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+                        <!--<div class="form-group col-md-4">-->
+                            <!--<label for="inputNo">Number of Bulbs</label>-->
+                            <!--<input type="text" class="form-control" id="inputNo" placeholder="4">-->
+                        <!--</div>-->
+                        <!--<div class="form-group col-md-4">-->
+                            <!--<label for="inputPrice">Price</label>-->
+                            <!--<input type="text" class="form-control" id="inputPrice" placeholder="10.00">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="form-row">-->
+                        <!--<div class="form-group col-md-4">-->
+                            <!--<label for="inputLumens">Lumens</label>-->
+                            <!--<input type="text" class="form-control" id="inputLumens" placeholder="1000">-->
+                        <!--</div>-->
+                        <!--<div class="form-group col-md-4">-->
+                            <!--<label for="inputWatts">Watts</label>-->
+                            <!--<input type="text" class="form-control" id="inputWatts" placeholder="60">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="form-row">-->
+                        <!--<div class="form-group col-md-6">-->
+                            <!--<label for="inputLifespan">Lifespan</label>-->
+                            <!--<input type="text" class="form-control" id="inputLifespan" placeholder="20 Hrs">-->
+                        <!--</div>-->
+                        <!--<div class="form-group col-md-6">-->
+                            <!--<label for="inputHPDWeekday">Hours Used Per Day (Weekday)</label>-->
+                            <!--<input type="text" class="form-control" id="inputHPDWeekday" placeholder="12 Hrs">-->
+                        <!--</div>-->
+                        <!--<div class="form-group col-md-6">-->
+                            <!--<label for="inputHPDweekend">Hours Used Per Day (Weekend)</label>-->
+                            <!--<input type="text" class="form-control" id="inputHPDweekend" placeholder="12 Hrs">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<label for="inputRebates">Rebates</label>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<input type="text" class="form-control" id="inputRebates" placeholder="16 Years">&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--</div>-->
+                <!--<div class="modal-footer">-->
+                    <!--<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">-->
+                    <!--<input type="submit" class="btn btn-success" value="Add">-->
+                <!--</div>-->
+            <!--</form>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div id="addReplacementBulbModal" class="modal fade">-->
+    <!--<div class="modal-dialog">-->
+        <!--<div class="modal-content">-->
+            <!--<form>-->
+                <!--<div class="modal-header">-->
+                    <!--<h4 class="modal-title">Add Bulb</h4>-->
+                    <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+                <!--</div>-->
+                <!--<div class="modal-body">-->
+                    <!--<div class="form-row">-->
+                        <!--<div class="form-group col-md-4">-->
+                            <!--<label for="inputReplacementBulbType">Bulb Type</label>-->
+                            <!--<select id="inputReplacementBulbType" class="form-control">-->
+                                <!--<option selected>Choose...</option>-->
+                                <!--<option>Edison Base</option>-->
+                                <!--<option>4 pins</option>-->
+                                <!--<option>2 pins</option>-->
+                                <!--<option>Tube</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+                        <!--<div class="form-group col-md-4">-->
+                            <!--<label for="inputReplacementLumens">Lumens</label>-->
+                            <!--<input type="text" class="form-control" id="inputReplacementLumens" placeholder="1000">-->
+                        <!--</div>-->
+                        <!--<div class="form-group col-md-4">-->
+                            <!--<label for="inputReplacementWatts">Watts</label>-->
+                            <!--<input type="text" class="form-control" id="inputReplacementWatts" placeholder="60">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="form-row">-->
+                        <!--<div class="form-group col-md-6">-->
+                            <!--<label for="inputReplacementStatedLifespan">Stated Lifespan</label>-->
+                            <!--<input type="text" class="form-control" id="inputReplacementStatedLifespan" placeholder="20 Years">-->
+                        <!--</div>-->
+                        <!--<div class="form-group col-md-6">-->
+                            <!--<label for="inputReplacementActualLifespan">Actual Lifespan</label>-->
+                            <!--<input type="text" class="form-control" id="inputReplacementActualLifespan" placeholder="16 Years">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<label for="inputReplacementRebates">Rebates</label>-->
+                        <!--<input type="text" class="form-control" id="inputReplacementRebates" placeholder="16 Years">-->
+                    <!--</div>-->
+
+                <!--</div>-->
+                <!--<div class="modal-footer">-->
+                    <!--<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">-->
+                    <!--<input type="submit" class="btn btn-success" value="Add">-->
+                <!--</div>-->
+            <!--</form>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash; Edit Modal HTML &ndash;&gt;-->
+<!--<div id="editEmployeeModal" class="modal fade">-->
+    <!--<div class="modal-dialog">-->
+        <!--<div class="modal-content">-->
+            <!--<form>-->
+                <!--<div class="modal-header">-->
+                    <!--<h4 class="modal-title">Edit Employee</h4>-->
+                    <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+                <!--</div>-->
+                <!--<div class="modal-body">-->
+                    <!--<div class="form-group">-->
+                        <!--<label>Name</label>-->
+                        <!--<input type="text" class="form-control" required>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<label>Email</label>-->
+                        <!--<input type="email" class="form-control" required>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<label>Address</label>-->
+                        <!--<textarea class="form-control" required></textarea>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<label>Phone</label>-->
+                        <!--<input type="text" class="form-control" required>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="modal-footer">-->
+                    <!--<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">-->
+                    <!--<input type="submit" class="btn btn-info" value="Save">-->
+                <!--</div>-->
+            <!--</form>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash; Delete Modal HTML &ndash;&gt;-->
+<!--<div id="deleteEmployeeModal" class="modal fade">-->
+    <!--<div class="modal-dialog">-->
+        <!--<div class="modal-content">-->
+            <!--<form>-->
+                <!--<div class="modal-header">-->
+                    <!--<h4 class="modal-title">Delete Employee</h4>-->
+                    <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+                <!--</div>-->
+                <!--<div class="modal-body">-->
+                    <!--<p>Are you sure you want to delete these Records?</p>-->
+                    <!--<p class="text-warning"><small>This action cannot be undone.</small></p>-->
+                <!--</div>-->
+                <!--<div class="modal-footer">-->
+                    <!--<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">-->
+                    <!--<input type="submit" class="btn btn-danger" value="Delete">-->
+                <!--</div>-->
+            <!--</form>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+
 
 <!-- FOOTER -->
 <div class="my-5" style="height: 80px;"></div>
