@@ -17,13 +17,12 @@ public class URL {
         ArrayList<String> url_set = new ArrayList<String>();
 
         try {
-            Connection connect = DriverManager.getConnection(
-                    "jdbc:mysql://152.3.53.14:3306/drucker", "myblog", "123456");
+            Connection connect = DriverManager.getConnection("jdbc:mysql://152.3.53.14:3306/drucker?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","myblog","123456");
             System.out.println("Success connect Mysql server!");
             Statement stmt = connect.createStatement();
             String sql_command = "select * from url_resources where type=" + "'" + type + "'";
             ResultSet rs = stmt.executeQuery(sql_command);
-            if (rs.next()) {
+            while (rs.next()) {
                 String url = rs.getString("url");
                 url_set.add(url);
             }

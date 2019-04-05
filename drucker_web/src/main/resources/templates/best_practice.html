@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <html>
 <head>
     <title>Drucker - Best Practice</title>
@@ -8,6 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </head>
 <body>
 <nav class="navbar navbar-dark navbar-expand-lg fixed-top text-white" style="background-color: #4CAF50;">
@@ -39,10 +41,10 @@
 
 <!---LIST--->
 <div class="list-group list-group-horizontal">
-    <a href="https://www.youtube.com/watch?v=lYioOsb71rc" class="list-group-item list-group-item-action" style="width: 25%">[VIDEO]5 Must-Do’s for Employee Onboarding</a>
-    <a href="https://www.youtube.com/watch?v=OIbQUscVWGc" class="list-group-item list-group-item-action" style="width: 25%">[VIDEO]New Employee Orientation: Essential Skills Training</a>
-    <a href="https://www.youtube.com/watch?v=YhdEPL0fLCU" class="list-group-item list-group-item-action" style="width: 25%">[VIDEO]10 Skills to Train Employees - Employee Training and Development</a>
-    <a href="https://www.youtube.com/watch?v=8CTisexbau8" class="list-group-item list-group-item-action" style="width: 25%">[VIDEO]How to Onboard a New Employee</a>
+    <a th:href="@{${pdfUrls0}}" class="list-group-item list-group-item-action" style="width: 25%">[PDF]5 Must-Do’s for Employee Onboarding</a>
+    <a th:href="@{${pdfUrls1}}" class="list-group-item list-group-item-action" style="width: 25%">[PDF]New Employee Orientation: Essential Skills Training</a>
+    <a th:href="@{${pdfUrls2}}" class="list-group-item list-group-item-action" style="width: 25%">[PDF]10 Skills to Train Employees - Employee Training and Development</a>
+    <a th:href="@{${pdfUrls3}}" class="list-group-item list-group-item-action" style="width: 25%">[PDF]How to Onboard a New Employee</a>
 </div>
 
 <div class="list-group list-group-horizontal">
