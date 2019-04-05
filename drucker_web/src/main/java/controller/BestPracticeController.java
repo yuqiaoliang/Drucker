@@ -41,25 +41,6 @@ public class BestPracticeController {
         model.addAttribute("pdfUrls3",pdfURLs.get(3));
         return "best_practice";//;+pdfURLs.get(1)+videoURLs.get(1);
     }
-    /*public ModelAndView getdata() {
 
-        ArrayList<String> list = getList();
-
-        //return back to index.jsp
-        ModelAndView model = new ModelAndView("best_practice");
-        model.addObject("lists", list);
-
-        return model;
-
-    }
-
-    private  ArrayList<String> getList() {
-
-        URL newURL= new URL();
-        ArrayList<String> videoURLs=newURL.getUrl("video");
-
-        return videoURLs;
-
-    }*/
 
 }
