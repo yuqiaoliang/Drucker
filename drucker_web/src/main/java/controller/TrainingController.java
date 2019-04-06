@@ -9,8 +9,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class TrainingController {
 
     @GetMapping("/training")
-    public String servePage(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
+    public String training(@RequestParam(name="token", required=false, defaultValue="no-token") String token, Model model) {
+        /////////////////////////////////////////////////
+        // Handle login check, do not touch
+        String user = LoginManagement.getInstance().getUser(token);
+        if (user == null) {
+            return "redirect:/login";
+        }
+        model.addAttribute("user", user);
+        model.addAttribute("token", token);
+        /////////////////////////////////////////////////
         return "training";
     }
 
