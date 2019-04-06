@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Drucker - Logout</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -18,11 +18,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="/best-practice">Best Pracitce</a>
-            <a class="nav-item nav-link" href="/decision">Decision Tool</a>
-            <a class="nav-item nav-link" href="/training">Training Guide</a>
-            <a class="nav-item nav-link" href="/message-board">Message Board</a>
+            <a class="nav-item nav-link active" th:href="@{/(token=${token})}">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" th:href="@{/best-practice(token=${token})}">Best Practice</a>
+            <a class="nav-item nav-link" th:href="@{/decision(token=${token})}">Decision Tool</a>
+            <a class="nav-item nav-link" th:href="@{/training(token=${token})}">Training Guide</a>
+            <a class="nav-item nav-link" th:href="@{/message-board(token=${token})}">Message Board</a>
         </div>
     </div>
 </nav>

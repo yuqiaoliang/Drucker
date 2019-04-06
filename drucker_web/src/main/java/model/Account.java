@@ -20,28 +20,22 @@ public class Account {
     public String validateLogin(String username, String password) throws SQLException {
         //get connection with DB
         String res = "";
-        try {
-            Connection connect = DriverManager.getConnection(
-                    "jdbc:mysql://152.3.53.14:3306/drucker","myblog","123456");
-            System.out.println("Success connect Mysql server!");
-            Statement stmt = connect.createStatement();
-            String sql_command = "select * from login where username=" + "'" + username + "'";
-            ResultSet rs = stmt.executeQuery(sql_command);
-            //JSONObject obj = new JSONObject();
+        Connection connect = DriverManager.getConnection("jdbc:mysql://152.3.53.14:3306/drucker?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","myblog","123456");
+//        System.out.println("Success connect Mysql server!");
+        Statement stmt = connect.createStatement();
+        String sql_command = "select * from login where username=" + "'" + username + "'";
+        ResultSet rs = stmt.executeQuery(sql_command);
+        //JSONObject obj = new JSONObject();
 
-            if (rs.next()) {
-                String pwd = rs.getString("password");
-                //System.out.println(pwd);
-                //obj.put("username", username);
-                if (pwd.equals(password)) {
-                    res="true";
-                } else {
-                    res = "false";
-                }
+        if (rs.next()) {
+            String pwd = rs.getString("password");
+            //System.out.println(pwd);
+            //obj.put("username", username);
+            if (pwd.equals(password)) {
+                res="true";
+            } else {
+                res = "false";
             }
-        }catch(SQLException e){
-            System.out.print("Error convert json!");
-            throw new Error(e.getMessage());
         }
 
         return res;
