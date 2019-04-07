@@ -67,7 +67,9 @@ Below are the URLs we have in the database given by our client. This URL API wil
 | 5 |  pdf |  https://images.forrent.com/imgs/fr/propertyFiles/433/912/999/05_11710588780449818.pdf |
 
 Below is the decision model module. This Decision Model API will be given and return an arraylist consisting of all the output from the requested service model.
+
 **Sub-modules: Lightning Retrofit Model**
+
 Input parameters:
 
 | Name   |      Input parameter      | 
@@ -106,6 +108,7 @@ Outputs (in order):
 |Simple Payback|arraylist[2]|
 
 **Sub-modules: Water Faucet Retrofit Model**
+
 Input parameters:
 
 | Name   |      Input parameter      | 
@@ -134,6 +137,7 @@ Outputs (in order):
 |NPV|arraylist[0]|
 |IRR|arraylist[1]|
 |Payback Period|arraylist[2]|
+
 
 
 ## Deployment
