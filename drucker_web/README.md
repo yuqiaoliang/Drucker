@@ -105,7 +105,7 @@ Outputs (in order):
 |Escalting Rate: |3% (fixed)|
 |NPV|arraylist[0]|
 |IRR|arraylist[1]|
-|Simple Payback|arraylist[2]|
+|Simple Payback period (year)|arraylist[2]|
 
 **Sub-modules: Water Faucet Retrofit Model**
 
@@ -134,9 +134,10 @@ Outputs (in order):
 
 | Name   |      Output parameter      | 
 |----------|:-------------:|
+|Escalting Rate: |3% (fixed)|
 |NPV|arraylist[0]|
 |IRR|arraylist[1]|
-|Payback Period|arraylist[2]|
+|Payback Period period (year)|arraylist[2]|
 
 
 
