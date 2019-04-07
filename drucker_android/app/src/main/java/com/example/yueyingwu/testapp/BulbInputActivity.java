@@ -49,6 +49,30 @@ public class BulbInputActivity extends AppCompatActivity {
 
         final Button bMoreBulb = findViewById(R.id.bMoreBulb);
         final Button bPlumb = findViewById(R.id.bPlumb);
+        final Button bClearBulb = findViewById(R.id.bClearBulb);
+
+        bClearBulb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                etElecRate.getText().clear();
+                etTaxRate.getText().clear();
+                etMinReturn.getText().clear();
+                etOldNumBulb.getText().clear();
+                etNewNumBulb.getText().clear();
+                etOldPrice.getText().clear();
+                etNewPrice.getText().clear();
+                etOldWattage.getText().clear();
+                etNewWattage.getText().clear();
+                etOldLumens.getText().clear();
+                etNewLumens.getText().clear();
+                etOldLifespan.getText().clear();
+                etNewLifespan.getText().clear();
+                etOldHoursWeekday.getText().clear();
+                etNewHoursWeekday.getText().clear();
+                etOldHoursWeekend.getText().clear();
+                etNewHoursWeekend.getText().clear();
+            }
+        });
 
 
         bMoreBulb.setOnClickListener(new View.OnClickListener() {

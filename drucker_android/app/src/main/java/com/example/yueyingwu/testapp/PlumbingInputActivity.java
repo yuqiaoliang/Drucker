@@ -1,5 +1,6 @@
 package com.example.yueyingwu.testapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class PlumbingInputActivity extends AppCompatActivity {
+    public void toBulbInput(View v) {
+        Intent bulbInputIntent = new Intent(getApplicationContext(), BulbInputActivity.class);
+        startActivity(bulbInputIntent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,24 @@ public class PlumbingInputActivity extends AppCompatActivity {
         final EditText etOldEstimatedHoursPerDay = findViewById(R.id.etOldEstimatedHoursPerDay);
         final EditText etNewEstimatedHoursPerDay = findViewById(R.id.etNewEstimatedHoursPerDay);
         final Button bSubmit = findViewById(R.id.bSubmit);
+        final Button bBackBulb = findViewById(R.id.bBackBulb);
+        final Button bClearPlumb = findViewById(R.id.bClearPlumb);
+
+        bClearPlumb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                etTaxRate.getText().clear();
+                etWaterCost.getText().clear();
+                etOldNumFixture.getText().clear();
+                etNewNumFixture.getText().clear();
+                etOldPrice.getText().clear();
+                etNewPrice.getText().clear();
+                etOldFlowRate.getText().clear();
+                etNewFlowRate.getText().clear();
+                etOldEstimatedHoursPerDay.getText().clear();
+                etNewEstimatedHoursPerDay.getText().clear();
+            }
+        });
 
         bSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +77,7 @@ public class PlumbingInputActivity extends AppCompatActivity {
 
 
                 display2.setText(spinnerOld3);
+                //etTaxRate.getText().clear();
             }
         });
 
