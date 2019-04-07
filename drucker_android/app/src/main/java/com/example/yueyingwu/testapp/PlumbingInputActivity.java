@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -24,9 +25,19 @@ public class PlumbingInputActivity extends AppCompatActivity {
         setContentView(R.layout.activity_plumbing_input);
 
         final TextView display2 = findViewById(R.id.display2);
+        final ImageButton iBquestion2=findViewById(R.id.iBquestion2);
+        iBquestion2.setScaleType(ImageButton.ScaleType.FIT_XY);
+        iBquestion2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent manualIntent2 = new Intent(getApplicationContext(), TrainLightActivity.class);
+                startActivity(manualIntent2);
+            }
+        });
 
         final EditText etWaterCost = findViewById(R.id.etWaterCost);
         final EditText etTaxRate = findViewById(R.id.etTaxRate);
+        final EditText etMinReturn =  findViewById(R.id.etMinReturn2);
         final Spinner spinner3 = findViewById(R.id.spinner3);
         final Spinner spinner4 = findViewById(R.id.spinner4);
         final EditText etOldNumFixture = findViewById(R.id.etOldNumFixture);
@@ -47,6 +58,7 @@ public class PlumbingInputActivity extends AppCompatActivity {
             public void onClick(View v) {
                 etTaxRate.getText().clear();
                 etWaterCost.getText().clear();
+                etMinReturn.getText().clear();
                 etOldNumFixture.getText().clear();
                 etNewNumFixture.getText().clear();
                 etOldPrice.getText().clear();
@@ -63,6 +75,7 @@ public class PlumbingInputActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String waterCost = etWaterCost.getText().toString();
                 final String taxRate = etTaxRate.getText().toString();
+                final String minReturn = etMinReturn.getText().toString();
                 final String spinnerOld3 = spinner3.getSelectedItem().toString();
                 final String spinnerNew4 = spinner4.getSelectedItem().toString();
                 final String oldNumFixture = etOldNumFixture.getText().toString();

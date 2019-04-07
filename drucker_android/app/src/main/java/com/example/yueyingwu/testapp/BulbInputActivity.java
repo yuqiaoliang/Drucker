@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -24,6 +26,15 @@ public class BulbInputActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bulb_input);
 
         final TextView display = findViewById(R.id.display);
+        final ImageButton iBquestion=findViewById(R.id.iBquestion);
+        iBquestion.setScaleType(ImageButton.ScaleType.FIT_XY);
+        iBquestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent manualIntent = new Intent(getApplicationContext(), TrainLightActivity.class);
+                startActivity(manualIntent);
+            }
+        });
 
 
         final EditText etElecRate = findViewById(R.id.etElecRate);

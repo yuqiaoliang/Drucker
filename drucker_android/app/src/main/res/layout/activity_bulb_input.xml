@@ -7,16 +7,32 @@
     android:layout_height="match_parent"
     tools:context=".BulbInputActivity">
 
+    <ImageButton
+        android:id="@+id/iBquestion"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="350dp"
+        android:layout_marginLeft="350dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="2dp"
+        android:src="@drawable/question_mark"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/display"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginLeft="176dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="176dp"
-        android:layout_marginRight="176dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="100dp"
         android:text="Output Display"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,22 +45,22 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="643dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginRight="19dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="20dp"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/bClearBulb"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/display" />
 
     <Button
         android:id="@+id/bClearBulb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="20dp"
         android:text="Clear All Input"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/bPlumb"
@@ -55,29 +71,32 @@
         android:id="@+id/bPlumb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="643dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="20dp"
         android:onClick="toPlumbingInput"
         android:text="Go to Plumb"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/bClearBulb"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/display" />
 
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="395dp"
-        android:layout_height="488dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginBottom="150dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -90,13 +109,13 @@
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="User Inputs" />
+                android:text=" User Input" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Electricity Rate" />
+                android:text=" Electricity Rate" />
 
             <EditText
                 android:id="@+id/etElecRate"
@@ -109,7 +128,7 @@
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tax Rate" />
+                android:text=" Tax Rate" />
 
             <EditText
                 android:id="@+id/etTaxRate"
@@ -122,7 +141,7 @@
                 android:id="@+id/tVReturn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text=" Minimum Acceptable Return" />
 
             <EditText
                 android:id="@+id/etMinReturn"
@@ -135,13 +154,13 @@
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Current Bulb versus Replacement Bulb" />
+                android:text=" Current Bulb versus Replacement Bulb" />
 
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="OLD - Fixture Type" />
+                android:text=" OLD - Fixture Type" />
 
             <Spinner
                 android:id="@+id/spinner1"
@@ -157,7 +176,7 @@
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="NEW - Fixture Type" />
+                android:text=" NEW - Fixture Type" />
 
             <Spinner
                 android:id="@+id/spinner2"
@@ -171,7 +190,7 @@
                 android:id="@+id/textView7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="OLD - Number of Bulbs" />
+                android:text=" OLD - Number of Bulbs" />
 
             <EditText
                 android:id="@+id/etOldNumBulb"
@@ -184,7 +203,7 @@
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="NEW - Number of Bulbs" />
+                android:text=" NEW - Number of Bulbs" />
 
             <EditText
                 android:id="@+id/etNewNumBulb"
@@ -197,14 +216,7 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="OLD - Price" />
-
-            <EditText
-                android:id="@+id/etOldPrice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="number" />
+                android:text=" OLD - Price" />
 
             <TextView
                 android:id="@+id/textView10"
@@ -219,11 +231,18 @@
                 android:ems="10"
                 android:inputType="number" />
 
+            <EditText
+                android:id="@+id/etOldPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="OLD - Wattage" />
+                android:text=" OLD - Wattage" />
 
             <EditText
                 android:id="@+id/etOldWattage"
@@ -236,7 +255,7 @@
                 android:id="@+id/textView12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="NEW - Wattage" />
+                android:text=" NEW - Wattage" />
 
             <EditText
                 android:id="@+id/etNewWattage"
@@ -249,7 +268,7 @@
                 android:id="@+id/textView13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="OLD - Lumens" />
+                android:text=" OLD - Lumens" />
 
             <EditText
                 android:id="@+id/etOldLumens"
@@ -262,7 +281,7 @@
                 android:id="@+id/textView14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="NEW - Lumens" />
+                android:text=" NEW - Lumens" />
 
             <EditText
                 android:id="@+id/etNewLumens"
@@ -275,7 +294,7 @@
                 android:id="@+id/textView15"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="OLD - Lifespan" />
+                android:text=" OLD - Lifespan" />
 
             <EditText
                 android:id="@+id/etOldLifespan"
@@ -288,7 +307,7 @@
                 android:id="@+id/textView16"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="NEW - Lifespan" />
+                android:text=" NEW - Lifespan" />
 
             <EditText
                 android:id="@+id/etNewLifespan"
@@ -301,7 +320,7 @@
                 android:id="@+id/textView17"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="OLD - Hours Used per day (Weekday)" />
+                android:text=" OLD - Hours Used per day (Weekday)" />
 
             <EditText
                 android:id="@+id/etOldHoursWeekday"
@@ -314,7 +333,7 @@
                 android:id="@+id/textView18"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="NEW - Hours Used per day (Weekday)" />
+                android:text=" NEW - Hours Used per day (Weekday)" />
 
             <EditText
                 android:id="@+id/etNewHoursWeekday"
@@ -327,7 +346,7 @@
                 android:id="@+id/textView19"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="OLD - Hours Used Per Day (Weekend)" />
+                android:text=" OLD - Hours Used Per Day (Weekend)" />
 
             <EditText
                 android:id="@+id/etOldHoursWeekend"
@@ -340,7 +359,7 @@
                 android:id="@+id/textView20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="NEW - Hours Used Per Day (Weekend)" />
+                android:text=" NEW - Hours Used Per Day (Weekend)" />
 
             <EditText
                 android:id="@+id/etNewHoursWeekend"
