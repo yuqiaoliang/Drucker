@@ -26,21 +26,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 
 public class loginActivity extends AppCompatActivity {
     //public static String isSuccess;
-    private static final String url = "jdbc:mysql://152.3.53.14:3306/drucker?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    private static final String user = "myblog";
-    private static final String pass = "123456";
-    private static String inputuser;
-    private static String inputpassward;
-
+    public String iUsername;
+    public String iPassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,8 +56,8 @@ public class loginActivity extends AppCompatActivity {
                 Log.i("Info","Button press");
                 final String username=etUsername.getText().toString();
                 final String password=etPassword.getText().toString();
-                inputuser = username;
-                inputpassward = password;
+                iUsername=username;
+                iPassword=password;
                 if(username.matches("") || password.matches("")){
                     Toast.makeText(getApplicationContext(),"Username and password are required.",Toast.LENGTH_SHORT).show();
                 }else {
@@ -81,26 +71,24 @@ public class loginActivity extends AppCompatActivity {
     }
 
     private class requestLogin extends AsyncTask<Void,Void,Void> {
-    /*    private String data = "";
-        private boolean isValid;
-        private String username;*/
-        private String isValid2;
+        private String data = "";
+        private String isValid;
+        private String username;
         @Override
         protected Void doInBackground(Void... voids) {
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-                Account validAccount = new Account();
-                isValid2 = validAccount.validateLogin(inputuser,inputpassward);
 
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        /*    try {
-                URL url = new URL("https://api.myjson.com/bins/myjwu");//successful
-                //URL url = new URL("https://api.myjson.com/bins/8snfi");//fail
+            try {
+                String requestURL="http://192.168.1.63:8080/loginStatus?username="+iUsername+"&password="+iPassword;
+
+
+                //URL url = new URL("https://api.myjson.com/bins/myjwu");//successful
+				//URL url = new URL("https://api.myjson.com/bins/8snfi");//fail           
+                URL url = new URL(requestURL);//successful
+                
                 HttpURLConnection response = (HttpURLConnection) url.openConnection();
+                //new
+                //response.setRequestMethod("GET");
+                //response.setRequestProperty("User-Agent", "Mozilla/5.0");
                 InputStream input = response.getInputStream();
                 BufferedReader buffer = new BufferedReader(new InputStreamReader(input));
                 String line = "";
@@ -109,8 +97,9 @@ public class loginActivity extends AppCompatActivity {
                     data = data+line;
                 }
                 JSONObject validation = new JSONObject(data);
-                username = validation.getString("username");
-                isValid = validation.getBoolean("valid");
+                //username = validation.getString("username");
+                username=iUsername;
+                isValid = validation.getString("status");
                 //System.out.println(Boolean.toString(isValid));
 
                 //Log.i("inParsing",dataParsed); //comment line38,43; uncomment line40,41,44 to check dataParsed
@@ -120,7 +109,7 @@ public class loginActivity extends AppCompatActivity {
                 e.printStackTrace();
             } catch (JSONException e) {
                 e.printStackTrace();
-            }*/
+            }
 
             return null;
         }
@@ -128,10 +117,10 @@ public class loginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            if(isValid2.compareToIgnoreCase("true")==1){
+            if(isValid.equals("true")){
                 Log.i("Info", "log in successful");
                 Intent intent = new Intent(loginActivity.this, UserActivity.class);
-                intent.putExtra("username",inputuser);
+                intent.putExtra("username",username);
                 loginActivity.this.startActivity(intent);
 
             }
