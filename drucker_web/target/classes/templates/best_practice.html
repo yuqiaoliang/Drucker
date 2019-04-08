@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Drucker - Best Practice</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top text-white" style="background-color: #4CAF50;">
+    <a class="navbar-brand" href="#">DRUCKER + FALK</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" th:href="@{/(token=${token})}">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" th:href="@{/best-practice(token=${token})}">Best Practice</a>
+            <a class="nav-item nav-link" th:href="@{/decision(token=${token})}">Decision Tool</a>
+            <a class="nav-item nav-link" th:href="@{/training(token=${token})}">Training Guide</a>
+            <a class="nav-item nav-link" th:href="@{/message-board(token=${token})}">Message Board</a>
+        </div>
+    </div>
+    <div class="navbar-collapse collapse">
+        <ul th:if="${token == 'no-token'}" class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+            </li>
+        </ul>
+        <ul th:if="${token != 'no-token'}" class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <div class="nav-link active" th:text="'Welcome, ' + ${user}"></div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/logout(token=${token})}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="jumbotron">
+    <h1 class="display-4 mt-5">Best Practice.</h1>
+    <hr class="my-4">
+    <p class="lead">Explore All Best Practices Here.</p>
+</div>
+
+<p><img src="http://columbiabusinesstimes.com/wp-content/uploads/2019/02/agenda-analysis-business-990818.jpg"></p>
+<!---<button type="button" class="btn btn-outline-primary">Video Link(not working yet)</button>
+<button type="button" class="btn btn-outline-primary">Quiz Link(not working yet)</button>
+<button type="button" class="btn btn-outline-primary">Updates(not working yet)</button>--->
+
+<!---LIST--->
+<div class="list-group list-group-horizontal">
+    <a th:href="@{${pdfUrls0}}" class="list-group-item list-group-item-action" style="width: 25%">[PDF]Sustainability Guide for Employees</a>
+    <a th:href="@{${pdfUrls1}}" class="list-group-item list-group-item-action" style="width: 25%">[DOCX]Lightning Retrofit Model Manual</a>
+    <a th:href="@{${pdfUrls2}}" class="list-group-item list-group-item-action" style="width: 25%">[DOCX]Pool Management Model Manual</a>
+    <a th:href="@{${pdfUrls3}}" class="list-group-item list-group-item-action" style="width: 25%">[PDF]Drucker & Falk, LLC Rental Application</a>
+</div>
+
+<div class="list-group list-group-horizontal">
+    <a href="https://aede.osu.edu/sites/aede/files/publication_files/Training%20New%20Employees.pdf" class="list-group-item list-group-item-action" style="width: 25%">[PDF]New Employee Training Guide</a>
+    <a href="https://pdfs.semanticscholar.org/6e9d/4a5dcc8a07c52eae78a6395f717da395f933.pdf" class="list-group-item list-group-item-action" style="width: 25%">[PDF]Developing and Proposing a Conceptual Model</a>
+    <a href="https://www.purdue.edu/hr/pdf/supervisorGuideOnboarding.pdf" class="list-group-item list-group-item-action" style="width: 25%">[PDF]Supervisor’s Guide to Effectively Onboarding a New Employee</a>
+    <a href="https://hr.oregonstate.edu/sites/hr.oregonstate.edu/files/elearning/integrating/integrating-handbook.pdf" class="list-group-item list-group-item-action" style="width: 25%">[PDF]Integrating New Employees to the Workplace</a>
+</div>
+<!-- FOOTER -->
+<div class="my-5" style="height: 80px;"></div>
+<footer class="mt-5">
+    <div class="container-fluid bg-dark py-3">
+        <div class="container">
+            <div class="row py-3">
+                <div class="col-md-9">
+                    <h6 class="text-white">DRUCKER + FALK</h6>
+                    <h6 class="text-white" style="opacity: 0.7;">Drucker + Falk is a performance driven real estate service and investment firm and among the most respected property management and commercial real estate companies in the country.</h6>
+                </div>
+                <div class="col-md-3">
+                    <div class="d-inline-block">
+                        <div class="bg-circle-outline d-inline-block">
+                            <a href="https://www.facebook.com/" class="text-white">
+                                <i class="fa fa-2x fa-fw fa-facebook"></i>
+                            </a>
+                        </div>
+
+                        <div class="bg-circle-outline d-inline-block">
+                            <a href="https://twitter.com/" class="text-white">
+                                <i class="fa fa-2x fa-fw fa-twitter"></i>
+                            </a>
+                        </div>
+
+                        <div class="bg-circle-outline d-inline-block">
+                            <a href="https://www.linkedin.com/company/" class="text-white">
+                                <i class="fa fa-2x fa-fw fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
