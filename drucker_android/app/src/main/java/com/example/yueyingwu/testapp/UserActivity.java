@@ -26,6 +26,11 @@ public class UserActivity extends AppCompatActivity {
         Intent DesPageIntent = new Intent(getApplicationContext(),DesicionActivity.class);
         startActivity(DesPageIntent);
     }
+    public void toLogout(View v){
+        Intent logoutIntent = new Intent(getApplicationContext(),loginActivity.class);
+        startActivity(logoutIntent);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +45,7 @@ public class UserActivity extends AppCompatActivity {
         final Button bPracticeGuide = findViewById(R.id.bPracticeGuide);
         final Button bTaining = findViewById(R.id.bTraining);
         final Button bDecision = findViewById(R.id.bDecision);
-
+        final Button bLogout = findViewById(R.id.bLogout);
 
 	/*	bMessageBox.setOnClickListener(new View.onClickListener() {
 

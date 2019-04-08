@@ -162,4 +162,22 @@
         app:layout_constraintStart_toEndOf="@+id/bTraining"
         app:layout_constraintTop_toBottomOf="@+id/bPracticeGuide"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/bLogout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="83dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginBottom="35dp"
+        android:onClick="toLogout"
+        android:text="log out"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bTraining"
+        app:layout_constraintVertical_bias="0.0" />
 </android.support.constraint.ConstraintLayout>

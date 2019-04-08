@@ -16,10 +16,9 @@ public class androidAccountController {
         Account userAccount = new Account();
         validation valid = new validation();
         try{
-            System.out.println("in controller:"+username + " "+password);
-            System.out.println("initial status: "+valid.status);
+            System.out.println(username + " "+password);
             String sta = userAccount.validateLogin(username, password);
-            System.out.println("in controller: status=" + sta);
+           // System.out.println("in controller: status=" + sta);
             valid.setStatus(sta);
             System.out.println("android connected with server: "+valid.status);
             return valid;
