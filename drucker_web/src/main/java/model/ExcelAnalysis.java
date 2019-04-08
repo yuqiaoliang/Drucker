@@ -46,7 +46,7 @@ public class ExcelAnalysis {
     public ArrayList<Double> LightAnalyse() throws InvalidFormatException, IOException {
         ArrayList<Double> results = new ArrayList<Double>();
 
-        FileInputStream fsIP= new FileInputStream(new File("two.xls"));
+        FileInputStream fsIP= new FileInputStream(new File("src/main/resources/two.xls"));
         HSSFWorkbook wb = new HSSFWorkbook(fsIP);
         HSSFSheet worksheet4 = wb.getSheetAt(3);
         FormulaEvaluator evaluator = wb.getCreationHelper().createFormulaEvaluator();
@@ -85,7 +85,7 @@ public class ExcelAnalysis {
         results.add(o2.getNumericCellValue());
         results.add(o3.getNumericCellValue());
 
-        FileOutputStream output_file =new FileOutputStream(new File("two.xls"));
+        FileOutputStream output_file =new FileOutputStream(new File("src/main/resources/two.xls"));
         wb.write(output_file);
         wb.close();
         output_file.close();
@@ -95,7 +95,7 @@ public class ExcelAnalysis {
     public ArrayList<Double> PlumbingAnalyse() throws InvalidFormatException, IOException {
         ArrayList<Double> results = new ArrayList<Double>();
 
-        FileInputStream fsIP= new FileInputStream(new File("two.xls"));
+        FileInputStream fsIP= new FileInputStream(new File("src/main/resources/two.xls"));
         HSSFWorkbook wb = new HSSFWorkbook(fsIP);
         HSSFSheet worksheet3 = wb.getSheetAt(2);
         FormulaEvaluator evaluator = wb.getCreationHelper().createFormulaEvaluator();
@@ -132,7 +132,7 @@ public class ExcelAnalysis {
         results.add(o2.getNumericCellValue());
         results.add(o3.getNumericCellValue());
 
-        FileOutputStream output_file =new FileOutputStream(new File("two.xls"));
+        FileOutputStream output_file =new FileOutputStream(new File("src/main/resources/two.xls"));
         wb.write(output_file);
         wb.close();
         output_file.close();
