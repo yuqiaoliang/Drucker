@@ -11,8 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TrainQuizActivity"
-            android:label="@string/Quiz_name"></activity>
+        <activity
+            android:name=".PlumbingInputActivity"
+            android:label="@string/title_activity_plumbing_input"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".QuestionMarkActivity"
+            android:label="@string/title_activity_question_mark"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".BulbInputActivity"
+            android:label="@string/title_activity_bulb_input"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TrainQuizActivity"
+            android:label="@string/Quiz_name" />
         <activity
             android:name=".TrainPoolActivity"
             android:label="@string/Guide3_name" />
