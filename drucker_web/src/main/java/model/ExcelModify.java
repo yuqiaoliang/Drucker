@@ -54,8 +54,8 @@ public class ExcelModify {
     }
 
     //light excel
-    private static void Light(ExcelAnalysis analysis, double x1, double x2, double x3, String s1, double x4, double x5, double x6, double x7, double x8, double x9, double x10, String s2, double x11, double x12, double x13, double x14, double x15, double x16, double x17, double x18) throws InvalidFormatException, IOException {
-        FileInputStream fsIP = new FileInputStream(new File("two.xls"));
+    public static void Light(ExcelAnalysis analysis, double x1, double x2, double x3, String s1, double x4, double x5, double x6, double x7, double x8, double x9, double x10, String s2, double x11, double x12, double x13, double x14, double x15, double x16, double x17, double x18) throws InvalidFormatException, IOException {
+        FileInputStream fsIP = new FileInputStream(new File("../../resources/two.xls"));
         HSSFWorkbook wb = new HSSFWorkbook(fsIP);
         HSSFSheet worksheet = wb.getSheetAt(0);
         FormulaEvaluator evaluator = wb.getCreationHelper().createFormulaEvaluator();
