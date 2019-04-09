@@ -45,7 +45,7 @@ public class ExcelAnalysis {
 
     public ArrayList<Double> LightAnalyse() throws InvalidFormatException, IOException {
         ArrayList<Double> results = new ArrayList<Double>();
-
+        ExcelModify tmp = new ExcelModify();
         FileInputStream fsIP= new FileInputStream(new File("src/main/resources/two.xls"));
         HSSFWorkbook wb = new HSSFWorkbook(fsIP);
         HSSFSheet worksheet4 = wb.getSheetAt(3);
@@ -55,9 +55,12 @@ public class ExcelAnalysis {
         Cell b = worksheet4.getRow(9).getCell(3); //electricity saving
         Cell c = worksheet4.getRow(10).getCell(3); //maintenance saving
 
-        a.setCellValue(- this.TotalCost);
-        b.setCellValue(this.ElectricitySaving);
-        c.setCellValue(this.MaintenanceSaving);
+//        a.setCellValue(- this.TotalCost);
+//        b.setCellValue(this.ElectricitySaving);
+//        c.setCellValue(this.MaintenanceSaving);
+        a.setCellValue(- tmp.getTotalCost());
+        b.setCellValue(tmp.getElectricitySaving());
+        c.setCellValue(tmp.getMaintenanceSaving());
 
         fsIP.close();
 
@@ -94,7 +97,7 @@ public class ExcelAnalysis {
 
     public ArrayList<Double> PlumbingAnalyse() throws InvalidFormatException, IOException {
         ArrayList<Double> results = new ArrayList<Double>();
-
+        ExcelModify tmp = new ExcelModify();
         FileInputStream fsIP= new FileInputStream(new File("src/main/resources/two.xls"));
         HSSFWorkbook wb = new HSSFWorkbook(fsIP);
         HSSFSheet worksheet3 = wb.getSheetAt(2);
@@ -103,8 +106,11 @@ public class ExcelAnalysis {
         Cell a = worksheet3.getRow(7).getCell(2); //capital investment
         Cell b = worksheet3.getRow(9).getCell(3); //water saving
 
-        a.setCellValue(- this.ReplacementFixture);
-        b.setCellValue(this.CostSaving);
+//        a.setCellValue(- this.ReplacementFixture);
+//        b.setCellValue(this.CostSaving);
+
+        a.setCellValue(-tmp.getReplacementFixture());
+        b.setCellValue(tmp.getCostSaving());
 
         fsIP.close();
 
