@@ -114,146 +114,20 @@
 <!--Input-->
 <h1 class="display-4 mx-5">Lighting Retrofit Model</h1>
 
-<div class="card mx-5 my-5">
-    <div class="card-body px-5 py-3">
-        <form th:action="@{/lightning-model(token=${token})}" method="post" enctype="multipart/form-data">
-
-            <div id="field">
-                <div id="field0">
-
-            <h4 class="">General Parameters</h4>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputER">Elecrticity Rate ($/kWh)</label>
-                            <input type="text" class="form-control" id="inputER" placeholder="0.066" name="x1" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputTR">Tax Rate</label>
-                            <input type="text" class="form-control" id="inputTR" placeholder="21.0%" name="x2" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="inputMAR">Minimum Acceptable Return</label>
-                            <input type="text" class="form-control" id="inputMAR" placeholder="7.9%" name="x3" required>
-                        </div>
-                    </div>
-                    <div style="height: 30px;"></div>
-
-                    <h4 class="">Current Bulb</h4>
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="inputBulbType">Bulb Type</label>
-                            <select id="inputBulbType" class="form-control" name="s1" required>
-                                <option selected>Choose...</option>
-                                <option>Edison Base</option>
-                                <option>4 pins</option>
-                                <option>2 pins</option>
-                                <option>Tube</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputNo">Number of Bulbs</label>
-                            <input type="text" class="form-control" id="inputNo" placeholder="4" name="x4" required>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputPrice">Price</label>
-                            <input type="text" class="form-control" id="inputPrice" placeholder="10.00" name="x5" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputLumens">Lumens</label>
-                            <input type="text" class="form-control" id="inputLumens" placeholder="1000" name="x7" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputWatts">Watts</label>
-                            <input type="text" class="form-control" id="inputWatts" placeholder="60" name="x6" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="inputLifespan">Lifespan</label>
-                            <input type="text" class="form-control" id="inputLifespan" placeholder="20 Hrs" name="x8" required>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputHPDWeekday">Hours Used Per Day (Weekday)</label>
-                            <input type="text" class="form-control" id="inputHPDWeekday" placeholder="12 Hrs" name="x9" required>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputHPDweekend">Hours Used Per Day (Weekend)</label>
-                            <input type="text" class="form-control" id="inputHPDweekend" placeholder="12 Hrs" name="x10" required>
-                        </div>
-                    </div>
-                    <div style="height: 30px;"></div>
-
-                    <h4 class="">Replacement Bulb</h4>
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="inputRplBulbType">Bulb Type</label>
-                            <select id="inputRplBulbType" class="form-control" name="s2" required>
-                                <option selected>Choose...</option>
-                                <option>Edison Base</option>
-                                <option>4 pins</option>
-                                <option>2 pins</option>
-                                <option>Tube</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputRplNo">Number of Bulbs</label>
-                            <input type="text" class="form-control" id="inputRplNo" placeholder="4" name="x11" required>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputRplPrice">Price</label>
-                            <input type="text" class="form-control" id="inputRplPrice" placeholder="10.00" name="x12" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputRplLumens">Lumens</label>
-                            <input type="text" class="form-control" id="inputRplLumens" placeholder="1000" name="x14" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputRplWatts">Watts</label>
-                            <input type="text" class="form-control" id="inputRplWatts" placeholder="60" name="x13" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="inputRplLifespan">Lifespan</label>
-                            <input type="text" class="form-control" id="inputRplLifespan" placeholder="20 Hrs" name="x15" required>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputRplHPDWeekday">Hours Used Per Day (Weekday)</label>
-                            <input type="text" class="form-control" id="inputRplHPDWeekday" placeholder="12 Hrs" name="x16" required>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputRplHPDweekend">Hours Used Per Day (Weekend)</label>
-                            <input type="text" class="form-control" id="inputRplHPDweekend" placeholder="12 Hrs" name="x17" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputRebates">Rebates</label>
-                            <input type="text" class="form-control" id="inputRebates" placeholder="0.20" name="x18" required>
-                        </div>
-                    </div>
-                    <div style="height: 30px;"></div>
-                </div>
-
-                <span id="fields"></span>
 
 
-                <!--<input name="addFieldButton" class="btn btn-dark" type="button" value="Add More" onclick="addField();" />-->
-
-                <button type="submit" class="btn btn-primary my-3 btn-lg">Add More</button>
-
-            </div>
-        </form>
+<div class="card text-white bg-success my-5 mx-5" style="max-width: 18rem;">
+    <div class="card-header">Lighting Retrofit Model</div>
+    <div class="card-body">
+        <h4 class="card-title">Lightning Analysis Result</h4>
+        <p class="card-text" th:text="'Escalting Rate: 0.03% (fixed)'"></p>
+        <p class="card-text" th:text="'NPV Result is: ' + ${npv}"></p>
+        <p class="card-text" th:text="'IRR Result is: ' + ${irr}"></p>
+        <p class="card-text" th:text="'Simple Payback period (year) is: ' + ${spr}"></p>
     </div>
 </div>
 
-<a class="btn btn-success my-3 btn-lg mx-5" th:href="@{/lightning-analysis(token=${token})}" role="button">Get Analysis</a>
+<a class="btn btn-secondary my-3 btn-lg mx-5" th:href="@{/decision(token=${token})}" role="button">Back</a>
 
 
 
