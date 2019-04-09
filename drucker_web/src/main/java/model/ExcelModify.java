@@ -131,7 +131,7 @@ public class ExcelModify {
     }
 
     //plumbing excel
-    private static void Plumbing(ExcelAnalysis analysis, double y1, double y2, double y3, String s1, double y4, double y5, double y6, double y7, String s2, double y8, double y9, double y10, double y11, double y12) throws InvalidFormatException, IOException {
+    public static void Plumbing(ExcelAnalysis analysis, double y1, double y2, double y3, String s1, double y4, double y5, double y6, double y7, String s2, double y8, double y9, double y10, double y11, double y12) throws InvalidFormatException, IOException {
         FileInputStream fsIP = new FileInputStream(new File("src/main/resources/two.xls"));
         HSSFWorkbook wb = new HSSFWorkbook(fsIP);
         HSSFSheet worksheet2 = wb.getSheetAt(1);
