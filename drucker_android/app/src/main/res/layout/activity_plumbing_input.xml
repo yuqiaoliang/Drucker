@@ -76,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView22"
@@ -89,7 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/tVReturn2"
@@ -102,7 +102,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView23"
@@ -145,7 +145,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView27"
@@ -158,7 +158,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView28"
@@ -171,7 +171,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView29"
@@ -184,7 +184,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView30"
@@ -197,7 +197,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView31"
@@ -210,7 +210,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView32"
@@ -223,7 +223,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView33"
@@ -236,7 +236,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView35"
@@ -249,7 +249,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
         </LinearLayout>
     </ScrollView>
@@ -276,7 +276,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         android:layout_marginBottom="20dp"
-        android:text="Clear All Input"
+        android:text="Clear All"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/bSubmit"
         app:layout_constraintStart_toEndOf="@+id/bBackBulb"
@@ -293,7 +293,7 @@
         android:layout_marginRight="3dp"
         android:layout_marginBottom="20dp"
         android:onClick="toBulbInput"
-        android:text="Back to Bulb"
+        android:text="Back To Bulb"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/bClearPlumb"
         app:layout_constraintStart_toStartOf="parent"

@@ -58,6 +58,10 @@ public class loginActivity extends AppCompatActivity {
                 final String password=etPassword.getText().toString();
                 iUsername=username;
                 iPassword=password;
+
+//                Intent intent = new Intent(loginActivity.this, UserActivity.class);
+//                loginActivity.this.startActivity(intent);
+
                 if(username.matches("") || password.matches("")){
                     Toast.makeText(getApplicationContext(),"Username and password are required.",Toast.LENGTH_SHORT).show();
                 }else {
@@ -78,7 +82,7 @@ public class loginActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
 
             try {
-                String requestURL="http://192.168.1.63:8080/loginStatus?username="+iUsername+"&password="+iPassword;
+                String requestURL="http://10.197.189.82:8080/loginStatus?username="+iUsername+"&password="+iPassword;
 
 
                 //URL url = new URL("https://api.myjson.com/bins/myjwu");//successful

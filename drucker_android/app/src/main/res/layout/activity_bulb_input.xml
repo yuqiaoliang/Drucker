@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:layout_marginBottom="20dp"
-        android:text="Clear All Input"
+        android:text="Clear All"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/bPlumb"
         app:layout_constraintStart_toEndOf="@+id/bMoreBulb"
@@ -78,7 +78,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="20dp"
         android:onClick="toPlumbingInput"
-        android:text="Go to Plumb"
+        android:text="Go to Plumbing"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/bClearBulb"
@@ -122,7 +122,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -135,7 +135,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/tVReturn"
@@ -148,7 +148,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -197,7 +197,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -210,13 +210,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text=" OLD - Price" />
+
+            <EditText
+                android:id="@+id/etOldPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView10"
@@ -229,14 +236,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
-            <EditText
-                android:id="@+id/etOldPrice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="number" />
 
             <TextView
                 android:id="@+id/textView11"
@@ -249,7 +250,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView12"
@@ -262,7 +263,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView13"
@@ -275,7 +276,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView14"
@@ -288,7 +289,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView15"
@@ -301,7 +302,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView16"
@@ -314,7 +315,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView17"
@@ -327,7 +328,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView18"
@@ -340,7 +341,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView19"
@@ -353,7 +354,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView20"
@@ -366,7 +367,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <TextView
                 android:id="@+id/textView21"
@@ -379,7 +380,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="numberSigned|numberDecimal" />
 
         </LinearLayout>
     </ScrollView>
