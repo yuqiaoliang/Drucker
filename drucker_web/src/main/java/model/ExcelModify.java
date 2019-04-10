@@ -14,6 +14,34 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class ExcelModify {
+
+
+    public static double ReplacementFixture;
+    public static double CostSaving;
+    public static double TotalCost;
+    public static double ElectricitySaving;
+    public static double MaintenanceSaving;
+
+
+    public double getReplacementFixture(){
+        return ReplacementFixture;
+    }
+
+    public double getCostSaving(){
+        return CostSaving;
+    }
+
+    public double getTotalCost(){
+        return TotalCost;
+    }
+
+    public double getElectricitySaving(){
+        return ElectricitySaving;
+    }
+
+    public double getMaintenanceSaving(){
+        return MaintenanceSaving;
+    }
     private static void LightRetrofit(double aa, double bb, double cc, double dd, double ff, double gg, double hh, double ii, double jj, double kk, double ll) throws InvalidFormatException, IOException {
         FileInputStream fsIP = new FileInputStream(new File("src/main/resources/abc.xls"));
         HSSFWorkbook wb = new HSSFWorkbook(fsIP);
@@ -121,7 +149,10 @@ public class ExcelModify {
         evaluator.evaluateFormulaCell(o7);
 
         //TotalCost, ElectricitySaving, MaintenanceSaving
-        analysis.AddLight(o2.getNumericCellValue(), o4.getNumericCellValue(), o3.getNumericCellValue());
+        //analysis.AddLight(o2.getNumericCellValue(), o4.getNumericCellValue(), o3.getNumericCellValue());
+        TotalCost += o2.getNumericCellValue();
+        ElectricitySaving += o4.getNumericCellValue();
+        MaintenanceSaving += o3.getNumericCellValue();
 
         FileOutputStream output_file = new FileOutputStream(new File("src/main/resources/two.xls"));
         wb.write(output_file);
@@ -180,7 +211,10 @@ public class ExcelModify {
         evaluator.evaluateFormulaCell(o4);
 
         //ReplacementFixture, CostSaving
-        analysis.AddPlumbing(o1.getNumericCellValue(), o4.getNumericCellValue());
+        //analysis.AddPlumbing(o1.getNumericCellValue(), o4.getNumericCellValue());
+
+        ReplacementFixture += o1.getNumericCellValue();
+        CostSaving += o4.getNumericCellValue();
 
         FileOutputStream output_file = new FileOutputStream(new File("src/main/resources/two.xls"));
         wb.write(output_file);
