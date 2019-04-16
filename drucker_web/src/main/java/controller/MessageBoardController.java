@@ -43,7 +43,7 @@ public class MessageBoardController {
 
         // add data in the model.
 
-        
+
         return "post_detail";
     }
 }
