@@ -413,7 +413,133 @@
                     <a class="btn btn-success my-3 btn-lg mx-5" th:href="@{/lightning-analysis(token=${token})}" role="button">Get Analysis</a>
                 </div>
 
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <!--Input-->
+                    <h1 class="display-4 mx-5">Plumbing Retrofit Model</h1>
+
+                    <div class="card mx-5 my-5">
+                        <div class="card-body px-5 py-3">
+                            <form th:action="@{/plumbing-model(token=${token})}" method="post"
+                                  enctype="multipart/form-data">
+
+                                <div id="field">
+                                    <div id="field0">
+
+                                        <h4 class="">General Parameters</h4>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputWC">Water Cost ($/ccf)</label>
+                                                <input type="text" class="form-control" id="inputWC" placeholder="2.91"
+                                                       name="y1" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputTR2">Tax Rate</label>
+                                                <input type="text" class="form-control" id="inputTR2" placeholder="0.21"
+                                                       name="y2" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputMAR2">Minimum Acceptable Return</label>
+                                                <input type="text" class="form-control" id="inputMAR2" placeholder="0.07"
+                                                       name="y3" required>
+                                            </div>
+                                        </div>
+                                        <div style="height: 30px;"></div>
+
+                                        <h4 class="">Current Fixture</h4>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputFixtureType">Fixture Type</label>
+                                                <select id="inputFixtureType" class="form-control" name="t1" required>
+                                                    <option selected>Choose...</option>
+                                                    <option>Sink</option>
+                                                    <option>Shower Head</option>
+                                                    <option>Low Flow Toilet</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputFixtureNo">Number of Fixture</label>
+                                                <input type="text" class="form-control" id="inputFixtureNo" placeholder="2"
+                                                       name="y4" required>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputFixturePrice">Price ($)</label>
+                                                <input type="text" class="form-control" id="inputFixturePrice"
+                                                       placeholder="20.00" name="y5" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputFlowRate">Flow Rate (gal/min)</label>
+                                                <input type="text" class="form-control" id="inputFlowRate"
+                                                       placeholder="0.2" name="y6" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputEHUPD">Estimated hours used per day</label>
+                                                <input type="text" class="form-control" id="inputEHUPD" placeholder="2"
+                                                       name="y7" required>
+                                            </div>
+                                        </div>
+
+                                        <div style="height: 30px;"></div>
+
+                                        <h4 class="">Replacement Fixture</h4>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputRplFixtureType">Fixture Type</label>
+                                                <select id="inputRplFixtureType" class="form-control" name="t2" required>
+                                                    <option selected>Choose...</option>
+                                                    <option>Sink</option>
+                                                    <option>Shower Head</option>
+                                                    <option>Low Flow Toilet</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputRplFixNo">Number of Fixtures</label>
+                                                <input type="text" class="form-control" id="inputRplFixNo" placeholder="2"
+                                                       name="y8" required>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputRplFixPrice">Price ($)</label>
+                                                <input type="text" class="form-control" id="inputRplFixPrice"
+                                                       placeholder="30.00" name="y9" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputRplFixFR">Flow Rate (gal/min)</label>
+                                                <input type="text" class="form-control" id="inputRplFixFR"
+                                                       placeholder="0.15" name="y10" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputRplFixEHUPD">Estimated hours used per day</label>
+                                                <input type="text" class="form-control" id="inputRplFixEHUPD"
+                                                       placeholder="2" name="y11" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputFixRebates">Rebates ($)</label>
+                                                <input type="text" class="form-control" id="inputFixRebates"
+                                                       placeholder="0.00" name="y12" required>
+                                            </div>
+                                        </div>
+                                        <div style="height: 30px;"></div>
+                                    </div>
+
+                                    <span id="fields"></span>
+
+                                    <button type="submit" class="btn btn-primary my-3 btn-lg">Add More</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <a class="btn btn-success my-3 btn-lg mx-5" th:href="@{/plumbing-analysis(token=${token})}"
+                       role="button">Get Analysis</a>
+                </div>
             </div>
         </div>
     </div>
