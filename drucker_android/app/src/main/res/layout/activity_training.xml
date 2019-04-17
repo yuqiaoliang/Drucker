@@ -8,10 +8,11 @@
 
     <ListView
         android:id="@+id/lv"
-        android:layout_width="395dp"
+        android:layout_width="match_parent"
         android:layout_height="350dp"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp" />
+
 
     <Button
         android:id="@+id/btQuiz"
@@ -23,9 +24,10 @@
         android:layout_marginEnd="30dp"
         android:layout_marginRight="100dp"
         android:layout_marginBottom="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lv"
+        android:text="TAKE QUIZ"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="parent"
-        android:text="TAKE QUIZ" />
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lv" />
 </RelativeLayout>
