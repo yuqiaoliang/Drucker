@@ -1,7 +1,8 @@
 package controller;
 
 public class decisionResult {
-       /* private double x1;
+    /*
+    private double x1;
     private double x2;
     private double x3;
     private String s1;
@@ -20,7 +21,8 @@ public class decisionResult {
     private double x15;
     private double x16;
     private double x17;
-    private double x18;*/
+    private double x18;
+    */
 
     private Double escaltingRate;
     private Double npv;
