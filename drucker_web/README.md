@@ -140,6 +140,35 @@ Outputs (in order):
 |Payback Period period (year)|arraylist[2]|
 
 
+Below are the message board attributes we have in the database. This forum is responsive for internal communications. It will display all the posts with comments and is supportive of adding new posts and comments.
+
+Post details:
+
+| pID   |      username      |      time      |      cnum      |      title     |     content     |     shortcontent     |
+|----------|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+|1|Ric|2019-04-18 11:29:33|3|First post|Welcome to the first post of Drucker Message Board from Ric!|NULL|
+|2|Ric|2019-04-18 11:29:38|5|New hire training guide|To all: please guide new hires through training guides and they shall be able to complete the quiz.|NULL|
+|3|Mengting|2019-04-18 11:29:43|1|Working from home today|Bad weather. Feel free to work from home today.|NULL|
+|4|Honglin|2019-04-18 11:23:52|0|Model updates|Lightning and water plumbing model need to be updated soon. Watch out for details.|NULL|
+|5|Piyush|2019-04-18 11:29:49|2|Please help update documents|I have finalized all the documents for internal use. Calling tech team to add them.|NULL|
+
+
+Comment details:
+
+| postID   |      username      |      time      |     content     |     shortcontent     |
+|----------|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+|1|Rui|2019-04-16 19:41:48|Hello from Drucker server team!|NULL|
+|1|Chong|2019-04-16 19:42:43|Hello from Drucker client team!|NULL|
+|1|Minghui|2019-04-16 19:43:20|Hello from Drucker Android team!|NULL|
+|2|Tianrui|2019-04-16 19:56:17|Understood.|NULL|
+|2|Yueying|2019-04-16 19:57:41|Sure. I'll keep track of that.|NULL|
+|2|Yijie|2019-04-16 19:58:22|Well received. Thanks.|NULL|
+|2|Yuqiao|2019-04-16 19:59:55|How do they feel about that?|NULL|
+|2|Yijie|2019-04-16 20:00:26|They are doing really well.|NULL|
+|3|Honglin|2019-04-16 20:04:27|Me too.|NULL|
+|5|Yifan|2019-04-16 20:14:00|I will add the first part.|NULL|
+|5|Xiaohuan|2019-04-16 20:14:22|I will add the second part.|NULL|
+
 
 ## Deployment
 
