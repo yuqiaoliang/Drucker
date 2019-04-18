@@ -1,5 +1,6 @@
 package com.example.yueyingwu.testapp;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DecimalFormat;
 
 public class PlumbingInputActivity extends AppCompatActivity {
 
@@ -43,12 +45,13 @@ public class PlumbingInputActivity extends AppCompatActivity {
     static String newEstimatedHoursPerDayPlumb;
     static String rebatesPlumb;
 
-    static Double escaltingRatePlumbing;
-    static Double npvPlumbing;
-    static Double irrPlumbing;
-    static Double simplyPaybackPeriodPlumbing;
+    static Double escaltingRatePlumbing=0.0;
+    static Double npvPlumbing=0.0;
+    static Double irrPlumbing=0.0;
+    static Double simplyPaybackPeriodPlumbing=0.0;
 
-    final TextView display2 = findViewById(R.id.display2);
+
+    static TextView display2;
 
     public void toBulbInput(View v) {
         Intent bulbInputIntent = new Intent(getApplicationContext(), BulbInputActivity.class);
@@ -70,6 +73,8 @@ public class PlumbingInputActivity extends AppCompatActivity {
                 startActivity(manualIntent2);
             }
         });
+
+        display2=findViewById(R.id.display2);
 
         final EditText etWaterCost = findViewById(R.id.etWaterCost);
         final EditText etTaxRate = findViewById(R.id.etTaxRate);
@@ -127,8 +132,39 @@ public class PlumbingInputActivity extends AppCompatActivity {
                 newEstimatedHoursPerDayPlumb = etNewEstimatedHoursPerDay.getText().toString();
                 rebatesPlumb=etRebates.getText().toString();
 
-                plumbToServer connectPlumb=new plumbToServer();
-                connectPlumb.execute();
+                if(spinnerOld3Plumb.equals("Shower head")){
+                    spinnerOld3Plumb="Shower+head";
+                }
+                if(spinnerOld3Plumb.equals("Low Flow Toilet")){
+                    spinnerOld3Plumb="Low+Flow+Toilet";
+                }
+                if(spinnerNew4Plumb.equals("Shower head")){
+                    spinnerNew4Plumb="Shower+head";
+                }
+                if(spinnerNew4Plumb.equals("Low Flow Toilet")){
+                    spinnerNew4Plumb="Low+Flow+Toilet";
+                }
+                System.out.println(waterCostPlumb);
+
+
+                if(waterCostPlumb.matches("") || taxRatePlumb.matches("")||
+                        minReturnPlumb.matches("") || rebatesPlumb.matches("")||
+                        spinnerOld3Plumb.matches("") || spinnerNew4Plumb.matches("")||
+                        oldNumFixturePlumb.matches("") || newNumFixturePlumb.matches("")||
+                        oldPricePlumb.matches("") || newPricePlumb.matches("")||
+                        oldFlowRatePlumb.matches("") || newFlowRatePlumb.matches("")||
+                        oldEstimatedHoursPerDayPlumb.matches("") || newEstimatedHoursPerDayPlumb.matches("")){
+                    System.out.println(Boolean.toString(waterCostPlumb.matches("")));
+                    AlertDialog.Builder builder = new AlertDialog.Builder(PlumbingInputActivity.this);
+                    builder.setMessage("Need to finish the whole table").setNegativeButton("Continue", null).create().show();
+                }else {
+                    System.out.println("connect to server");
+                    plumbToServer connectPlumb=new plumbToServer();
+                    connectPlumb.execute();
+                }
+
+//                plumbToServer connectPlumb=new plumbToServer();
+//                connectPlumb.execute();
 //                display2.setText(spinnerOld3);
                 //etTaxRate.getText().clear();
             }
@@ -139,7 +175,7 @@ public class PlumbingInputActivity extends AppCompatActivity {
         private String receivedDataPlumb = "";
         @Override
         protected Void doInBackground(Void... voids) {
-            String sendURL="http://localhost:8080/PlumbModul?y1="+waterCostPlumb+"&y2="+taxRatePlumb+"&y3="+minReturnPlumb+"&s1="+spinnerOld3Plumb+"&s2="+spinnerNew4Plumb+"&y4="+oldNumFixturePlumb+"&y8="+newNumFixturePlumb+"&y5="+oldPricePlumb+"&y9="+newPricePlumb+"&y6="+oldFlowRatePlumb+"&y10="+newFlowRatePlumb+"&y7="+oldEstimatedHoursPerDayPlumb+"&y11="+newEstimatedHoursPerDayPlumb+"&y12="+rebatesPlumb;
+            String sendURL="http://192.168.1.9:8080/PlumbModul?y1="+waterCostPlumb+"&y2="+taxRatePlumb+"&y3="+minReturnPlumb+"&s1="+spinnerOld3Plumb+"&s2="+spinnerNew4Plumb+"&y4="+oldNumFixturePlumb+"&y8="+newNumFixturePlumb+"&y5="+oldPricePlumb+"&y9="+newPricePlumb+"&y6="+oldFlowRatePlumb+"&y10="+newFlowRatePlumb+"&y7="+oldEstimatedHoursPerDayPlumb+"&y11="+newEstimatedHoursPerDayPlumb+"&y12="+rebatesPlumb;
             try {
                 URL url=new URL(sendURL);
                 try {
@@ -153,10 +189,10 @@ public class PlumbingInputActivity extends AppCompatActivity {
                     }
                     try {
                         JSONObject receivedString=new JSONObject(receivedDataPlumb);
-                        escaltingRatePlumbing=receivedString.getDouble("escaltingRate");
-                        npvPlumbing=receivedString.getDouble("npv");
-                        irrPlumbing=receivedString.getDouble("irr");
-                        simplyPaybackPeriodPlumbing=receivedString.getDouble("simplyPaybackPeriod");
+                        escaltingRatePlumbing+=receivedString.getDouble("escaltingRate");
+                        npvPlumbing+=receivedString.getDouble("npv");
+                        irrPlumbing+=receivedString.getDouble("irr");
+                        simplyPaybackPeriodPlumbing+=receivedString.getDouble("simplyPaybackPeriod");
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -173,7 +209,11 @@ public class PlumbingInputActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            display2.setText("Escalting Rate: "+Double.toString(escaltingRatePlumbing)+"\n"+"NPV"+Double.toString(npvPlumbing)+"\n"+"IRR"+Double.toString(irrPlumbing)+"\n"+"Simple Payback period (year)"+Double.toString(simplyPaybackPeriodPlumbing)+"\n");
+            DecimalFormat df=new DecimalFormat("#.###");
+            if((escaltingRatePlumbing!=0 )&&(npvPlumbing!=0)&&(irrPlumbing!=0)&&(simplyPaybackPeriodPlumbing!=0)){
+                display2.setText("\n"+"Escalting Rate="+df.format(escaltingRatePlumbing)+"\n"+"NPV="+df.format(npvPlumbing)+"\n"+"IRR="+df.format(irrPlumbing)+"\n"+"Simple Payback period (year)="+df.format(simplyPaybackPeriodPlumbing));
+            }
+//            display2.setText("Escalting Rate: "+String.format("%.3f",Double.toString(escaltingRatePlumbing))+"\n"+"NPV"+String.format("%.3f",Double.toString(npvPlumbing))+"\n"+"IRR"+String.format("%.3f",Double.toString(irrPlumbing))+"\n"+"Simple Payback period (year)"+String.format("%.3f",Double.toString(simplyPaybackPeriodPlumbing))+"\n");
         }
     }
 }

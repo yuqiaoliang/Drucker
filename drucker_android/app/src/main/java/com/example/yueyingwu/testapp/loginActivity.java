@@ -2,6 +2,7 @@ package com.example.yueyingwu.testapp;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +42,9 @@ public class loginActivity extends AppCompatActivity {
         final EditText etPassword = findViewById(R.id.etPassword);
         final Button bLogin = findViewById(R.id.bLogin);
         final TextView registerLink = findViewById(R.id.tvRegisterHere);
+        final ImageView drucker=findViewById(R.id.imageView);
+
+        drucker.setScaleType(ImageView.ScaleType.FIT_XY);
 
         //connect registerLink to the register page
         registerLink.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +63,10 @@ public class loginActivity extends AppCompatActivity {
                 final String password=etPassword.getText().toString();
                 iUsername=username;
                 iPassword=password;
+
+//                Intent intent = new Intent(loginActivity.this, UserActivity.class);
+//                loginActivity.this.startActivity(intent);
+
                 if(username.matches("") || password.matches("")){
                     Toast.makeText(getApplicationContext(),"Username and password are required.",Toast.LENGTH_SHORT).show();
                 }else {
@@ -78,7 +87,7 @@ public class loginActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
 
             try {
-                String requestURL="http://192.168.1.63:8080/loginStatus?username="+iUsername+"&password="+iPassword;
+                String requestURL="http://192.168.1.9:8080/loginStatus?username="+iUsername+"&password="+iPassword;
 
 
                 //URL url = new URL("https://api.myjson.com/bins/myjwu");//successful

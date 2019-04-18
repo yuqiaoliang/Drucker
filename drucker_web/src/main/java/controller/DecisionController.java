@@ -103,8 +103,6 @@ public class DecisionController {
         Double spr = 0.0;
 
         try {
-//            ExcelAnalysis analysis = new ExcelAnalysis();
-
             ArrayList<Double> result = analysis.LightAnalyse();
             npv = result.get(0);
             irr = result.get(1);
@@ -114,7 +112,7 @@ public class DecisionController {
             System.out.println(irr);
             System.out.println(spr);
 
-            System.out.println("OUTPUT SUCCESsS.");
+            System.out.println("LIGHTNING OUTPUT SUCCESS.");
         }
         catch(IOException e) {
             e.printStackTrace();
@@ -131,6 +129,85 @@ public class DecisionController {
         model.addAttribute("spr", spr_str);
 
         return "light-analysis";
-//        return "decision";
     }
+
+
+    // PLUMBING MODEL.
+    @RequestMapping(value="/plumbing-model", method=RequestMethod.POST)
+    public String plumbingModel(@RequestParam(name="token", required=false, defaultValue="no-token") String token,
+                                @RequestParam Double y1, @RequestParam Double y2, @RequestParam Double y3,
+                                @RequestParam String t1, @RequestParam Double y4, @RequestParam Double y5,
+                                @RequestParam Double y6, @RequestParam Double y7, @RequestParam Double y8,
+                                @RequestParam Double y9, @RequestParam Double y10, @RequestParam String t2,
+                                @RequestParam Double y11, @RequestParam Double y12,
+                                Model model) {
+
+        /////////////////////////////////////////////////
+        // Handle login check, do not touch
+        String user = LoginManagement.getInstance().getUser(token);
+        if (user == null) {
+            return "redirect:/login";
+        }
+        model.addAttribute("user", user);
+        model.addAttribute("token", token);
+        /////////////////////////////////////////////////
+
+        try {
+            modify.Plumbing(analysis, y1, y2, y3, t1, y4, y5, y6, y7, t2, y8, y9, y10, y11, y12);
+            System.out.println("PLUMBING MODIFY SUCCESS.");
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        } catch (org.apache.poi.openxml4j.exceptions.InvalidFormatException e) {
+            e.printStackTrace();
+        }
+
+        return "decision";
+    }
+
+    @GetMapping("/plumbing-analysis")
+    public String plumbningResult(@RequestParam(name="token", required=false, defaultValue="no-token") String token, Model model) {
+        /////////////////////////////////////////////////
+        // Handle login check, do not touch
+        String user = LoginManagement.getInstance().getUser(token);
+        if (user == null) {
+            return "redirect:/login";
+        }
+        model.addAttribute("user", user);
+        model.addAttribute("token", token);
+        /////////////////////////////////////////////////
+
+        Double npv = 0.0;
+        Double irr = 0.0;
+        Double ppp = 0.0;
+
+        try {
+            ArrayList<Double> result = analysis.PlumbingAnalyse();
+            npv = result.get(0);
+            irr = result.get(1);
+            ppp = result.get(2);
+
+            System.out.println(npv);
+            System.out.println(irr);
+            System.out.println(ppp);
+
+            System.out.println("LIGHTNING OUTPUT SUCCESS.");
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        } catch (org.apache.poi.openxml4j.exceptions.InvalidFormatException e) {
+            e.printStackTrace();
+        }
+
+        String npv_str = String.format("%.2f", npv);
+        String irr_str = String.format("%.2f", irr);
+        String ppp_str = String.format("%.2f", ppp);
+
+        model.addAttribute("npv", npv_str);
+        model.addAttribute("irr", irr_str);
+        model.addAttribute("ppp", ppp_str);
+
+        return "plumbing-analysis";
+    }
+
 }

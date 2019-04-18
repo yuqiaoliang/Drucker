@@ -6,21 +6,27 @@
     <string name="message_name">FORUM</string>
     <string name="Guide1_name">Sustainability Guide</string>
     <string name="Guide2_name">Lighting Retrofit Model</string>
-    <string name="Guide3_name">Pool Management Model</string>
+    <string name="Guide3_name">Landscaping Guide</string>
     <string name="Quiz_name">Quiz</string>
     <string name="title_activity_bulb_input">BulbInputActivity</string>
     <string name="title_activity_question_mark">QuestionMarkActivity</string>
     <string name="title_activity_plumbing_input">PlumbingInputActivity</string>
-    <string-array name = "fixtureList">
+    <string-array name="ListView_string">
+        <item>Sustainability Guide</item>
+        <item>Landscaping Guide</item>
+    </string-array>
+    <string-array name="fixtureList">
         <item>Edison Base</item>item>
         <item>4 Pins</item>item>
         <item>2 Pins</item>item>
         <item>Tube</item>item>
-    </string-array>>
+    </string-array>
+    >
 
-    <string-array name = "plumb">
+    <string-array name="plumb">
         <item>Shower head</item>item>
         <item>Sink</item>item>
         <item>Low Flow Toilet</item>item>
-    </string-array>>
+    </string-array>
+    >
 </resources>
