@@ -156,7 +156,7 @@ Post details:
 Comment details:
 
 | postID   |      username      |      time      |     content     |     shortcontent     |
-|----------|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+|----------|:-------------:|:-------------:|:-------------:|:-------------:|
 |1|Rui|2019-04-16 19:41:48|Hello from Drucker server team!|NULL|
 |1|Chong|2019-04-16 19:42:43|Hello from Drucker client team!|NULL|
 |1|Minghui|2019-04-16 19:43:20|Hello from Drucker Android team!|NULL|
