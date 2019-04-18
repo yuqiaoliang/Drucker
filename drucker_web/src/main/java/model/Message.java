@@ -1,15 +1,17 @@
 package model;
 
+import java.util.Date;
+
 public class Message {
-    private String title;
     private String content;
     private String username;
+    private Date time;
     private int id;
 
-    public Message(String title, String content, String authorname, int id) {
-        this.title = title;
+    public Message(String content, String authorname, Date time, int id) {
         this.content = content;
         this.username = authorname;
+        this.time = time;
         this.id = id;
     }
 
@@ -25,7 +27,7 @@ public class Message {
         return content;
     }
 
-    public String getTitle() {
-        return title;
+    public Date getTime() {
+        return time;
     }
 }
