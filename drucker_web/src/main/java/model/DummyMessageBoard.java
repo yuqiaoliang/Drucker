@@ -2,9 +2,10 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class DummyMessageBoard {
-    ArrayList<Post> posts;
+    List<Post> posts;
 
     public DummyMessageBoard() {
         posts = new ArrayList<>();
@@ -39,11 +40,11 @@ public class DummyMessageBoard {
                 "\n" +
                 "Dependency injection as it's generally understood (and implemented by Spring) means that the dependencies a class has (e.g. a JDBC Datasource) are not fetched by the class itself, but \"injected\" by a container when the instance is created. So you don't have have two versions of every method that uses the Datasource; instead, you have one dependency injection configuration where the \"real\" Datasource is injected and one where a mock is injected. Or, if the injection happens via the constructor or a getter, test code can do the injection explicitly.\n" +
                 "\n" +
-                "Second, Spring is not just dependency injection, though that's its core functionality. It also provides declarative transactions, job scheduling, authentication, and a bunch of other functionality (including a fully-fledged MVC web framework) that you may need. There are other frameworks that provide the same functionality, but other than Spring, only Java EE has them all integrated.", "Mark Zuck", new Date(), 4, comments2));
+                "Second, Spring is not just dependency injection, though that's its core functionality. It also provides declarative transactions, job scheduling, authentication, and a bunch of other functionality (including a fully-fledged MVC web framework) that you may need. There are other frameworks that provide the same functionality, but other than Spring, only Java EE has them all integrated.", "Mark Zuck", new Date(), 4, new ArrayList<>()));
 
     }
 
-    public ArrayList<Post> getPosts() {
+    public List<Post> getPosts() {
         return posts;
     }
 
