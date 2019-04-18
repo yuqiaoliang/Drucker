@@ -1,16 +1,30 @@
 package model;
 
-public class Message {
-    private String title;
+import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Message implements Serializable {
     private String content;
+    private String shortContent;
     private String username;
+    private Date time;
+    private String stime;
     private int id;
 
-    public Message(String title, String content, String authorname, int id) {
-        this.title = title;
+    public Message(String content, String authorname, Date time, int id) {
         this.content = content;
         this.username = authorname;
+        this.time = time;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        this.stime = dateFormat.format(time);
         this.id = id;
+        if (content.length() > 300) {
+            this.shortContent = content.substring(0,300) + "...";
+        } else {
+            this.shortContent = content;
+        }
     }
 
     public int getId() {
@@ -25,7 +39,15 @@ public class Message {
         return content;
     }
 
-    public String getTitle() {
-        return title;
+    public Date getTime() {
+        return time;
+    }
+
+    public String getStime() {
+        return stime;
+    }
+
+    public String getShortContent() {
+        return shortContent;
     }
 }
