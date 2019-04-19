@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <html>
 <head>
     <title>Drucker - Message Board</title>
@@ -49,7 +50,7 @@
 </div>
 
 <div class="row my-3">
-    <button type="button" class="btn btn-primary col-md-2 offset-md-1"> + Create Post</button>
+    <a type="button" class="btn btn-primary col-md-2 offset-md-1" th:href="@{/best-practice(token=${token})}"> Create Post</a>
 </div>
 
 <div class="row">
