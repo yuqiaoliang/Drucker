@@ -12,7 +12,8 @@ public class AccountController {
 
     @GetMapping("/login")
     public String login(@RequestParam(name="token", required=false, defaultValue="no-token") String token,
-                        @RequestParam(name="error", required=false, defaultValue="no-error") String error, Model model) {
+                        @RequestParam(name="error", required=false, defaultValue="no-error") String error,
+                        @RequestParam(name="redirect", required=false, defaultValue="no-redirect") String redirect, Model model) {
         String user = LoginManagement.getInstance().getUser(token);
         if (user != null) {
             System.out.println(user);
@@ -20,19 +21,25 @@ public class AccountController {
         } else if (error.equals("login_fail")) {
             model.addAttribute("error_msg", "User name or password incorrect");
         }
+        model.addAttribute("redirect", redirect);
         return "login";
     }
 
     @RequestMapping(value="/validate-login",method= RequestMethod.POST)
     public String validateLogin(@RequestParam String user_name,
-                                @RequestParam String password, Model model) {
+                                @RequestParam String password,
+                                @RequestParam(name="redirect", required=false, defaultValue="no-redirect") String redirect, Model model) {
         String token = LoginManagement.getInstance().handleLogin(user_name, password);
         if (token.equals("no-token")) {
             return "redirect:/login?error=login_fail";
         } else if (token.equals("error")) {
             return "redirect:/error";
         }
-        return "redirect:/?token=" + token;
+        if (redirect.equals("no-redirect")) {
+            return "redirect:/?token=" + token;
+        } else {
+            return "redirect:/" + redirect + "?token=" + token;
+        }
     }
 
     @GetMapping("/logout")
