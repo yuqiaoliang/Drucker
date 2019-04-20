@@ -12,12 +12,8 @@ public class TrainingController {
     public String training(@RequestParam(name="token", required=false, defaultValue="no-token") String token, Model model) {
         /////////////////////////////////////////////////
         // Handle login check, do not touch
-        String user = LoginManagement.getInstance().getUser(token);
-        if (user == null) {
-            return "redirect:/login";
-        }
-        model.addAttribute("user", user);
-        model.addAttribute("token", token);
+        String path = LoginManagement.validateUser("training", token, model);
+        if (path != null) return path;
         /////////////////////////////////////////////////
         return "training";
     }
