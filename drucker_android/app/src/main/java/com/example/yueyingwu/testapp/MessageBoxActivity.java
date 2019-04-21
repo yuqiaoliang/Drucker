@@ -9,42 +9,37 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 public class MessageBoxActivity extends AppCompatActivity {
-
-  //     public void toPost(View v) {
-   //   Intent postIntent = new Intent(getApplicationContext(), PostActivity.class);
-   //    startActivity(postIntent);
-  // }
-      //public void toComment(View v) {
-      // Intent commentIntent = new Intent(getApplicationContext(), CommentActivity.class);
-      // startActivity(commentIntent);
- //  }
+  //  public void toNewPost(View v) {
+  //    Intent newPostIntent = new Intent(getApplicationContext(), NewPost.class);
+ //      startActivity(newPostIntent);
+ // }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_box);
+        final ImageButton iBNewPost = findViewById(R.id.iBNewPost);
+        final ImageButton iBViewPost = findViewById(R.id.iBViewPost);
 
-
-        final ImageButton iBPost=findViewById(R.id.iBPost);
-        final ImageButton iBComment=findViewById(R.id.iBComment);
-
-        iBPost.setScaleType(ImageButton.ScaleType.FIT_XY);
-        iBPost.setOnClickListener(new View.OnClickListener() {
+        iBNewPost.setScaleType(ImageButton.ScaleType.FIT_XY);
+        iBNewPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent postIntent = new Intent(getApplicationContext(), PostActivity.class);
-                startActivity(postIntent);
-            }
-        });
-        iBComment.setScaleType(ImageButton.ScaleType.FIT_XY);
-        iBComment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent commentIntent = new Intent(getApplicationContext(), CommentActivity.class);
-                startActivity(commentIntent);
+
+                Intent newPostIntent = new Intent(getApplicationContext(), NewPost.class);
+                startActivity(newPostIntent);
             }
         });
 
+        iBViewPost.setScaleType(ImageButton.ScaleType.FIT_XY);
+        iBViewPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent viewPostIntent = new Intent(getApplicationContext(), ViewPostActivity.class);
+                startActivity(viewPostIntent);
+            }
+        });
 
 
        /* final Button msgBack = findViewById(R.id.msgBack);

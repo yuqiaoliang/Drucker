@@ -11,9 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewPostActivity"></activity>
-        <activity android:name=".CommentActivity" />
-        <activity android:name=".PostActivity" />
+        <activity
+            android:name=".ViewPostActivity"
+            android:label="VIEW POST" />
+        <activity
+            android:name=".NewPost"
+            android:label="NEW POST" />
         <activity
             android:name=".PlumbingInputActivity"
             android:label="@string/title_activity_plumbing_input"
