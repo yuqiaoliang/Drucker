@@ -15,8 +15,12 @@ public class BestPracticeController {
     public String bestPractice(@RequestParam(name="token", required=false, defaultValue="no-token") String token, Model model) {
         /////////////////////////////////////////////////
         // Handle login check, do not touch
-        String path = LoginManagement.validateUser("best-practice", token, model);
-        if (path != null) return path;
+        String user = LoginManagement.getInstance().getUser(token);
+        if (user == null) {
+            return "redirect:/login";
+        }
+        model.addAttribute("user", user);
+        model.addAttribute("token", token);
         /////////////////////////////////////////////////
 
         URL newURL= new URL();
@@ -32,7 +36,7 @@ public class BestPracticeController {
         model.addAttribute("pdfUrls1",pdfURLs.get(1));
         model.addAttribute("pdfUrls2",pdfURLs.get(2));
         model.addAttribute("pdfUrls3",pdfURLs.get(3));
-        return "best-practice";//;+pdfURLs.get(1)+videoURLs.get(1);
+        return "best_practice";//;+pdfURLs.get(1)+videoURLs.get(1);
     }
 
 

@@ -38,7 +38,7 @@
         <div class="col-6 col-sm-12 mx-auto mx-5 my-3">
             <div class="card mx-5 px-5 py-5">
                 <div class="card-body">
-                    <form th:action="@{/validate-login(redirect=${redirect})}" method="post" enctype="multipart/form-data">
+                    <form th:action="@{/validate-login}" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="user-name-field">User Name</label>
                             <input type="text" class="form-control" id="user-name-field" placeholder="User Name" name="user_name">

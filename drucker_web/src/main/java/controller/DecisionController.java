@@ -24,8 +24,12 @@ public class DecisionController {
     public String servePage(@RequestParam(name="token", required=false, defaultValue="no-token") String token, Model model) {
         /////////////////////////////////////////////////
         // Handle login check, do not touch
-        String path = LoginManagement.validateUser("decision", token, model);
-        if (path != null) return path;
+        String user = LoginManagement.getInstance().getUser(token);
+        if (user == null) {
+            return "redirect:/login";
+        }
+        model.addAttribute("user", user);
+        model.addAttribute("token", token);
         /////////////////////////////////////////////////
 
 
@@ -37,8 +41,12 @@ public class DecisionController {
     public String choicePage(@RequestParam(name="token", required=false, defaultValue="no-token") String token, Model model) {
         /////////////////////////////////////////////////
         // Handle login check, do not touch
-        String path = LoginManagement.validateUser("decision-choice", token, model);
-        if (path != null) return path;
+        String user = LoginManagement.getInstance().getUser(token);
+        if (user == null) {
+            return "redirect:/login";
+        }
+        model.addAttribute("user", user);
+        model.addAttribute("token", token);
         /////////////////////////////////////////////////
 
         return "decision-choice";
@@ -54,6 +62,16 @@ public class DecisionController {
                                 @RequestParam Double x14, @RequestParam Double x15, @RequestParam Double x16,
                                 @RequestParam Double x17, @RequestParam Double x18,
                                 Model model) {
+
+        /////////////////////////////////////////////////
+        // Handle login check, do not touch
+        String user = LoginManagement.getInstance().getUser(token);
+        if (user == null) {
+            return "redirect:/login";
+        }
+        model.addAttribute("user", user);
+        model.addAttribute("token", token);
+        /////////////////////////////////////////////////
 
         try {
             modify.Light(analysis, x1, x2, x3, s1, x4, x5, x6, x7, x8, x9, x10, s2, x11, x12, x13, x14, x15, x16, x17, x18);
@@ -72,8 +90,12 @@ public class DecisionController {
     public String lightningResult(@RequestParam(name="token", required=false, defaultValue="no-token") String token, Model model) {
         /////////////////////////////////////////////////
         // Handle login check, do not touch
-        String path = LoginManagement.validateUser("lightning-analysis", token, model);
-        if (path != null) return path;
+        String user = LoginManagement.getInstance().getUser(token);
+        if (user == null) {
+            return "redirect:/login";
+        }
+        model.addAttribute("user", user);
+        model.addAttribute("token", token);
         /////////////////////////////////////////////////
 
         Double npv = 0.0;
@@ -120,6 +142,16 @@ public class DecisionController {
                                 @RequestParam Double y11, @RequestParam Double y12,
                                 Model model) {
 
+        /////////////////////////////////////////////////
+        // Handle login check, do not touch
+        String user = LoginManagement.getInstance().getUser(token);
+        if (user == null) {
+            return "redirect:/login";
+        }
+        model.addAttribute("user", user);
+        model.addAttribute("token", token);
+        /////////////////////////////////////////////////
+
         try {
             modify.Plumbing(analysis, y1, y2, y3, t1, y4, y5, y6, y7, t2, y8, y9, y10, y11, y12);
             System.out.println("PLUMBING MODIFY SUCCESS.");
@@ -137,8 +169,12 @@ public class DecisionController {
     public String plumbningResult(@RequestParam(name="token", required=false, defaultValue="no-token") String token, Model model) {
         /////////////////////////////////////////////////
         // Handle login check, do not touch
-        String path = LoginManagement.validateUser("plumbing-analysis", token, model);
-        if (path != null) return path;
+        String user = LoginManagement.getInstance().getUser(token);
+        if (user == null) {
+            return "redirect:/login";
+        }
+        model.addAttribute("user", user);
+        model.addAttribute("token", token);
         /////////////////////////////////////////////////
 
         Double npv = 0.0;
