@@ -2,6 +2,7 @@ package com.example.yueyingwu.testapp;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +42,9 @@ public class loginActivity extends AppCompatActivity {
         final EditText etPassword = findViewById(R.id.etPassword);
         final Button bLogin = findViewById(R.id.bLogin);
         final TextView registerLink = findViewById(R.id.tvRegisterHere);
+        final ImageView drucker=findViewById(R.id.imageView);
+
+        drucker.setScaleType(ImageView.ScaleType.FIT_XY);
 
         //connect registerLink to the register page
         registerLink.setOnClickListener(new View.OnClickListener() {
@@ -58,12 +63,16 @@ public class loginActivity extends AppCompatActivity {
                 final String password=etPassword.getText().toString();
                 iUsername=username;
                 iPassword=password;
-                if(username.matches("") || password.matches("")){
-                    Toast.makeText(getApplicationContext(),"Username and password are required.",Toast.LENGTH_SHORT).show();
-                }else {
-                    requestLogin process = new requestLogin();
-                    process.execute();
-                }
+
+                Intent intent = new Intent(loginActivity.this, UserActivity.class);
+                loginActivity.this.startActivity(intent);
+
+//                if(username.matches("") || password.matches("")){
+//                    Toast.makeText(getApplicationContext(),"Username and password are required.",Toast.LENGTH_SHORT).show();
+//                }else {
+//                    requestLogin process = new requestLogin();
+//                    process.execute();
+//                }
             }
         });
 
@@ -77,39 +86,54 @@ public class loginActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
 
+            String requestURL="http://192.168.1.63:8080/loginStatus?username="+iUsername+"&password="+iPassword;
+            String method = "GET";
+            fetchResult loginCall = new fetchResult(requestURL,method);
+            String loginResult ="";
+            loginResult = loginCall.getResult();
+            Log.i("loginResult:", loginResult);
             try {
-                String requestURL="http://192.168.1.63:8080/loginStatus?username="+iUsername+"&password="+iPassword;
-
-
-                //URL url = new URL("https://api.myjson.com/bins/myjwu");//successful
-				//URL url = new URL("https://api.myjson.com/bins/8snfi");//fail           
-                URL url = new URL(requestURL);//successful
-                
-                HttpURLConnection response = (HttpURLConnection) url.openConnection();
-                //new
-                //response.setRequestMethod("GET");
-                //response.setRequestProperty("User-Agent", "Mozilla/5.0");
-                InputStream input = response.getInputStream();
-                BufferedReader buffer = new BufferedReader(new InputStreamReader(input));
-                String line = "";
-                while(line != null){
-                    line = buffer.readLine();
-                    data = data+line;
-                }
-                JSONObject validation = new JSONObject(data);
+                JSONObject validation = new JSONObject(loginResult);
                 //username = validation.getString("username");
                 username=iUsername;
                 isValid = validation.getString("status");
-                //System.out.println(Boolean.toString(isValid));
-
-                //Log.i("inParsing",dataParsed); //comment line38,43; uncomment line40,41,44 to check dataParsed
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
+//            try {
+//                String requestURL="http://192.168.1.9:8080/loginStatus?username="+iUsername+"&password="+iPassword;
+//
+//
+//                //URL url = new URL("https://api.myjson.com/bins/myjwu");//successful
+//				//URL url = new URL("https://api.myjson.com/bins/8snfi");//fail
+//                URL url = new URL(requestURL);//successful
+//
+//                HttpURLConnection response = (HttpURLConnection) url.openConnection();
+//                //new
+//                //response.setRequestMethod("GET");
+//                //response.setRequestProperty("User-Agent", "Mozilla/5.0");
+//                InputStream input = response.getInputStream();
+//                BufferedReader buffer = new BufferedReader(new InputStreamReader(input));
+//                String line = "";
+//                while(line != null){
+//                    line = buffer.readLine();
+//                    data = data+line;
+//                }
+//                JSONObject validation = new JSONObject(data);
+//                //username = validation.getString("username");
+//                username=iUsername;
+//                isValid = validation.getString("status");
+//                //System.out.println(Boolean.toString(isValid));
+//
+//                //Log.i("inParsing",dataParsed); //comment line38,43; uncomment line40,41,44 to check dataParsed
+//            } catch (MalformedURLException e) {
+//                e.printStackTrace();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
 
             return null;
         }

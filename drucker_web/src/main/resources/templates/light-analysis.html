@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Drucker - Decision Tool</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        $(document).ready(function () {
+            var next = 0;
+            $("#add-more").click(function(e){
+                e.preventDefault();
+                var addto = "#field" + next;
+                var addRemove = "#field" + (next);
+
+                next = next + 1;
+
+                var newIn = ' <div id="field'+ next +'" name="field'+ next +'"> <h4 class="mx-5">Current Bulb</h4><div class="form-row"><div class="form-group col-md-4"><label for="inputBulbType">Bulb Type</label><select id="inputBulbType" class="form-control"><option selected>Choose...</option><option>Edison Base</option><option>4 pins</option><option>2 pins</option><option>Tube</option></select></div><div class="form-group col-md-4"><label for="inputNo">Number of Bulbs</label><input type="text" class="form-control" id="inputNo" placeholder="4"> </div><div class="form-group col-md-4"><label for="inputPrice">Price</label> <input type="text" class="form-control" id="inputPrice" placeholder="10.00"> </div></div><div class="form-row"><div class="form-group col-md-6"><label for="inputLumens">Lumens</label><input type="text" class="form-control" id="inputLumens" placeholder="1000"></div><div class="form-group col-md-6"><label for="inputWatts">Watts</label>     <input type="text" class="form-control" id="inputWatts" placeholder="60"></div></div><div class="form-row"><div class="form-group col-md-4"><label for="inputLifespan">Lifespan</label>     <input type="text" class="form-control" id="inputLifespan" placeholder="20 Hrs"></div><div class="form-group col-md-4"><label for="inputHPDWeekday">Hours Used Per Day (Weekday)</label><input type="text" class="form-control" id="inputHPDWeekday" placeholder="12 Hrs"></div><div class="form-group col-md-4"><label for="inputHPDweekend">Hours Used Per Day (Weekend)</label><input type="text" class="form-control" id="inputHPDweekend" placeholder="12 Hrs"></div></div><div style="height: 30px;"></div><h4 class=" mx-5">Replacement Bulb</h4><div class="form-row"><div class="form-group col-md-4"><label for="inputBulbType">Bulb Type</label><select id="inputBulbType" class="form-control"><option selected>Choose...</option><option>Edison Base</option><option>4 pins</option><option>2 pins</option><option>Tube</option></select></div><div class="form-group col-md-4"><label for="inputNo">Number of Bulbs</label><input type="text" class="form-control" id="inputNo" placeholder="4"></div><div class="form-group col-md-4"><label for="inputPrice">Price</label><input type="text" class="form-control" id="inputPrice" placeholder="10.00"></div></div><div class="form-row"><div class="form-group col-md-6"><label for="inputLumens">Lumens</label><input type="text" class="form-control" id="inputLumens" placeholder="1000"></div><div class="form-group col-md-6"><label for="inputWatts">Watts</label><input type="text" class="form-control" id="inputWatts" placeholder="60"></div></div><div class="form-row"><div class="form-group col-md-4"><label for="inputLifespan">Lifespan</label><input type="text" class="form-control" id="inputLifespan" placeholder="20 Hrs"></div><div class="form-group col-md-4"><label for="inputHPDWeekday">Hours Used Per Day (Weekday)</label><input type="text" class="form-control" id="inputHPDWeekday" placeholder="12 Hrs"></div><div class="form-group col-md-4">     <label for="inputHPDweekend">Hours Used Per Day (Weekend)</label><input type="text" class="form-control" id="inputHPDweekend" placeholder="12 Hrs"></div></div><div style="height: 30px;"></div> </div>';
+                var newInput = $(newIn);
+
+                var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >Remove</button></div></div><div id="field">';
+                var removeButton = $(removeBtn);
+
+                $(addto).after(newInput);
+                $(addRemove).after(removeButton);
+
+                $("#field" + next).attr('data-source',$(addto).attr('data-source'));
+                $("#count").val(next);
+
+                $('.remove-me').click(function(e){
+                    e.preventDefault();
+                    var fieldNum = this.id.charAt(this.id.length-1) + 1;
+                        var fieldID = "#field" + fieldNum;
+                        $(this).remove();
+                        $(fieldID).remove();
+                });
+            });
+        });
+        var fieldId = 0; // used by the addField() function to keep track of IDs
+        var next = 0;
+        function addField() {
+            fieldId++;
+            next++;
+//            var newField = document.getElementById('newField');
+//            var html = '<input type="text" placeholder=\'' + newField.value + '\' /> ' +
+//                '<input type="button" value="-" onclick="removeEl(\'field-' + fieldId + '\');"/>';
+            var html = ' <div id="field'+ next +'" name="field'+ next +'"> <h4 class="">Current Bulb</h4><div class="form-row"><div class="form-group col-md-4"><label for="inputBulbType">Bulb Type</label><select id="inputBulbType" class="form-control"><option selected>Choose...</option><option>Edison Base</option><option>4 pins</option><option>2 pins</option><option>Tube</option></select></div><div class="form-group col-md-4"><label for="inputNo">Number of Bulbs</label><input type="text" class="form-control" id="inputNo" placeholder="4"> </div><div class="form-group col-md-4"><label for="inputPrice">Price</label> <input type="text" class="form-control" id="inputPrice" placeholder="10.00"> </div></div><div class="form-row"><div class="form-group col-md-6"><label for="inputLumens">Lumens</label><input type="text" class="form-control" id="inputLumens" placeholder="1000"></div><div class="form-group col-md-6"><label for="inputWatts">Watts</label>     <input type="text" class="form-control" id="inputWatts" placeholder="60"></div></div><div class="form-row"><div class="form-group col-md-4"><label for="inputLifespan">Lifespan</label>     <input type="text" class="form-control" id="inputLifespan" placeholder="20 Hrs"></div><div class="form-group col-md-4"><label for="inputHPDWeekday">Hours Used Per Day (Weekday)</label><input type="text" class="form-control" id="inputHPDWeekday" placeholder="12 Hrs"></div><div class="form-group col-md-4"><label for="inputHPDweekend">Hours Used Per Day (Weekend)</label><input type="text" class="form-control" id="inputHPDweekend" placeholder="12 Hrs"></div></div><div style="height: 30px;"></div><h4 class="">Replacement Bulb</h4><div class="form-row"><div class="form-group col-md-4"><label for="inputBulbType">Bulb Type</label><select id="inputBulbType" class="form-control"><option selected>Choose...</option><option>Edison Base</option><option>4 pins</option><option>2 pins</option><option>Tube</option></select></div><div class="form-group col-md-4"><label for="inputNo">Number of Bulbs</label><input type="text" class="form-control" id="inputNo" placeholder="4"></div><div class="form-group col-md-4"><label for="inputPrice">Price</label><input type="text" class="form-control" id="inputPrice" placeholder="10.00"></div></div><div class="form-row"><div class="form-group col-md-6"><label for="inputLumens">Lumens</label><input type="text" class="form-control" id="inputLumens" placeholder="1000"></div><div class="form-group col-md-6"><label for="inputWatts">Watts</label><input type="text" class="form-control" id="inputWatts" placeholder="60"></div></div><div class="form-row"><div class="form-group col-md-4"><label for="inputLifespan">Lifespan</label><input type="text" class="form-control" id="inputLifespan" placeholder="20 Hrs"></div><div class="form-group col-md-4"><label for="inputHPDWeekday">Hours Used Per Day (Weekday)</label><input type="text" class="form-control" id="inputHPDWeekday" placeholder="12 Hrs"></div><div class="form-group col-md-4">     <label for="inputHPDweekend">Hours Used Per Day (Weekend)</label><input type="text" class="form-control" id="inputHPDweekend" placeholder="12 Hrs"></div></div><div style="height: 30px;"></div> </div>' + '<input type="button" class="btn btn-danger" value="Remove" onclick="removeEl(\'field-' + fieldId + '\');"/>';
+
+            addEl('fields', 'p', 'field-' + fieldId, html);
+        }
+
+        // Add new element to the form
+        function addEl(parentId, elementTag, elementId, html) {
+            var p = document.getElementById(parentId);
+            var newElement = document.createElement(elementTag);
+            newElement.setAttribute('id', elementId);
+            newElement.innerHTML = html;
+            p.appendChild(newElement);
+        }
+
+        // Remove exist element from form
+        function removeEl(elementId) {
+            var element = document.getElementById(elementId);
+            element.parentNode.removeChild(element);
+        }
+    </script>
+</head>
+
+
+<body>
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top text-white" style="background-color: #4CAF50;">
+    <a class="navbar-brand" href="#">DRUCKER + FALK</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" th:href="@{/(token=${token})}">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" th:href="@{/best-practice(token=${token})}">Best Practice</a>
+            <a class="nav-item nav-link active" th:href="@{/decision(token=${token})}">Decision Tool</a>
+            <a class="nav-item nav-link" th:href="@{/training(token=${token})}">Training Guide</a>
+            <a class="nav-item nav-link" th:href="@{/message-board(token=${token})}">Message Board</a>
+        </div>
+    </div>
+    <div class="navbar-collapse collapse">
+        <ul th:if="${token == 'no-token'}" class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+            </li>
+        </ul>
+        <ul th:if="${token != 'no-token'}" class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <div class="nav-link active" th:text="'Welcome, ' + ${user}"></div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/logout(token=${token})}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="jumbotron">
+    <h1 class="display-4 mt-5">Decision Tools.</h1>
+    <hr class="my-4">
+    <p class="lead">Explore All Decision Tools Here. Currently Offering Lighting Retrofit Model and Water Faucet Retrofit Model.</p>
+</div>
+
+<!--Input-->
+<h1 class="display-4 mx-5">Lighting Retrofit Model</h1>
+
+
+
+<div class="card text-white bg-success my-5 mx-5" style="max-width: 36rem;">
+    <div class="card-header">Lighting Retrofit Model</div>
+    <div class="card-body">
+        <h4 class="card-title">Lightning Analysis Result</h4>
+        <p class="card-text" th:text="'Escalting Rate: 0.03% (fixed)'"></p>
+        <p class="card-text" th:text="'NPV Result is: ' + ${npv}"></p>
+        <p class="card-text" th:text="'IRR Result is: ' + ${irr}"></p>
+        <p class="card-text" th:text="'Simple Payback period (year) is: ' + ${spr}"></p>
+    </div>
+</div>
+
+<a class="btn btn-secondary my-3 btn-lg mx-5" th:href="@{/decision(token=${token})}" role="button">Back</a>
+
+
+
+
+
+
+<!-- FOOTER -->
+<div class="my-5" style="height: 80px;"></div>
+<footer class="mt-5">
+    <div class="container-fluid bg-dark py-3">
+        <div class="container">
+            <div class="row py-3">
+                <div class="col-md-9">
+                    <h6 class="text-white">DRUCKER + FALK</h6>
+                    <h6 class="text-white" style="opacity: 0.7;">Drucker + Falk is a performance driven real estate service and investment firm and among the most respected property management and commercial real estate companies in the country.</h6>
+                </div>
+                <div class="col-md-3">
+                    <div class="d-inline-block">
+                        <div class="bg-circle-outline d-inline-block">
+                            <a href="https://www.facebook.com/" class="text-white">
+                                <i class="fa fa-2x fa-fw fa-facebook"></i>
+                            </a>
+                        </div>
+
+                        <div class="bg-circle-outline d-inline-block">
+                            <a href="https://twitter.com/" class="text-white">
+                                <i class="fa fa-2x fa-fw fa-twitter"></i>
+                            </a>
+                        </div>
+
+                        <div class="bg-circle-outline d-inline-block">
+                            <a href="https://www.linkedin.com/company/" class="text-white">
+                                <i class="fa fa-2x fa-fw fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

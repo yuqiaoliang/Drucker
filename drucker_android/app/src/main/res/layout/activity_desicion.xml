@@ -9,7 +9,7 @@
 
     <ImageButton
         android:id="@+id/iBBulb"
-        android:layout_width="220dp"
+        android:layout_width="300dp"
         android:layout_height="220dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
@@ -18,7 +18,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="2dp"
         android:padding="0dp"
-        android:src="@drawable/light_bulb"
+        android:src="@drawable/light2"
         app:layout_constraintBottom_toTopOf="@+id/tVLightBUlb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
 
     <ImageButton
         android:id="@+id/iBPlumb"
-        android:layout_width="220dp"
+        android:layout_width="300dp"
         android:layout_height="220dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
@@ -35,7 +35,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="2dp"
         android:padding="0dp"
-        android:src="@drawable/plumbing"
+        android:src="@drawable/plumb2"
         app:layout_constraintBottom_toTopOf="@+id/tVPlumbing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"

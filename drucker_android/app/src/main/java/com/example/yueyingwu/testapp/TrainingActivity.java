@@ -14,8 +14,8 @@ import android.widget.ListView;
 public class TrainingActivity extends AppCompatActivity {
     boolean  flag1=false;
     boolean  flag2=false;
-    boolean  flag3=false;
-    String pdfName[]=new String[] {"Sustainability Guide","Lighting Retrofit Model Manual","Pool Management Model Manual"};
+    String pdfName[]=new String[] {"Sustainability Guide","Landscaping Guide"};
+    Integer picID[]=new Integer[] {R.drawable.sustainability,R.drawable.landscaping};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,8 +24,10 @@ public class TrainingActivity extends AppCompatActivity {
         final Button bQuiz=findViewById(R.id.btQuiz);
 
         ListView listview=findViewById(R.id.lv);
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,pdfName);
-        listview.setAdapter(adapter);
+        customListview customlistview = new customListview(this,pdfName,picID);
+        listview.setAdapter(customlistview);
+//        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,pdfName);
+//        listview.setAdapter(adapter);
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -37,11 +39,6 @@ public class TrainingActivity extends AppCompatActivity {
                 }
                 if(position==1){
                     flag2=true;
-                    Intent trainLightIntent  = new Intent(getApplicationContext(),TrainLightActivity.class);
-                    startActivity(trainLightIntent);
-                }
-                if(position==2){
-                    flag3=true;
                     Intent trainPoolIntent  = new Intent(getApplicationContext(),TrainPoolActivity.class);
                     startActivity(trainPoolIntent);
                 }
@@ -51,7 +48,7 @@ public class TrainingActivity extends AppCompatActivity {
         bQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(flag1&&flag2&&flag3) {
+                if(flag1&&flag2) {
                     Intent quizIntent  = new Intent(getApplicationContext(),TrainQuizActivity.class);
                     startActivity(quizIntent);
                 }else{
