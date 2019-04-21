@@ -30,18 +30,27 @@ public class androidMessageBoardController {
         Post post = msgBoard.getPost(pid);
 
         //if no pid, return error
-       // if(post==null){}
+        if(post==null){
+            String title = "";
+            String author = "";
+            String time = "";
+            String postContent = "";
+            ArrayList<Message> comments = null;
+            postDetail onePost = new postDetail("noPost", title, author, time, postContent, comments);
+            return onePost;
+
+        }
         //if have pid, return postDetail
-     //   else{
+        else{
             String title = post.getTitle();
             String author = post.getUsername();
             String time = post.getStime();
             String postContent = post.getContent();
             ArrayList<Message> comments = post.getComments();
 
-            postDetail onePost = new postDetail(title, author, time, postContent, comments);
+            postDetail onePost = new postDetail("success", title, author, time, postContent, comments);
             return onePost;
-     //   }
+        }
 
 
 
