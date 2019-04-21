@@ -15,16 +15,18 @@
         <item>Sustainability Guide</item>
         <item>Landscaping Guide</item>
     </string-array>
-    <string-array name = "fixtureList">
+    <string-array name="fixtureList">
         <item>Edison Base</item>item>
         <item>4 Pins</item>item>
         <item>2 Pins</item>item>
         <item>Tube</item>item>
-    </string-array>>
+    </string-array>
+    >
 
-    <string-array name = "plumb">
+    <string-array name="plumb">
         <item>Shower head</item>item>
         <item>Sink</item>item>
         <item>Low Flow Toilet</item>item>
-    </string-array>>
+    </string-array>
+    >
 </resources>
