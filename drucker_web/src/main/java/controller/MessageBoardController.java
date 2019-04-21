@@ -18,18 +18,13 @@ public class MessageBoardController {
 
     @GetMapping("/message-board")
     public String servePage(@RequestParam(name="token", required=false, defaultValue="no-token") String token, Model model) {
-//        /////////////////////////////////////////////////
-//        // Handle login check, do not touch
-        String user = LoginManagement.getInstance().getUser(token);
-        if (user == null) {
-            return "redirect:/login";
-        }
-        model.addAttribute("user", user);
-        model.addAttribute("token", token);
-//        /////////////////////////////////////////////////
+        /////////////////////////////////////////////////
+        // Handle login check, do not touch
+        String path = LoginManagement.validateUser("message-board", token, model);
+        if (path != null) return path;
+        /////////////////////////////////////////////////
 
         List<Post> posts = messageBoard.getPosts();
-        System.out.println(posts.size());
         model.addAttribute("posts", posts);
         return "message-board";
     }
@@ -40,12 +35,8 @@ public class MessageBoardController {
                                 Model model) {
         /////////////////////////////////////////////////
         // Handle login check, do not touch
-        String user = LoginManagement.getInstance().getUser(token);
-        if (user == null) {
-            return "redirect:/login";
-        }
-        model.addAttribute("user", user);
-        model.addAttribute("token", token);
+        String path = LoginManagement.validateUser("message-board", token, model);
+        if (path != null) return path;
         /////////////////////////////////////////////////
 
 

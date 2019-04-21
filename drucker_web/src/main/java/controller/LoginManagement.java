@@ -2,6 +2,7 @@ package controller;
 
 import model.Account;
 import java.util.HashMap;
+import org.springframework.ui.Model;
 
 public class LoginManagement {
 
@@ -80,5 +81,15 @@ public class LoginManagement {
 
     public String getToken(String user_name) {
         return loggedInUsers.get(user_name);
+    }
+
+    public static String validateUser(String redirect, String token, Model model) {
+        String user = LoginManagement.getInstance().getUser(token);
+        if (user == null) {
+            return "redirect:/login?redirect=" + redirect;
+        }
+        model.addAttribute("user", user);
+        model.addAttribute("token", token);
+        return null;
     }
 }
