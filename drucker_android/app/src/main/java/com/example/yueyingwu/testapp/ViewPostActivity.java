@@ -26,10 +26,9 @@ public class ViewPostActivity extends AppCompatActivity {
     static ArrayList<String> allTitles =new ArrayList<String>();
     static ArrayList<String> allAuthors=new ArrayList<String>();
     static ArrayList<String> allTimes=new ArrayList<String>();
-    static ArrayList<String> allComments=new ArrayList<String>();
+//    static ArrayList<String> allComments=new ArrayList<String>();
     static ArrayList<Integer> allID=new ArrayList<Integer>();
-//    static ArrayList<Integer> allComments = new ArrayList<Integer>();
-//    static ArrayList<Integer> allID = new ArrayList<Integer>();
+    static ArrayList<Integer> allComments = new ArrayList<Integer>();
     static ListView buckyListView;
 
 
@@ -39,6 +38,7 @@ public class ViewPostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_post);
         buckyListView = (ListView) findViewById(R.id.buckyListView);
+
         viewTitle showTitle=new viewTitle();
         showTitle.execute();
 
@@ -46,10 +46,12 @@ public class ViewPostActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                if(position==1){
-                    Intent PostIntent  = new Intent(getApplicationContext(),LoginJBDCActivity.class);
+//                if(position==1){
+                    Intent PostIntent  = new Intent(getApplicationContext(),PostDetailActivity.class);
+                    PostIntent.putExtra("postID",allID.get(position));
+                    PostIntent.putExtra("postCommentNum",allComments.get(position));
                     startActivity(PostIntent);
-                }
+//                }
             }
         });
 
@@ -78,7 +80,8 @@ public class ViewPostActivity extends AppCompatActivity {
                     allTitles.add(tmpTitle);
                     allTimes.add(tmpTime);
                     allAuthors.add(tmpAuthor);
-                    allComments.add(Integer.toString(tmpCommentNum));
+//                    allComments.add(Integer.toString(tmpCommentNum));
+                    allComments.add(tmpCommentNum);
                     allID.add(tmpID);
                 }
 

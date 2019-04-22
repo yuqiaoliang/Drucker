@@ -35,12 +35,12 @@ public class MessageBoxActivity extends AppCompatActivity {
         iBViewPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /**
+
                 Intent viewPostIntent = new Intent(getApplicationContext(), ViewPostActivity.class);
                 startActivity(viewPostIntent);
-                 **/
-                Intent viewPostIntent = new Intent(getApplicationContext(), PostDetailActivity.class);
-                startActivity(viewPostIntent);
+
+//                Intent viewPostIntent = new Intent(getApplicationContext(), PostDetailActivity.class);
+//                startActivity(viewPostIntent);
             }
         });
 
