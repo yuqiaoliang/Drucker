@@ -47,6 +47,8 @@ public class ViewPostActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 //                if(position==1){
+                    PostDetailActivity.postDetailList.clear();
+                    PostDetailActivity.postComments.clear();
                     Intent PostIntent  = new Intent(getApplicationContext(),PostDetailActivity.class);
                     PostIntent.putExtra("postID",allID.get(position));
                     PostIntent.putExtra("postCommentNum",allComments.get(position));

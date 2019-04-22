@@ -36,6 +36,11 @@ public class MessageBoxActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                ViewPostActivity.allTitles.clear();
+                ViewPostActivity.allAuthors.clear();
+                ViewPostActivity.allComments.clear();
+                ViewPostActivity.allTimes.clear();
+                ViewPostActivity.allID.clear();
                 Intent viewPostIntent = new Intent(getApplicationContext(), ViewPostActivity.class);
                 startActivity(viewPostIntent);
 

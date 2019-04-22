@@ -135,6 +135,8 @@ public class PostDetailActivity extends AppCompatActivity {
             postDetailList.add("Title: " + postTitle);
             postDetailList.add("Author: " + postAuthor);
             postDetailList.add("Time: "+ postTime);
+            postDetailList.add("Content: ");
+            postDetailList.add(postContent);
             postDetailList.add("Comment:");
             for (int i = 0; i < postComments.size(); i++){
                 postDetailList.add(postComments.get(i).getContent());
