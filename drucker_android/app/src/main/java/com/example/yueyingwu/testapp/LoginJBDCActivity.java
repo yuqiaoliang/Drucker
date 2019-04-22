@@ -37,8 +37,8 @@ public class LoginJBDCActivity extends AppCompatActivity {
         tVComment1=findViewById(R.id.tVcomment1);
         tVComment2=findViewById(R.id.tVcomment2);
 
-        viewPost viewTest=new viewPost();
-        viewTest.execute();
+      //  viewPost viewTest=new viewPost();
+       // viewTest.execute();
 
 
 
