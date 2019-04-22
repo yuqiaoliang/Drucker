@@ -5,8 +5,8 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/forum_background"
     tools:context=".MessageBoxActivity" >
+    <!--android:background="@drawable/forum_background"-->
 
     <ImageButton
         android:id="@+id/iBNewPost"

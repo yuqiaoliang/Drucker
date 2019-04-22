@@ -64,15 +64,15 @@ public class loginActivity extends AppCompatActivity {
                 iUsername=username;
                 iPassword=password;
 
-                Intent intent = new Intent(loginActivity.this, UserActivity.class);
-                loginActivity.this.startActivity(intent);
+//                Intent intent = new Intent(loginActivity.this, UserActivity.class);
+//                loginActivity.this.startActivity(intent);
 
-//                if(username.matches("") || password.matches("")){
-//                    Toast.makeText(getApplicationContext(),"Username and password are required.",Toast.LENGTH_SHORT).show();
-//                }else {
-//                    requestLogin process = new requestLogin();
-//                    process.execute();
-//                }
+                if(username.matches("") || password.matches("")){
+                    Toast.makeText(getApplicationContext(),"Username and password are required.",Toast.LENGTH_SHORT).show();
+                }else {
+                    requestLogin process = new requestLogin();
+                    process.execute();
+                }
             }
         });
 
@@ -86,7 +86,7 @@ public class loginActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
 
-            String requestURL="http://192.168.1.63:8080/loginStatus?username="+iUsername+"&password="+iPassword;
+            String requestURL="http://192.168.1.9:8080/loginStatus?username="+iUsername+"&password="+iPassword;
             String method = "GET";
             fetchResult loginCall = new fetchResult(requestURL,method);
             String loginResult ="";
@@ -143,7 +143,7 @@ public class loginActivity extends AppCompatActivity {
             super.onPostExecute(aVoid);
             if(isValid.equals("true")){
                 Log.i("Info", "log in successful");
-                Intent intent = new Intent(loginActivity.this, UserActivity.class);
+                Intent intent = new Intent(loginActivity.this, UserActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP| Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("username",username);
                 loginActivity.this.startActivity(intent);
 
