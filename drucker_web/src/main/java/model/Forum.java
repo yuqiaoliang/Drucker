@@ -135,7 +135,7 @@ public class Forum {
                 ResultSet r = stmt.executeQuery(exist);
                 if(r.next()) {
                     boolean b = r.getBoolean(1);
-                    System.out.println(b);
+                    //System.out.println(b);
                     if (b == false) continue;
                 }
 
@@ -158,7 +158,10 @@ public class Forum {
                     content = rs1.getString(2);
                     authorname = rs1.getString(3);
                     time = rs1.getString(4);
-                    post_s_time = format.parse(time);
+                    //System.out.println(time);
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                    post_s_time = dateFormat.parse(time);
+                    //System.out.println(post_s_time);
                 }
                 Post pst = new Post(title, content, authorname, post_s_time, i, Messages);
                 posts.add(pst);
@@ -201,7 +204,9 @@ public class Forum {
                 content = rs1.getString(2);
                 authorname = rs1.getString(3);
                 time = rs1.getString(4);
-                post_s_time = format.parse(time);
+                //post_s_time = format.parse(time);
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                post_s_time = dateFormat.parse(time);
             }
             Post pst = new Post(title,content,authorname,post_s_time,int_id,Messages);
             return pst;
