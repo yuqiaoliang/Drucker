@@ -111,8 +111,8 @@ public class ViewPostActivity extends AppCompatActivity {
         private String receiveTitle = "";
         @Override
         protected Void doInBackground(Void... voids) {
-//            String sendURL="http://192.168.1.9:8080/forum";
-            String sendURL="http://10.197.189.82:8080/forum";
+            String sendURL="http://192.168.1.9:8080/forum";
+//            String sendURL="http://10.197.189.82:8080/forum";
             String method = "GET";
             fetchResult postTitle = new fetchResult(sendURL,method);
             receiveTitle = postTitle.getResult();

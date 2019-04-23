@@ -87,8 +87,8 @@ public class loginActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
 
-//            String requestURL="http://192.168.1.9:8080/loginStatus?username="+iUsername+"&password="+iPassword;
-            String requestURL="http://10.197.189.82:8080/loginStatus?username="+iUsername+"&password="+iPassword;
+            String requestURL="http://192.168.1.9:8080/loginStatus?username="+iUsername+"&password="+iPassword;
+//            String requestURL="http://10.197.189.82:8080/loginStatus?username="+iUsername+"&password="+iPassword;
             String method = "GET";
             fetchResult loginCall = new fetchResult(requestURL,method);
             String loginResult ="";
