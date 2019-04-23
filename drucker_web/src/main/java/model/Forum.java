@@ -20,8 +20,9 @@ public class Forum {
         }
     }
 
-    public void postMessage(Post post) throws SQLException {
-        int id = post.getId();
+    public int postMessage(Post post) throws SQLException {
+        // Insert a new post
+        //int id = post.getId();
         String name = post.getUsername();
         String content = post.getContent();
         String title = post.getTitle();
@@ -32,13 +33,37 @@ public class Forum {
         try {
             Connection connect = DriverManager.getConnection("jdbc:mysql://152.3.53.14:3306/drucker?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "myblog", "123456");
             Statement stmt = connect.createStatement();
-            String sql_command = "insert into msg_post(pID, username, time, cnum, title, content, shortcontent) values (" + id + ", '" + name + "', '" + stime + "', " + number + ", '" + title + "', '" + content + "', '" + shortContent+ "');";
+            String sql_command = "insert into msg_post(pID, username, time, cnum, title, content, shortcontent) values ((null), '" + name + "', '" + stime + "', " + number + ", '" + title + "', '" + content + "', '" + shortContent+ "');";
 
             stmt.executeUpdate(sql_command);
+            connect.close();
         } catch (SQLException e) {
             System.out.println(e);
         }
 
+        // Return pID to front end
+        int postID = 0;
+        postID = newPostNumber();
+        return postID;
+    }
+
+    public int newPostNumber() {
+        int postID = 0;
+        String sql_post = "select max(pID) from msg_post;";
+        try {
+            Connection connect = DriverManager.getConnection("jdbc:mysql://152.3.53.14:3306/drucker?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "myblog", "123456");
+            Statement stmt = connect.createStatement();
+            stmt.executeQuery(sql_post);
+            ResultSet rs = stmt.executeQuery(sql_post);
+            if (rs.next()) {
+                postID = rs.getInt("pID");
+            }
+            connect.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return postID;
     }
 
     public int getNumber(int id) {
