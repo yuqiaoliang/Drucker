@@ -71,7 +71,7 @@ public class TestNewCommentActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 tvNewCommentView.setText(etNewComment.getText().toString());
                                 //Here you add new comment to ArrayList
-                                //CommentArraylist.add(etNewComment);
+                                //CommentArraylist.add(etNewComment.getText().toString());
                             }
                         })
                 ;
