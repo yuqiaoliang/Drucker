@@ -42,7 +42,9 @@ public class MessageBoxActivity extends AppCompatActivity {
                 ViewPostActivity.allComments.clear();
                 ViewPostActivity.allTimes.clear();
                 ViewPostActivity.allID.clear();
-                Intent viewPostIntent = new Intent(getApplicationContext(), ViewPostActivity.class);
+                //Intent viewPostIntent = new Intent(getApplicationContext(), ViewPostActivity.class);
+
+                Intent viewPostIntent = new Intent(getApplicationContext(), TestNewCommentActivity.class);
                 startActivity(viewPostIntent);
 
 //                Intent viewPostIntent = new Intent(getApplicationContext(), PostDetailActivity.class);

@@ -43,7 +43,6 @@ public class PostDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_detail);
         //We have our list view
-
         listViewPost = findViewById(R.id.listViewPost);
 
         Intent receivedIntent=getIntent();
@@ -88,6 +87,7 @@ public class PostDetailActivity extends AppCompatActivity {
 //                Log.i("User clicked ", postDetailList.get(position));
 //            }
 //        });
+
 
     }
 

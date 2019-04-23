@@ -11,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".TestNewCommentActivity"></activity>
         <activity
             android:name=".PostDetailActivity"
-            android:label="@string/message_name"></activity>
+            android:label="@string/message_name" />
         <activity
             android:name=".ViewPostActivity"
             android:label="VIEW POST" />

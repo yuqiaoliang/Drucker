@@ -64,15 +64,16 @@ public class loginActivity extends AppCompatActivity {
                 iUsername=username;
                 iPassword=password;
 
-//                Intent intent = new Intent(loginActivity.this, UserActivity.class);
-//               loginActivity.this.startActivity(intent);
-
+                Intent intent = new Intent(loginActivity.this, UserActivity.class);
+               loginActivity.this.startActivity(intent);
+/**
                 if(username.matches("") || password.matches("")){
                     Toast.makeText(getApplicationContext(),"Username and password are required.",Toast.LENGTH_SHORT).show();
                 }else {
                     requestLogin process = new requestLogin();
                     process.execute();
                 }
+ **/
 
             }
         });
