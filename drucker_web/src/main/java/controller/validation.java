@@ -1,7 +1,7 @@
 package controller;
 
 public class validation {
-    String status;
+    private String status;
 
     public validation() {
         this.status = "false";

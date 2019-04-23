@@ -20,7 +20,7 @@ public class androidAccountController {
             String sta = userAccount.validateLogin(username, password);
            // System.out.println("in controller: status=" + sta);
             valid.setStatus(sta);
-            System.out.println("android connected with server: "+valid.status);
+            System.out.println("android connected with server: "+valid.getStatus());
             return valid;
 
         } catch(Exception e){

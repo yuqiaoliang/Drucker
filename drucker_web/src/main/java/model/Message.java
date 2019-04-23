@@ -17,7 +17,7 @@ public class Message implements Serializable {
         this.content = content;
         this.username = authorname;
         this.time = time;
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         this.stime = dateFormat.format(time);
         this.id = id;
         if (content.length() > 300) {
