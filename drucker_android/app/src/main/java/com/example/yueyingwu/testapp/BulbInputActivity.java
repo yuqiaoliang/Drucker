@@ -202,7 +202,9 @@ public class BulbInputActivity extends AppCompatActivity {
         private String receivedData = "";
         @Override
         protected Void doInBackground(Void... voids) {
-            String sendURL="http://192.168.1.9:8080/lightModul?x1="+elecRate+"&x2="+taxRate+"&x3="+minReturn+"&s1="+spinnerOld+"&s2="+spinnerNew+"&x4="+oldNumBulb+"&x11="+newNumBulb+"&x5="+oldPrice+"&x12="+newPrice+"&x6="+oldWattage+"&x13="+newWattage+"&x7="+oldLumens+"&x14="+newLumens+"&x8="+oldLifespan+"&x15="+newLifespan+"&x9="+oldHoursWeekday+"&x16="+newHoursWeekday+"&x10="+oldHoursWeekend+"&x17="+newHoursWeekend+"&x18="+rebates;
+            String sendURL="http://10.197.189.82:8080/lightModul?x1="+elecRate+"&x2="+taxRate+"&x3="+minReturn+"&s1="+spinnerOld+"&s2="+spinnerNew+"&x4="+oldNumBulb+"&x11="+newNumBulb+"&x5="+oldPrice+"&x12="+newPrice+"&x6="+oldWattage+"&x13="+newWattage+"&x7="+oldLumens+"&x14="+newLumens+"&x8="+oldLifespan+"&x15="+newLifespan+"&x9="+oldHoursWeekday+"&x16="+newHoursWeekday+"&x10="+oldHoursWeekend+"&x17="+newHoursWeekend+"&x18="+rebates;
+//            String sendURL="http://192.168.1.9:8080/lightModul?x1="+elecRate+"&x2="+taxRate+"&x3="+minReturn+"&s1="+spinnerOld+"&s2="+spinnerNew+"&x4="+oldNumBulb+"&x11="+newNumBulb+"&x5="+oldPrice+"&x12="+newPrice+"&x6="+oldWattage+"&x13="+newWattage+"&x7="+oldLumens+"&x14="+newLumens+"&x8="+oldLifespan+"&x15="+newLifespan+"&x9="+oldHoursWeekday+"&x16="+newHoursWeekday+"&x10="+oldHoursWeekend+"&x17="+newHoursWeekend+"&x18="+rebates;
+
             String method = "GET";
             fetchResult lightingCall = new fetchResult(sendURL,method);
             receivedData = lightingCall.getResult();

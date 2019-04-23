@@ -95,7 +95,8 @@ public class PostDetailActivity extends AppCompatActivity {
         private String receiveDetailInfo = "";
         @Override
         protected Void doInBackground(Void... voids) {
-            String sendURL="http://192.168.1.9:8080/forum/post?postid="+Integer.toString(postPID);
+//            String sendURL="http://192.168.1.9:8080/forum/post?postid="+Integer.toString(postPID);
+            String sendURL="http://10.197.189.82:8080/forum/post?postid="+Integer.toString(postPID);
             String method = "GET";
             fetchResult postDetail = new fetchResult(sendURL,method);
             receiveDetailInfo = postDetail.getResult();

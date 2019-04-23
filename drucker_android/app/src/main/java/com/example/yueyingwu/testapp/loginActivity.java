@@ -64,16 +64,16 @@ public class loginActivity extends AppCompatActivity {
                 iUsername=username;
                 iPassword=password;
 
-                Intent intent = new Intent(loginActivity.this, UserActivity.class);
-               loginActivity.this.startActivity(intent);
-/**
+//                Intent intent = new Intent(loginActivity.this, UserActivity.class);
+//               loginActivity.this.startActivity(intent);
+
                 if(username.matches("") || password.matches("")){
                     Toast.makeText(getApplicationContext(),"Username and password are required.",Toast.LENGTH_SHORT).show();
                 }else {
                     requestLogin process = new requestLogin();
                     process.execute();
                 }
-                **/
+
             }
         });
 
@@ -87,7 +87,8 @@ public class loginActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
 
-            String requestURL="http://192.168.1.9:8080/loginStatus?username="+iUsername+"&password="+iPassword;
+//            String requestURL="http://192.168.1.9:8080/loginStatus?username="+iUsername+"&password="+iPassword;
+            String requestURL="http://10.197.189.82:8080/loginStatus?username="+iUsername+"&password="+iPassword;
             String method = "GET";
             fetchResult loginCall = new fetchResult(requestURL,method);
             String loginResult ="";

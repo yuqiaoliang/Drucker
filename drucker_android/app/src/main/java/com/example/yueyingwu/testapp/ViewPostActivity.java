@@ -57,15 +57,62 @@ public class ViewPostActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    class CustomAdapter extends BaseAdapter{
 
+        private ArrayList<String> NAMES;
+        private ArrayList<String> TITLES;
+        private ArrayList<String> TIMES;
+        private int PostNum;
+
+        public CustomAdapter(ArrayList<String> names,ArrayList<String> titles,ArrayList<String> times,int num){
+            this.NAMES=names;
+            this.TIMES=times;
+            this.TITLES=titles;
+            this.PostNum=num;
+        }
+
+        @Override
+        public int getCount() {
+
+            //please calculate and return ArrayList.size() (or DataList.length()) here
+            return PostNum;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            convertView = getLayoutInflater().inflate(R.layout.custom_post_outline, null);
+            ImageView imageView = convertView.findViewById(R.id.imageView);
+            TextView tvTitle = convertView.findViewById(R.id.tvTitleView);
+            TextView tvAuthor = convertView.findViewById(R.id.tvAuthorView);
+            TextView tvTime = convertView.findViewById(R.id.tvTimeView);
+
+            tvTitle.setText(TITLES.get(position));
+            tvAuthor.setText("Author: " + NAMES.get(position));
+            tvTime.setText("Post Time: " + TIMES.get(position));
+
+            return convertView;
+        }
     }
 
     private class viewTitle extends AsyncTask<Void,Void,Void> {
         private String receiveTitle = "";
         @Override
         protected Void doInBackground(Void... voids) {
-            String sendURL="http://192.168.1.9:8080/forum";
+//            String sendURL="http://192.168.1.9:8080/forum";
+            String sendURL="http://10.197.189.82:8080/forum";
             String method = "GET";
             fetchResult postTitle = new fetchResult(sendURL,method);
             receiveTitle = postTitle.getResult();
@@ -97,7 +144,10 @@ public class ViewPostActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            ArrayAdapter buckysAdapter =new ArrayAdapter<String>(com.example.yueyingwu.testapp.ViewPostActivity.this,android.R.layout.simple_list_item_1,allTitles);
+            int num=allTitles.size();
+            CustomAdapter buckysAdapter=new CustomAdapter(allAuthors,allTitles,allTimes,num);
+
+//            ArrayAdapter buckysAdapter =new ArrayAdapter<String>(com.example.yueyingwu.testapp.ViewPostActivity.this,android.R.layout.simple_list_item_1,allTitles);
             buckyListView.setAdapter(buckysAdapter);
         }
     }
