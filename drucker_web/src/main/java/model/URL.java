@@ -59,4 +59,24 @@ public class URL {
         return result;
     }
 
+    public ArrayList<Link> getLinks() {
+        ArrayList<Link> result = new ArrayList<> ();
+        try {
+            Connection connect = DriverManager.getConnection("jdbc:mysql://152.3.53.14:3306/drucker?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","myblog","123456");
+            System.out.println("Success connect Mysql server!");
+            Statement stmt = connect.createStatement();
+            String sql_command = "select * from url_resources";
+            ResultSet rs = stmt.executeQuery(sql_command);
+            while (rs.next()) {
+                String url = rs.getString("url");
+                String title = rs.getString("title");
+                String type = rs.getString("type");
+                result.add(new Link(title, url, type));
+            }
+        } catch (SQLException e) {
+            System.out.println("mysql exception");
+        }
+        return result;
+    }
+
 }
