@@ -21,14 +21,16 @@
     <TextView
         android:id="@+id/tvTitleView"
 
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="120dp"
         android:layout_marginTop="12dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
         android:text="TextView"
         android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold" />
 
     <TextView
@@ -36,7 +38,9 @@
         android:layout_marginStart="100dp"
         android:layout_marginLeft="120dp"
         android:layout_marginTop="32dp"
-        android:layout_width="wrap_content"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView" />
 
@@ -44,8 +48,10 @@
         android:id="@+id/tvTimeView"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="120dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginTop="48dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView" />
 

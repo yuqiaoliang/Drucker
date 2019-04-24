@@ -18,6 +18,7 @@ public class TrainQuizActivity extends AppCompatActivity {
         //Log.i("Info","javascriptEnabled");
         quizView.setWebViewClient(new WebViewClient());
         //Log.i("Info","setWebViewClient");
-        quizView.loadUrl("https://www.wenjuan.in/s/vEJ7Ffu/");
+        quizView.loadUrl("https://duke.qualtrics.com/jfe/form/SV_a02p0vxoMZ7BknH");
+//        quizView.loadUrl("https://www.wenjuan.in/s/vEJ7Ffu/");
     }
 }

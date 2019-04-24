@@ -62,12 +62,17 @@ public class NewPost extends AppCompatActivity {
                 AllPostDataArray.clear();
                 String tmp_title = etTitle.getText().toString();
                 String tmp_contents = etContents.getText().toString();
-                DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-                String tmp_time=dateFormat.format(new Date());
-                SinglePostInfo tmp = new SinglePostInfo(tmp_title, UserActivity.username,tmp_contents,tmp_time);
-                AllPostDataArray.add(tmp);
-                newPOSTtoSERVER postTOserver=new newPOSTtoSERVER();
-                postTOserver.execute();
+                if (tmp_contents.equals("") || (tmp_title.equals(""))) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(NewPost.this);
+                    builder.setMessage("Cannot post empty content or title").setNegativeButton("Re-enter title or content", null).create().show();
+                } else {
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+                    String tmp_time = dateFormat.format(new Date());
+                    SinglePostInfo tmp = new SinglePostInfo(tmp_title, UserActivity.username, tmp_contents, tmp_time);
+                    AllPostDataArray.add(tmp);
+                    newPOSTtoSERVER postTOserver = new newPOSTtoSERVER();
+                    postTOserver.execute();
+                }
 
             }
        });
