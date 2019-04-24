@@ -25,19 +25,12 @@
             android:label="@string/title_activity_plumbing_input"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".QuestionMarkActivity"
-            android:label="@string/title_activity_question_mark"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".BulbInputActivity"
             android:label="@string/title_activity_bulb_input"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".TrainQuizActivity"
             android:label="@string/Quiz_name" />
-        <activity
-            android:name=".LoginJBDCActivity"
-            android:label="@string/app_name" />
         <activity
             android:name=".TrainPoolActivity"
             android:label="@string/Guide3_name" />
@@ -54,7 +47,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
         <activity android:name=".UserActivity" />
         <activity
             android:name=".PracticeActivity"
