@@ -1,3 +1,37 @@
+<!---<div id="PostModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">New Discussion</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form th:href="@{/message-board(token=${token})}">
+                    <div class="form-group">
+                        <label for="postTitle" style="font-size: 18px">Title</label>
+                        <input class="submit" id="postTitle" placeholder="Title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="postBody" style="font-size: 18px">Content</label>
+                        <textarea class="submit" id="postBody" rows="10" name="content" required></textarea>
+                        ///!!!<input class="text" id="postBody" name="content" required/>1111/////
+                    </div>
+                    <button type="submit" class="btn btn-primary" th:href="@{/message-board(token=${token})}">Post Discussion</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </form>
+            </div>
+            ///!!!<div class="modal-footer">
+                <button type="submit" class="btn btn-primary" th:href="@{/message-board(token=${token})}">Post Discussion</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>!!!///
+        </div>
+    </div>
+</div>--->
+
+
+
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <html>
@@ -24,7 +58,7 @@
             <a class="nav-item nav-link" th:href="@{/decision(token=${token})}">Decision Tool</a>
             <a class="nav-item nav-link" th:href="@{/training(token=${token})}">Training Guide</a>
             <a class="nav-item nav-link active" th:href="@{/message-board(token=${token})}">Message Board</a>
-    </div>
+        </div>
     </div>
     <div class="navbar-collapse collapse">
         <ul th:if="${token == 'no-token'}" class="navbar-nav ml-auto">
@@ -79,24 +113,22 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form th:href="@{/message-board(token=${token})}">
+                <form th:action="@{/message-board(token=${token})}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="postTitle" style="font-size: 18px">Title</label>
-                        <input class="submit" id="postTitle" placeholder="Title" name="title" required>
+                        <input class="form-control" id="postTitle" placeholder="Title" name="title">
                     </div>
                     <div class="form-group">
                         <label for="postBody" style="font-size: 18px">Content</label>
-                        <textarea class="submit" id="postBody" rows="10" name="content" required></textarea>
-                        <!---<input class="text" id="postBody" name="content" required/>-->
+                        <textarea class="form-control" id="postBody" rows="10" name="content"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary" th:href="@{/message-board(token=${token})}">Post Discussion</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Post Discussion</button>
                 </form>
             </div>
-            <!---<div class="modal-footer">
-                <button type="submit" class="btn btn-primary" th:href="@{/message-board(token=${token})}">Post Discussion</button>
+            <div class="modal-footer">
+
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            </div>--->
+            </div>
         </div>
     </div>
 </div>
@@ -139,3 +171,4 @@
 </footer>
 </body>
 </html>
+

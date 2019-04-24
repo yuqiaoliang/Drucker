@@ -175,34 +175,48 @@ public class PlumbingInputActivity extends AppCompatActivity {
         private String receivedDataPlumb = "";
         @Override
         protected Void doInBackground(Void... voids) {
-            String sendURL="http://192.168.1.9:8080/PlumbModul?y1="+waterCostPlumb+"&y2="+taxRatePlumb+"&y3="+minReturnPlumb+"&s1="+spinnerOld3Plumb+"&s2="+spinnerNew4Plumb+"&y4="+oldNumFixturePlumb+"&y8="+newNumFixturePlumb+"&y5="+oldPricePlumb+"&y9="+newPricePlumb+"&y6="+oldFlowRatePlumb+"&y10="+newFlowRatePlumb+"&y7="+oldEstimatedHoursPerDayPlumb+"&y11="+newEstimatedHoursPerDayPlumb+"&y12="+rebatesPlumb;
+            String sendURL="http://10.197.189.82:8080/PlumbModul?y1="+waterCostPlumb+"&y2="+taxRatePlumb+"&y3="+minReturnPlumb+"&s1="+spinnerOld3Plumb+"&s2="+spinnerNew4Plumb+"&y4="+oldNumFixturePlumb+"&y8="+newNumFixturePlumb+"&y5="+oldPricePlumb+"&y9="+newPricePlumb+"&y6="+oldFlowRatePlumb+"&y10="+newFlowRatePlumb+"&y7="+oldEstimatedHoursPerDayPlumb+"&y11="+newEstimatedHoursPerDayPlumb+"&y12="+rebatesPlumb;
+//            String sendURL="http://192.168.1.9:8080/PlumbModul?y1="+waterCostPlumb+"&y2="+taxRatePlumb+"&y3="+minReturnPlumb+"&s1="+spinnerOld3Plumb+"&s2="+spinnerNew4Plumb+"&y4="+oldNumFixturePlumb+"&y8="+newNumFixturePlumb+"&y5="+oldPricePlumb+"&y9="+newPricePlumb+"&y6="+oldFlowRatePlumb+"&y10="+newFlowRatePlumb+"&y7="+oldEstimatedHoursPerDayPlumb+"&y11="+newEstimatedHoursPerDayPlumb+"&y12="+rebatesPlumb;
+            String method = "GET";
+            fetchResult lightingCall = new fetchResult(sendURL,method);
+            receivedDataPlumb = lightingCall.getResult();
             try {
-                URL url=new URL(sendURL);
-                try {
-                    HttpURLConnection response=(HttpURLConnection) url.openConnection();
-                    InputStream input = response.getInputStream();
-                    BufferedReader buffer = new BufferedReader(new InputStreamReader(input));
-                    String line = "";
-                    while(line != null){
-                        line = buffer.readLine();
-                        receivedDataPlumb = receivedDataPlumb+line;
-                    }
-                    try {
-                        JSONObject receivedString=new JSONObject(receivedDataPlumb);
-                        escaltingRatePlumbing+=receivedString.getDouble("escaltingRate");
-                        npvPlumbing+=receivedString.getDouble("npv");
-                        irrPlumbing+=receivedString.getDouble("irr");
-                        simplyPaybackPeriodPlumbing+=receivedString.getDouble("simplyPaybackPeriod");
+                JSONObject receivedString=new JSONObject(receivedDataPlumb);
+                escaltingRatePlumbing+=receivedString.getDouble("escaltingRate");
+                npvPlumbing+=receivedString.getDouble("npv");
+                irrPlumbing+=receivedString.getDouble("irr");
+                simplyPaybackPeriodPlumbing+=receivedString.getDouble("simplyPaybackPeriod");
 
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } catch (MalformedURLException e) {
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
+//            try {
+//                URL url=new URL(sendURL);
+//                try {
+//                    HttpURLConnection response=(HttpURLConnection) url.openConnection();
+//                    InputStream input = response.getInputStream();
+//                    BufferedReader buffer = new BufferedReader(new InputStreamReader(input));
+//                    String line = "";
+//                    while(line != null){
+//                        line = buffer.readLine();
+//                        receivedDataPlumb = receivedDataPlumb+line;
+//                    }
+//                    try {
+//                        JSONObject receivedString=new JSONObject(receivedDataPlumb);
+//                        escaltingRatePlumbing+=receivedString.getDouble("escaltingRate");
+//                        npvPlumbing+=receivedString.getDouble("npv");
+//                        irrPlumbing+=receivedString.getDouble("irr");
+//                        simplyPaybackPeriodPlumbing+=receivedString.getDouble("simplyPaybackPeriod");
+//
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            } catch (MalformedURLException e) {
+//                e.printStackTrace();
+//            }
             return null;
         }
 

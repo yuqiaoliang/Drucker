@@ -26,8 +26,6 @@ public class customListview extends ArrayAdapter<String> {
         this.picID=picID;
     }
 
-
-
 //    @androidx.annotation.NonNull
 //    @androidx.annotation.Nullable
     @Override

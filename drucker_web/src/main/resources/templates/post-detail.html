@@ -89,14 +89,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form th:action="@{/create-comment(token=${token}, postid=${postid})}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <textarea class="form-control" id="postBody" rows="10"></textarea>
+                        <textarea class="form-control" id="postBody" rows="10" name="content"></textarea>
                     </div>
+                    <button type="submit" class="btn btn-primary">Post Comment</button>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Post Comment</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             </div>
         </div>

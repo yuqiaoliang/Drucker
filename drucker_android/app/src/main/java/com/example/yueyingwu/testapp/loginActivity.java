@@ -65,7 +65,7 @@ public class loginActivity extends AppCompatActivity {
                 iPassword=password;
 
 //                Intent intent = new Intent(loginActivity.this, UserActivity.class);
-//                loginActivity.this.startActivity(intent);
+//               loginActivity.this.startActivity(intent);
 
                 if(username.matches("") || password.matches("")){
                     Toast.makeText(getApplicationContext(),"Username and password are required.",Toast.LENGTH_SHORT).show();
@@ -73,6 +73,7 @@ public class loginActivity extends AppCompatActivity {
                     requestLogin process = new requestLogin();
                     process.execute();
                 }
+
             }
         });
 
@@ -86,39 +87,55 @@ public class loginActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
 
+            String requestURL="http://192.168.1.9:8080/loginStatus?username="+iUsername+"&password="+iPassword;
+//            String requestURL="http://10.197.189.82:8080/loginStatus?username="+iUsername+"&password="+iPassword;
+            String method = "GET";
+            fetchResult loginCall = new fetchResult(requestURL,method);
+            String loginResult ="";
+            loginResult = loginCall.getResult();
+            Log.i("loginResult:", loginResult);
             try {
-                String requestURL="http://192.168.1.9:8080/loginStatus?username="+iUsername+"&password="+iPassword;
-
-
-                //URL url = new URL("https://api.myjson.com/bins/myjwu");//successful
-				//URL url = new URL("https://api.myjson.com/bins/8snfi");//fail           
-                URL url = new URL(requestURL);//successful
-                
-                HttpURLConnection response = (HttpURLConnection) url.openConnection();
-                //new
-                //response.setRequestMethod("GET");
-                //response.setRequestProperty("User-Agent", "Mozilla/5.0");
-                InputStream input = response.getInputStream();
-                BufferedReader buffer = new BufferedReader(new InputStreamReader(input));
-                String line = "";
-                while(line != null){
-                    line = buffer.readLine();
-                    data = data+line;
-                }
-                JSONObject validation = new JSONObject(data);
+                JSONObject validation = new JSONObject(loginResult);
                 //username = validation.getString("username");
                 username=iUsername;
                 isValid = validation.getString("status");
-                //System.out.println(Boolean.toString(isValid));
-
-                //Log.i("inParsing",dataParsed); //comment line38,43; uncomment line40,41,44 to check dataParsed
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
+//            try {
+//                String requestURL="http://192.168.1.9:8080/loginStatus?username="+iUsername+"&password="+iPassword;
+//
+//
+//                //URL url = new URL("https://api.myjson.com/bins/myjwu");//successful
+//				//URL url = new URL("https://api.myjson.com/bins/8snfi");//fail
+//                URL url = new URL(requestURL);//successful
+//
+//                HttpURLConnection response = (HttpURLConnection) url.openConnection();
+//                //new
+//                //response.setRequestMethod("GET");
+//                //response.setRequestProperty("User-Agent", "Mozilla/5.0");
+//                InputStream input = response.getInputStream();
+//                BufferedReader buffer = new BufferedReader(new InputStreamReader(input));
+//                String line = "";
+//                while(line != null){
+//                    line = buffer.readLine();
+//                    data = data+line;
+//                }
+//                JSONObject validation = new JSONObject(data);
+//                //username = validation.getString("username");
+//                username=iUsername;
+//                isValid = validation.getString("status");
+//                //System.out.println(Boolean.toString(isValid));
+//
+//                //Log.i("inParsing",dataParsed); //comment line38,43; uncomment line40,41,44 to check dataParsed
+//            } catch (MalformedURLException e) {
+//                e.printStackTrace();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
 
             return null;
         }
@@ -128,7 +145,7 @@ public class loginActivity extends AppCompatActivity {
             super.onPostExecute(aVoid);
             if(isValid.equals("true")){
                 Log.i("Info", "log in successful");
-                Intent intent = new Intent(loginActivity.this, UserActivity.class);
+                Intent intent = new Intent(loginActivity.this, UserActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP| Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("username",username);
                 loginActivity.this.startActivity(intent);
 
