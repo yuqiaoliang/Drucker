@@ -1,13 +1,10 @@
-package com.example.yueyingwu.testapp;
+package com.example.yueyingwu.drucker_app;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 public class MessageBoxActivity extends AppCompatActivity {

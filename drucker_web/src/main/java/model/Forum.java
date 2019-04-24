@@ -142,9 +142,12 @@ public class Forum {
 
                 String sql_command = "select username,content,shortContent,time from msg_comment where postID = " + i + ";   ";
                 ResultSet rs = stmt.executeQuery(sql_command);
+                Date comment_s_time = null;
                 while (rs.next()) {
-                    Date time = format.parse(rs.getString(4));
-                    Message msg = new Message(rs.getString(2), rs.getString(1), time, i);
+                    String time = rs.getString(4);
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                    comment_s_time = dateFormat.parse(time);
+                    Message msg = new Message(rs.getString(2), rs.getString(1), comment_s_time, i);
                     Messages.add(msg);
                 }
                 String sql_command1 = "select title,content,username,time from msg_post where pID = " + i + ";   ";
@@ -188,9 +191,12 @@ public class Forum {
             Statement stmt = connect.createStatement();
             String sql_command = "select username,content,shortContent,time from msg_comment where postID = " + id + ";   ";
             ResultSet rs = stmt.executeQuery(sql_command);
+            Date comment_s_time = null;
             while (rs.next()) {
-                Date time = format.parse(rs.getString(4));
-                Message msg = new Message(rs.getString(2), rs.getString(1), time, int_id);
+                String time = rs.getString(4);
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                comment_s_time = dateFormat.parse(time);
+                Message msg = new Message(rs.getString(2), rs.getString(1), comment_s_time, int_id);
                 Messages.add(msg);
             }
             String sql_command1 = "select title,content,username,time from msg_post where pID = " + id + ";   ";

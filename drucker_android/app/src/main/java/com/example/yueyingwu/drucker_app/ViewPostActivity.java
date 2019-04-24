@@ -1,19 +1,14 @@
-package com.example.yueyingwu.testapp;
+package com.example.yueyingwu.drucker_app;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import java.text.DecimalFormat;
 import java.util.*;
-import android.app.Activity;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
+
 import android.view.View;
 import android.view.ViewGroup;
-import java.util.*;
 
 import android.widget.*;
 
@@ -75,8 +70,6 @@ public class ViewPostActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-
-            //please calculate and return ArrayList.size() (or DataList.length()) here
             return PostNum;
         }
 

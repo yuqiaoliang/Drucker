@@ -1,9 +1,6 @@
-package com.example.yueyingwu.testapp;
+package com.example.yueyingwu.drucker_app;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class Message implements Serializable {
     private String content;

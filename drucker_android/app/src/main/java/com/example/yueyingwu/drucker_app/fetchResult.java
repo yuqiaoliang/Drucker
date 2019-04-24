@@ -1,11 +1,5 @@
-package com.example.yueyingwu.testapp;
+package com.example.yueyingwu.drucker_app;
 
-
-import android.os.AsyncTask;
-import android.util.Log;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;

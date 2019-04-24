@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.yueyingwu.testapp">
+    package="com.example.yueyingwu.drucker_app">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,53 +12,53 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".PostDetailActivity"
+            android:name="com.example.yueyingwu.drucker_app.PostDetailActivity"
             android:label="@string/message_name"></activity>
         <activity
-            android:name=".ViewPostActivity"
+            android:name="com.example.yueyingwu.drucker_app.ViewPostActivity"
             android:label="VIEW POST" />
         <activity
-            android:name=".NewPost"
+            android:name="com.example.yueyingwu.drucker_app.NewPost"
             android:label="NEW POST" />
         <activity
-            android:name=".PlumbingInputActivity"
+            android:name="com.example.yueyingwu.drucker_app.PlumbingInputActivity"
             android:label="@string/title_activity_plumbing_input"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".BulbInputActivity"
+            android:name="com.example.yueyingwu.drucker_app.BulbInputActivity"
             android:label="@string/title_activity_bulb_input"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".TrainQuizActivity"
+            android:name="com.example.yueyingwu.drucker_app.TrainQuizActivity"
             android:label="@string/Quiz_name" />
         <activity
-            android:name=".TrainPoolActivity"
+            android:name="com.example.yueyingwu.drucker_app.TrainPoolActivity"
             android:label="@string/Guide3_name" />
         <activity
-            android:name=".TrainLightActivity"
+            android:name="com.example.yueyingwu.drucker_app.TrainLightActivity"
             android:label="@string/Guide2_name" />
         <activity
-            android:name=".TrainSustainActivity"
+            android:name="com.example.yueyingwu.drucker_app.TrainSustainActivity"
             android:label="@string/Guide1_name" />
-        <activity android:name=".loginActivity">
+        <activity android:name="com.example.yueyingwu.drucker_app.loginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UserActivity" />
+        <activity android:name="com.example.yueyingwu.drucker_app.UserActivity" />
         <activity
-            android:name=".PracticeActivity"
+            android:name="com.example.yueyingwu.drucker_app.PracticeActivity"
             android:label="@string/practice_name" />
         <activity
-            android:name=".MessageBoxActivity"
+            android:name="com.example.yueyingwu.drucker_app.MessageBoxActivity"
             android:label="@string/message_name" />
         <activity
-            android:name=".TrainingActivity"
+            android:name="com.example.yueyingwu.drucker_app.TrainingActivity"
             android:label="@string/train_name" />
         <activity
-            android:name=".DesicionActivity"
+            android:name="com.example.yueyingwu.drucker_app.DesicionActivity"
             android:label="@string/decision_name" />
     </application>
 
