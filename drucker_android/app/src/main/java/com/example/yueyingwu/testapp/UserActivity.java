@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class UserActivity extends AppCompatActivity {
+    static String username="";
 
 //    public void toMsgBox(View view){
 //        Intent msgIntent  = new Intent(getApplicationContext(),MessageBoxActivity.class);
@@ -104,7 +105,7 @@ public class UserActivity extends AppCompatActivity {
 
         Intent intent=getIntent();
         String name=intent.getStringExtra("name");
-        String username=intent.getStringExtra("username");
+        username=intent.getStringExtra("username");
         //int age =intent.getIntExtra("age",20);
 
         String message="Welcome!";

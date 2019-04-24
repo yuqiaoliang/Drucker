@@ -1,5 +1,7 @@
 package com.example.yueyingwu.testapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.*;
@@ -9,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.*;
 
+import java.net.URLEncoder;
 import java.text.DecimalFormat;
 import java.util.*;
 import android.app.Activity;
@@ -35,6 +38,8 @@ public class PostDetailActivity extends AppCompatActivity {
     static int postPID;
     static int postCommentNum;
 
+    static EditText etNewComment;
+
     static ListView listViewPost;
     static ArrayList<String> postDetailList = new ArrayList<>();
 
@@ -43,7 +48,6 @@ public class PostDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_detail);
         //We have our list view
-
         listViewPost = findViewById(R.id.listViewPost);
 
         Intent receivedIntent=getIntent();
@@ -54,6 +58,49 @@ public class PostDetailActivity extends AppCompatActivity {
 
         viewPostDetail viewPost=new viewPostDetail();
         viewPost.execute();
+
+        final Button button = (Button) findViewById(R.id.bNewComment);
+//        final TextView tvNewCommentView = findViewById(R.id.tvNewCommentView);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(PostDetailActivity.this);
+                View mView = getLayoutInflater().inflate(R.layout.new_comment_dialog, null);
+                etNewComment = (EditText)mView.findViewById(R.id.etNewComment);
+                /**
+                 Button bPostComment = (Button)mView.findViewById(R.id.bPostComment);
+                 /bPostComment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                tvNewCommentView.setText(etNewComment.getText().toString());
+                }
+                });
+                 //openDialog();
+                 **/
+                builder.setView(mView)
+                        .setTitle("New Comment")
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                        .setPositiveButton("Post Comment", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+//                                tvNewCommentView.setText(etNewComment.getText().toString());
+                                //Here you add new comment to ArrayList
+//                                postDetailList.add(etNewComment.getText().toString());
+                                NewComment postNewComment=new NewComment();
+                                postNewComment.execute();
+                            }
+                        })
+                ;
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
 
 
 //        String testTitle = "Hello World";
@@ -67,13 +114,10 @@ public class PostDetailActivity extends AppCompatActivity {
         //When you connect to server please use this code. If not connected, use the other piece.
 
 
-
-
 //        postDetailList.add("Comment:");
 //       for (int i = 0; i < 2/**Here you put the size of comments**/; i++){
 //            postDetailList.add(testContent);
 //       }
-
 
         //Create adapter for ArrayList
 //        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, postDetailList);
@@ -145,12 +189,70 @@ public class PostDetailActivity extends AppCompatActivity {
             ArrayAdapter<String> adapterPostDetail = new ArrayAdapter<>(com.example.yueyingwu.testapp.PostDetailActivity.this,android.R.layout.simple_list_item_1, postDetailList);
             listViewPost.setAdapter(adapterPostDetail);
 
-//            tVTitle.setText(postTitle);
-//            tVContent.setText(postContent);
-//            tVAuthor.setText(postAuthor);
-//            tVTime.setText(postTime);
-//            tVComment1.setText(postComments.get(0).getContent());
-//            tVComment2.setText(postComments.get(1).getContent());
+
+        }
+    }
+
+    private class NewComment extends AsyncTask<Void,Void,Void> {
+        private String receiveDetailInfo = "";
+        @Override
+        protected Void doInBackground(Void... voids) {
+            String CommentContent=etNewComment.getText().toString();
+            String CommentAuthor=UserActivity.username;
+            String encodedCommentConetent= URLEncoder.encode(CommentContent);
+            String encodedAuthor=URLEncoder.encode(CommentAuthor);
+            String sendURL="http://192.168.1.9:8080/forum/newcomment?content="+encodedCommentConetent+"&commenter="+encodedAuthor+"&postid="+Integer.toString(postPID);
+//            String sendURL="http://10.197.189.82:8080/forum/newcomment?content="+encodedCommentConetent+"&commenter="+encodedAuthor+"&postid="+Integer.toString(postPID);
+            String method = "GET";
+            fetchResult postDetail = new fetchResult(sendURL,method);
+            receiveDetailInfo = postDetail.getResult();
+//            System.out.println(receiveDetailInfo);
+            try {
+                JSONObject postInfo=new JSONObject(receiveDetailInfo);
+                postError=postInfo.getString("errorMsg");
+                if(postError.equals("success")){
+                    postTitle=postInfo.getString("title");
+                    postAuthor=postInfo.getString("author");
+                    postTime=postInfo.getString("time");
+                    postContent=postInfo.getString("content");
+                    postComments.clear();
+                    JSONArray jsonComments=postInfo.getJSONArray("comments");
+                    for(int i=0;i<jsonComments.length();i++){
+                        JSONObject tmpCommentObj=jsonComments.getJSONObject(i);
+                        String tmpContent=tmpCommentObj.getString("content");
+//                        String tmpShortContent=tmpCommentObj.getString("shortContent");
+                        String tmpAuthor=tmpCommentObj.getString("username");
+                        String tmpTime=tmpCommentObj.getString("stime");
+                        int tmpID=tmpCommentObj.getInt("id");
+                        Message commentTmp=new Message(tmpContent,tmpAuthor,tmpTime,tmpID);
+                        postComments.add(commentTmp);
+                    }
+                }
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            postDetailList.clear();
+            postDetailList.add("Title: " + postTitle);
+            postDetailList.add("Author: " + postAuthor);
+            postDetailList.add("Time: "+ postTime);
+            postDetailList.add("Content: ");
+            postDetailList.add(postContent);
+            postDetailList.add("Comment:");
+            for (int i = 0; i < postComments.size(); i++){
+                postDetailList.add(postComments.get(i).getContent());
+            }
+            ArrayAdapter<String> adapterPostDetail = new ArrayAdapter<>(com.example.yueyingwu.testapp.PostDetailActivity.this,android.R.layout.simple_list_item_1, postDetailList);
+            listViewPost.setAdapter(adapterPostDetail);
+
 
         }
     }

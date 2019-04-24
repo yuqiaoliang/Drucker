@@ -13,8 +13,8 @@
 
     <ImageButton
         android:id="@+id/iBNewPost"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
+        android:layout_width="210dp"
+        android:layout_height="210dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="30dp"
@@ -27,15 +27,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iBViewPost"
-        app:srcCompat="@drawable/new_post2" />
+        app:srcCompat="@drawable/new_post3" />
         <!--app:layout_constraintVertical_bias="0.56"-->
         <!--android:background="@color/colorPrimary"-->
 
 
     <ImageButton
         android:id="@+id/iBViewPost"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
+        android:layout_width="210dp"
+        android:layout_height="210dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/view_post2" />
+        app:srcCompat="@drawable/view_post3" />
     android:background="@color/colorPrimary"
 
 </android.support.constraint.ConstraintLayout>
