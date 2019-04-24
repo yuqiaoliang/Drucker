@@ -1,4 +1,4 @@
-package com.example.yueyingwu.testapp;
+package com.example.yueyingwu.drucker_app;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

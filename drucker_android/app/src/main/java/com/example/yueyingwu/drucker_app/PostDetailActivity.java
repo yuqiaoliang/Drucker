@@ -1,32 +1,22 @@
-package com.example.yueyingwu.testapp;
+package com.example.yueyingwu.drucker_app;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.*;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.*;
 
 import java.net.URLEncoder;
-import java.text.DecimalFormat;
 import java.util.*;
 
-import android.app.Activity;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.*;
 
 
 public class PostDetailActivity extends AppCompatActivity {
@@ -178,19 +168,7 @@ public class PostDetailActivity extends AppCompatActivity {
 
             return convertView;
         }
-        /**
-         convertView = getLayoutInflater().inflate(R.layout.custom_post_outline, null);
-         ImageView imageView = convertView.findViewById(R.id.imageView);
-         TextView tvTitle = convertView.findViewById(R.id.tvTitleView);
-         TextView tvAuthor = convertView.findViewById(R.id.tvAuthorView);
-         TextView tvTime = convertView.findViewById(R.id.tvTimeView);
 
-         tvTitle.setText(TITLES.get(position));
-         tvAuthor.setText("Author: " + NAMES.get(position));
-         tvTime.setText("Post Time: " + TIMES.get(position));
-
-         return convertView;
-         **/
         //return null;
     }
 
