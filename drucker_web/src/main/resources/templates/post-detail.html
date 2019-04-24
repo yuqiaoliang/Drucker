@@ -43,7 +43,7 @@
                 <p class="mb-1" th:text="${comment.content}" />
                 <div class="d-flex w-100 justify-content-between align-items-center">
                     <small th:text="${comment.username}" />
-                    <small th:text="${comment.stime}" />
+                    <small th:text="${comment.getTime()}" />
                 </div>
             </a>
         </ul>

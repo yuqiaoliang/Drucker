@@ -29,7 +29,8 @@
             <img th:if="${link.type == 'quiz'}" src="quiz.png"
                  class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title" th:text="${link.type}"/>
+                <h5 th:if="${link.type == 'pdf'}" class="card-title">Document</h5>
+                <h5 th:if="${link.type == 'quiz'}" class="card-title">Quiz</h5>
                 <p class="card-text" th:text="${link.title}" />
                 <a th:href="@{${link.url}}" class="btn btn-primary">Go!</a>
             </div>

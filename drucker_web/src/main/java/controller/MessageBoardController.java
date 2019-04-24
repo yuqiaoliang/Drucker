@@ -77,7 +77,7 @@ public class MessageBoardController {
         dateFormat_min.format(date);
         try{
             Integer pid = Integer.parseInt(postid);
-            Message msg= new Message(content, user, date, pid);
+            Message msg= new Message(content, user, new Date(), pid);
             System.out.println("in the createComment");
             newforum.Addcomment(msg);
             System.out.println("CREATE COMMENT SUCCESS.");
