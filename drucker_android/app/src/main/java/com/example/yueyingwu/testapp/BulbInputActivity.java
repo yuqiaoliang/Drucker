@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,10 +51,10 @@ public class BulbInputActivity extends AppCompatActivity {
     static String newHoursWeekend;
     static String rebates;
 
-    static Double escaltingRate=0.0;
-    static Double npv=0.0;
-    static Double irr=0.0;
-    static Double simplyPaybackPeriod=0.0;
+    static Double escaltingRate = 0.0;
+    static Double npv = 0.0;
+    static Double irr = 0.0;
+    static Double simplyPaybackPeriod = 0.0;
 
     static TextView display;
 
@@ -63,12 +64,24 @@ public class BulbInputActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) { //do something
+            Intent BulbbackToUserUI = new Intent(getApplicationContext(), DesicionActivity.class);
+            BulbInputActivity.this.startActivity(BulbbackToUserUI);
+        }
+//        } else if (keyCode == KeyEvent.KEYCODE_MENU) {//do something
+//        } else if (keyCode == KeyEvent.KEYCODE_HOME) {//no return result
+//        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bulb_input);
 
         display = findViewById(R.id.display);
-        final ImageButton iBquestion=findViewById(R.id.iBquestion);
+        final ImageButton iBquestion = findViewById(R.id.iBquestion);
         iBquestion.setScaleType(ImageButton.ScaleType.FIT_XY);
         iBquestion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,9 +111,9 @@ public class BulbInputActivity extends AppCompatActivity {
         final EditText etNewHoursWeekday = findViewById(R.id.etNewHoursWeekday);
         final EditText etOldHoursWeekend = findViewById(R.id.etOldHoursWeekend);
         final EditText etNewHoursWeekend = findViewById(R.id.etNewHoursWeekend);
-        final EditText etRebates=findViewById(R.id.etRebate);
+        final EditText etRebates = findViewById(R.id.etRebate);
 
-        etElecRate.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL|InputType.TYPE_CLASS_NUMBER);
+        etElecRate.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_CLASS_NUMBER);
 
 
         final Button bMoreBulb = findViewById(R.id.bMoreBulb);
@@ -159,37 +172,37 @@ public class BulbInputActivity extends AppCompatActivity {
                 newHoursWeekday = etNewHoursWeekday.getText().toString();
                 oldHoursWeekend = etOldHoursWeekend.getText().toString();
                 newHoursWeekend = etNewHoursWeekend.getText().toString();
-                rebates=etRebates.getText().toString();
+                rebates = etRebates.getText().toString();
 
-                if(spinnerOld.equals("Edison Base")){
-                    spinnerOld="Edison+Base";
+                if (spinnerOld.equals("Edison Base")) {
+                    spinnerOld = "Edison+Base";
                 }
-                if(spinnerOld.equals("4 Pins")){
-                    spinnerOld="4+Pins";
+                if (spinnerOld.equals("4 Pins")) {
+                    spinnerOld = "4+Pins";
                 }
-                if(spinnerOld.equals("2 Pins")){
-                    spinnerOld="2+Pins";
+                if (spinnerOld.equals("2 Pins")) {
+                    spinnerOld = "2+Pins";
                 }
-                if(spinnerNew.equals("Edison Base")){
-                    spinnerNew="Edison+Base";
+                if (spinnerNew.equals("Edison Base")) {
+                    spinnerNew = "Edison+Base";
                 }
-                if(spinnerNew.equals("4 Pins")){
-                    spinnerNew="4+Pins";
+                if (spinnerNew.equals("4 Pins")) {
+                    spinnerNew = "4+Pins";
                 }
-                if(spinnerNew.equals("2 Pins")){
-                    spinnerNew="2+Pins";
+                if (spinnerNew.equals("2 Pins")) {
+                    spinnerNew = "2+Pins";
                 }
                 System.out.println(taxRate);
-                if(spinnerNew.matches("") || spinnerOld.matches("")|| taxRate.matches("") || elecRate.matches("")|| minReturn.matches("") || rebates.matches("")||
-                        oldNumBulb.matches("") || newNumBulb.matches("")|| oldPrice.matches("") || newPrice.matches("")|| oldWattage.matches("") || newWattage.matches("")||
-                        oldLifespan.matches("") || newLifespan.matches("")|| oldLumens.matches("") || newLumens.matches("")||
-                        oldHoursWeekday.matches("") || newHoursWeekday.matches("")|| oldHoursWeekend.matches("") || newHoursWeekend.matches("")){
+                if (spinnerNew.matches("") || spinnerOld.matches("") || taxRate.matches("") || elecRate.matches("") || minReturn.matches("") || rebates.matches("") ||
+                        oldNumBulb.matches("") || newNumBulb.matches("") || oldPrice.matches("") || newPrice.matches("") || oldWattage.matches("") || newWattage.matches("") ||
+                        oldLifespan.matches("") || newLifespan.matches("") || oldLumens.matches("") || newLumens.matches("") ||
+                        oldHoursWeekday.matches("") || newHoursWeekday.matches("") || oldHoursWeekend.matches("") || newHoursWeekend.matches("")) {
                     System.out.println(Boolean.toString(newNumBulb.matches("")));
                     AlertDialog.Builder builder = new AlertDialog.Builder(BulbInputActivity.this);
                     builder.setMessage("Need to finish the whole table").setNegativeButton("Continue", null).create().show();
-                }else {
+                } else {
                     System.out.println("Connect to Server");
-                    bulbToServer connect=new bulbToServer();
+                    bulbToServer connect = new bulbToServer();
                     connect.execute();
                 }
 
@@ -198,22 +211,23 @@ public class BulbInputActivity extends AppCompatActivity {
         });
     }
 
-    private class bulbToServer extends AsyncTask<Void,Void,Void>{
+    private class bulbToServer extends AsyncTask<Void, Void, Void> {
         private String receivedData = "";
+
         @Override
         protected Void doInBackground(Void... voids) {
-            String sendURL="http://10.197.189.82:8080/lightModul?x1="+elecRate+"&x2="+taxRate+"&x3="+minReturn+"&s1="+spinnerOld+"&s2="+spinnerNew+"&x4="+oldNumBulb+"&x11="+newNumBulb+"&x5="+oldPrice+"&x12="+newPrice+"&x6="+oldWattage+"&x13="+newWattage+"&x7="+oldLumens+"&x14="+newLumens+"&x8="+oldLifespan+"&x15="+newLifespan+"&x9="+oldHoursWeekday+"&x16="+newHoursWeekday+"&x10="+oldHoursWeekend+"&x17="+newHoursWeekend+"&x18="+rebates;
-//            String sendURL="http://192.168.1.9:8080/lightModul?x1="+elecRate+"&x2="+taxRate+"&x3="+minReturn+"&s1="+spinnerOld+"&s2="+spinnerNew+"&x4="+oldNumBulb+"&x11="+newNumBulb+"&x5="+oldPrice+"&x12="+newPrice+"&x6="+oldWattage+"&x13="+newWattage+"&x7="+oldLumens+"&x14="+newLumens+"&x8="+oldLifespan+"&x15="+newLifespan+"&x9="+oldHoursWeekday+"&x16="+newHoursWeekday+"&x10="+oldHoursWeekend+"&x17="+newHoursWeekend+"&x18="+rebates;
+//            String sendURL="http://10.197.189.82:8080/lightModul?x1="+elecRate+"&x2="+taxRate+"&x3="+minReturn+"&s1="+spinnerOld+"&s2="+spinnerNew+"&x4="+oldNumBulb+"&x11="+newNumBulb+"&x5="+oldPrice+"&x12="+newPrice+"&x6="+oldWattage+"&x13="+newWattage+"&x7="+oldLumens+"&x14="+newLumens+"&x8="+oldLifespan+"&x15="+newLifespan+"&x9="+oldHoursWeekday+"&x16="+newHoursWeekday+"&x10="+oldHoursWeekend+"&x17="+newHoursWeekend+"&x18="+rebates;
+            String sendURL = "http://192.168.1.9:8080/lightModul?x1=" + elecRate + "&x2=" + taxRate + "&x3=" + minReturn + "&s1=" + spinnerOld + "&s2=" + spinnerNew + "&x4=" + oldNumBulb + "&x11=" + newNumBulb + "&x5=" + oldPrice + "&x12=" + newPrice + "&x6=" + oldWattage + "&x13=" + newWattage + "&x7=" + oldLumens + "&x14=" + newLumens + "&x8=" + oldLifespan + "&x15=" + newLifespan + "&x9=" + oldHoursWeekday + "&x16=" + newHoursWeekday + "&x10=" + oldHoursWeekend + "&x17=" + newHoursWeekend + "&x18=" + rebates;
 
             String method = "GET";
-            fetchResult lightingCall = new fetchResult(sendURL,method);
+            fetchResult lightingCall = new fetchResult(sendURL, method);
             receivedData = lightingCall.getResult();
             try {
-                JSONObject receivedString=new JSONObject(receivedData);
-                escaltingRate=receivedString.getDouble("escaltingRate");
-                npv=receivedString.getDouble("npv");
-                irr=receivedString.getDouble("irr");
-                simplyPaybackPeriod=receivedString.getDouble("simplyPaybackPeriod");
+                JSONObject receivedString = new JSONObject(receivedData);
+                escaltingRate = receivedString.getDouble("escaltingRate");
+                npv = receivedString.getDouble("npv");
+                irr = receivedString.getDouble("irr");
+                simplyPaybackPeriod = receivedString.getDouble("simplyPaybackPeriod");
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -253,10 +267,10 @@ public class BulbInputActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            DecimalFormat df=new DecimalFormat("#.###");
-                 if((escaltingRate!=0 )&&(npv!=0)&&(irr!=0)&&(simplyPaybackPeriod!=0)){
-                     display.setText("\n"+"Escalting Rate="+df.format(escaltingRate)+"\n"+"NPV="+df.format(npv)+"\n"+"IRR="+df.format(irr)+"\n"+"Simple Payback period (year)="+df.format(simplyPaybackPeriod));
-                 }
+            DecimalFormat df = new DecimalFormat("#.###");
+            if ((escaltingRate != 0) && (npv != 0) && (irr != 0) && (simplyPaybackPeriod != 0)) {
+                display.setText("\n" + "Escalting Rate=" + df.format(escaltingRate) + "\n" + "NPV=" + df.format(npv) + "\n" + "IRR=" + df.format(irr) + "\n" + "Simple Payback period (year)=" + df.format(simplyPaybackPeriod));
+            }
 //            display.setText("Escalting Rate: "+String.format("%.3f",Double.toString(escaltingRate))+"\n"+"NPV"+String.format("%.3f",Double.toString(npv))+"\n"+"IRR"+String.format("%.3f",Double.toString(irr))+"\n"+"Simple Payback period (year)"+String.format("%.3f",Double.toString(simplyPaybackPeriod)+"\n"));
         }
     }

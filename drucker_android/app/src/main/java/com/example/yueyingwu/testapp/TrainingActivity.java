@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,6 +17,18 @@ public class TrainingActivity extends AppCompatActivity {
     boolean  flag2=false;
     String pdfName[]=new String[] {"Sustainability Guide","Landscaping Guide"};
     Integer picID[]=new Integer[] {R.drawable.sustainability,R.drawable.landscaping};
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) { //do something
+            Intent TrainingbackToUserUI = new Intent(getApplicationContext(), UserActivity.class);
+            TrainingbackToUserUI.putExtra("username",UserActivity.username);
+            TrainingActivity.this.startActivity(TrainingbackToUserUI);
+        }
+//        } else if (keyCode == KeyEvent.KEYCODE_MENU) {//do something
+//        } else if (keyCode == KeyEvent.KEYCODE_HOME) {//no return result
+//        }
+        return super.onKeyDown(keyCode, event);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
