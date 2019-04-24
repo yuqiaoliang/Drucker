@@ -41,19 +41,19 @@ public class loginActivity extends AppCompatActivity {
         final EditText etUsername = findViewById(R.id.etUsername);
         final EditText etPassword = findViewById(R.id.etPassword);
         final Button bLogin = findViewById(R.id.bLogin);
-        final TextView registerLink = findViewById(R.id.tvRegisterHere);
+//        final TextView registerLink = findViewById(R.id.tvRegisterHere);
         final ImageView drucker=findViewById(R.id.imageView);
 
         drucker.setScaleType(ImageView.ScaleType.FIT_XY);
 
         //connect registerLink to the register page
-        registerLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent registerIntent = new Intent(loginActivity.this, RegisterActivity.class);
-                loginActivity.this.startActivity(registerIntent);
-            }
-        });
+//        registerLink.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent registerIntent = new Intent(loginActivity.this, RegisterActivity.class);
+//                loginActivity.this.startActivity(registerIntent);
+//            }
+//        });
 
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -11,15 +11,15 @@
         android:id="@+id/iBquestion"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="350dp"
-        android:layout_marginLeft="350dp"
+        android:layout_marginStart="330dp"
+        android:layout_marginLeft="330dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
         android:layout_marginBottom="2dp"
         android:src="@drawable/question_mark"
         app:layout_constraintBottom_toTopOf="@+id/scrollView"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -381,8 +381,14 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="numberSigned|numberDecimal" />
-
         </LinearLayout>
     </ScrollView>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="5dp"/>
 
 </android.support.constraint.ConstraintLayout>
