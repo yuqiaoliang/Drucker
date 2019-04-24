@@ -75,8 +75,6 @@ public class ViewPostActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-
-            //please calculate and return ArrayList.size() (or DataList.length()) here
             return PostNum;
         }
 

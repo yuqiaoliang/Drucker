@@ -106,37 +106,92 @@ public class PostDetailActivity extends AppCompatActivity {
             }
         });
 
+    }
 
-//        String testTitle = "Hello World";
-//        String testAuthor = "TestAuthor";
-//        String testContent = "Today is a goooooooooooooooooooooooooooooooooooooooood dayyyyyyyyyyyyyyyyyy!";
-        //Create an array of elements
+    public class DetailAdapter extends BaseAdapter {
 
-//        postDetailList.add("Title: " + testTitle);
-//        postDetailList.add("Author: " + testAuthor );
-//        postDetailList.add(testContent);
-        //When you connect to server please use this code. If not connected, use the other piece.
+        private String NAME;
+        private String TITLE;
+        private String TIME;
+        private String CONTENT;
+        private int COMMENTNUM;
+        private ArrayList<Message> POSTCOMMENTS;
 
 
-//        postDetailList.add("Comment:");
-//       for (int i = 0; i < 2/**Here you put the size of comments**/; i++){
-//            postDetailList.add(testContent);
-//       }
+        public DetailAdapter(String names, String titles, String times, String content, int num, ArrayList<Message> comments) {
+            this.NAME = names;
+            this.TIME = times;
+            this.TITLE = titles;
+            this.CONTENT = content;
+            this.COMMENTNUM = num;
+            this.POSTCOMMENTS = comments;
+        }
 
-        //Create adapter for ArrayList
-//        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, postDetailList);
-//
-//        //Insert Adapter into List
-//        listViewPost.setAdapter(adapter);
 
-        //set click functionality for each list item
-//        listViewPost.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Log.i("User clicked ", postDetailList.get(position));
-//            }
-//        });
+        @Override
+        public int getCount() {
+            int num = COMMENTNUM + 2;
+            return num; // + number of comment;
+        }
 
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            if (position == 0) {
+                convertView = getLayoutInflater().inflate(R.layout.custom_detail_title, null);
+                TextView tvTitle = convertView.findViewById(R.id.tvTitle);
+                TextView tvAuthor = convertView.findViewById(R.id.tvAuthor);
+                TextView tvContent = convertView.findViewById(R.id.tvContent);
+                tvTitle.setText(TITLE);
+                tvAuthor.setText("Author: " + NAME + "              Time: " + TIME);
+                tvContent.setText(CONTENT);
+            }
+            if (position == 1) {
+                convertView = getLayoutInflater().inflate(R.layout.custom_detail_line, null);
+                TextView tvTitle = convertView.findViewById(R.id.tvTitle);
+//                TextView tvAuthor=convertView.findViewById(R.id.tvAuthor);
+//                TextView tvContent=convertView.findViewById(R.id.tvContent);
+                tvTitle.setText("Comments ");
+//                tvAuthor.setText("Author: " +POSTCOMMENTS.get(position-1).getUsername() + " " + "Time: "  +POSTCOMMENTS.get(position-1).getStime());
+//                tvContent.setText( POSTCOMMENTS.get(position-1).getContent() );
+            }
+            if (position > 1) {
+                convertView = getLayoutInflater().inflate(R.layout.custom_detail_content, null);
+//                TextView tvTitle = convertView.findViewById(R.id.tvTitle);
+                TextView tvAuthor = convertView.findViewById(R.id.tvAuthor);
+                TextView tvContent = convertView.findViewById(R.id.tvContent);
+//                tvTitle.setText(" Comments ");
+                tvAuthor.setText("Author: " + POSTCOMMENTS.get(position - 2).getUsername() + "              Time: " + POSTCOMMENTS.get(position - 2).getStime());
+                tvContent.setText(POSTCOMMENTS.get(position - 2).getContent());
+                tvContent.getAutoLinkMask();
+            }
+
+
+            return convertView;
+        }
+        /**
+         convertView = getLayoutInflater().inflate(R.layout.custom_post_outline, null);
+         ImageView imageView = convertView.findViewById(R.id.imageView);
+         TextView tvTitle = convertView.findViewById(R.id.tvTitleView);
+         TextView tvAuthor = convertView.findViewById(R.id.tvAuthorView);
+         TextView tvTime = convertView.findViewById(R.id.tvTimeView);
+
+         tvTitle.setText(TITLES.get(position));
+         tvAuthor.setText("Author: " + NAMES.get(position));
+         tvTime.setText("Post Time: " + TIMES.get(position));
+
+         return convertView;
+         **/
+        //return null;
     }
 
     private class viewPostDetail extends AsyncTask<Void, Void, Void> {
@@ -191,7 +246,8 @@ public class PostDetailActivity extends AppCompatActivity {
             for (int i = 0; i < postComments.size(); i++) {
                 postDetailList.add(postComments.get(i).getContent());
             }
-            ArrayAdapter<String> adapterPostDetail = new ArrayAdapter<>(com.example.yueyingwu.testapp.PostDetailActivity.this, android.R.layout.simple_list_item_1, postDetailList);
+            DetailAdapter adapterPostDetail = new DetailAdapter(postAuthor, postTitle, postTime, postContent, postComments.size(), postComments);
+//            ArrayAdapter<String> adapterPostDetail = new ArrayAdapter<>(com.example.yueyingwu.testapp.PostDetailActivity.this, android.R.layout.simple_list_item_1, postDetailList);
             listViewPost.setAdapter(adapterPostDetail);
 
 
@@ -260,10 +316,9 @@ public class PostDetailActivity extends AppCompatActivity {
             for (int i = 0; i < postComments.size(); i++) {
                 postDetailList.add(postComments.get(i).getContent());
             }
-            ArrayAdapter<String> adapterPostDetail = new ArrayAdapter<>(com.example.yueyingwu.testapp.PostDetailActivity.this, android.R.layout.simple_list_item_1, postDetailList);
+            DetailAdapter adapterPostDetail = new DetailAdapter(postAuthor, postTitle, postTime, postContent, postComments.size(), postComments);
+//            ArrayAdapter<String> adapterPostDetail = new ArrayAdapter<>(com.example.yueyingwu.testapp.PostDetailActivity.this, android.R.layout.simple_list_item_1, postDetailList);
             listViewPost.setAdapter(adapterPostDetail);
-
-
         }
     }
 }
