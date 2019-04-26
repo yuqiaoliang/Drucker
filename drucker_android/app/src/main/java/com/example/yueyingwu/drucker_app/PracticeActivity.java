@@ -18,7 +18,7 @@ public class PracticeActivity extends AppCompatActivity {
         //Log.i("Info","javascriptEnabled");
         guidepdfView.setWebViewClient(new WebViewClient());
         //Log.i("Info","setWebViewClient");
-        guidepdfView.loadUrl("https://docs.google.com/document/d/1g8Dzz97gE_EouyIXxrbwPeYuhCPCkybnMfgRBcpl2Uw/edit?usp=sharing");
+        guidepdfView.loadUrl("https://drive.google.com/file/d/1ECvRzjuVAZ9rzNnusC_aIJq2Xd-l7m0i/view?usp=sharing");
         //guidepdfView.loadUrl("https://drive.google.com/file/d/15d6uZYblFuQkoXR_3IeEofauZGxEVbeQ/view?usp=sharing");
 
     }

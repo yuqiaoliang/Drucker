@@ -44,7 +44,7 @@ public class PlumbingInputActivity extends AppCompatActivity {
     static TextView display2;
 
     public void toBulbInput(View v) {
-        Intent bulbInputIntent = new Intent(getApplicationContext(), DesicionActivity.class);
+        Intent bulbInputIntent = new Intent(getApplicationContext(), BulbInputActivity.class);
         startActivity(bulbInputIntent);
     }
 
@@ -178,7 +178,7 @@ public class PlumbingInputActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
 //            String sendURL="http://10.197.189.82:8080/PlumbModul?y1="+waterCostPlumb+"&y2="+taxRatePlumb+"&y3="+minReturnPlumb+"&s1="+spinnerOld3Plumb+"&s2="+spinnerNew4Plumb+"&y4="+oldNumFixturePlumb+"&y8="+newNumFixturePlumb+"&y5="+oldPricePlumb+"&y9="+newPricePlumb+"&y6="+oldFlowRatePlumb+"&y10="+newFlowRatePlumb+"&y7="+oldEstimatedHoursPerDayPlumb+"&y11="+newEstimatedHoursPerDayPlumb+"&y12="+rebatesPlumb;
-            String sendURL="http://192.168.1.9:8080/PlumbModul?y1="+waterCostPlumb+"&y2="+taxRatePlumb+"&y3="+minReturnPlumb+"&s1="+spinnerOld3Plumb+"&s2="+spinnerNew4Plumb+"&y4="+oldNumFixturePlumb+"&y8="+newNumFixturePlumb+"&y5="+oldPricePlumb+"&y9="+newPricePlumb+"&y6="+oldFlowRatePlumb+"&y10="+newFlowRatePlumb+"&y7="+oldEstimatedHoursPerDayPlumb+"&y11="+newEstimatedHoursPerDayPlumb+"&y12="+rebatesPlumb;
+            String sendURL="http://10.197.189.82:8080/PlumbModul?y1="+waterCostPlumb+"&y2="+taxRatePlumb+"&y3="+minReturnPlumb+"&s1="+spinnerOld3Plumb+"&s2="+spinnerNew4Plumb+"&y4="+oldNumFixturePlumb+"&y8="+newNumFixturePlumb+"&y5="+oldPricePlumb+"&y9="+newPricePlumb+"&y6="+oldFlowRatePlumb+"&y10="+newFlowRatePlumb+"&y7="+oldEstimatedHoursPerDayPlumb+"&y11="+newEstimatedHoursPerDayPlumb+"&y12="+rebatesPlumb;
             String method = "GET";
             fetchResult lightingCall = new fetchResult(sendURL,method);
             receivedDataPlumb = lightingCall.getResult();

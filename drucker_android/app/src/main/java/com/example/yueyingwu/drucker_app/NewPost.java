@@ -87,7 +87,7 @@ public class NewPost extends AppCompatActivity {
             String encodeAuthor=URLEncoder.encode(AllPostDataArray.get(0).m_author);
             String encodeContent=URLEncoder.encode(AllPostDataArray.get(0).m_contents);
 
-            String sendURL="http://192.168.1.9:8080/forum/newpost?title="+encodeTitle+"&content="+encodeContent+"&author="+encodeAuthor;
+            String sendURL="http://10.197.189.82:8080/forum/newpost?title="+encodeTitle+"&content="+encodeContent+"&author="+encodeAuthor;
             String method = "GET";
             fetchResult lightingCall = new fetchResult(sendURL,method);
             receivedData = lightingCall.getResult();

@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +20,19 @@ public class loginActivity extends AppCompatActivity {
     //public static String isSuccess;
     public String iUsername;
     public String iPassword;
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (keyCode == KeyEvent.KEYCODE_BACK) { //do something
+//            System.exit(0);
+////            this.finish();
+////            Intent UserbackToLoginUI = new Intent(getApplicationContext(), loginActivity.class);
+////            UserActivity.this.startActivity(UserbackToLoginUI);
+//        }
+////        } else if (keyCode == KeyEvent.KEYCODE_MENU) {//do something
+////        } else if (keyCode == KeyEvent.KEYCODE_HOME) {//no return result
+////        }
+//        return super.onKeyDown(keyCode, event);
+//    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,8 +87,8 @@ public class loginActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
 
-            String requestURL="http://192.168.1.9:8080/loginStatus?username="+iUsername+"&password="+iPassword;
-//            String requestURL="http://10.197.189.82:8080/loginStatus?username="+iUsername+"&password="+iPassword;
+//            String requestURL="http://192.168.1.9:8080/loginStatus?username="+iUsername+"&password="+iPassword;
+            String requestURL="http://10.197.189.82:8080/loginStatus?username="+iUsername+"&password="+iPassword;
             String method = "GET";
             fetchResult loginCall = new fetchResult(requestURL,method);
             String loginResult ="";

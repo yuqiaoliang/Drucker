@@ -177,7 +177,7 @@ public class PostDetailActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            String sendURL = "http://192.168.1.9:8080/forum/post?postid=" + Integer.toString(postPID);
+            String sendURL = "http://10.197.189.82:8080/forum/post?postid=" + Integer.toString(postPID);
 //            String sendURL="http://10.197.189.82:8080/forum/post?postid="+Integer.toString(postPID);
             String method = "GET";
             fetchResult postDetail = new fetchResult(sendURL, method);
@@ -241,7 +241,7 @@ public class PostDetailActivity extends AppCompatActivity {
             String CommentAuthor = UserActivity.username;
             String encodedCommentConetent = URLEncoder.encode(CommentContent);
             String encodedAuthor = URLEncoder.encode(CommentAuthor);
-            String sendURL = "http://192.168.1.9:8080/forum/newcomment?content=" + encodedCommentConetent + "&commenter=" + encodedAuthor + "&postid=" + Integer.toString(postPID);
+            String sendURL = "http://10.197.189.82:8080/forum/newcomment?content=" + encodedCommentConetent + "&commenter=" + encodedAuthor + "&postid=" + Integer.toString(postPID);
 //            String sendURL="http://10.197.189.82:8080/forum/newcomment?content="+encodedCommentConetent+"&commenter="+encodedAuthor+"&postid="+Integer.toString(postPID);
             String method = "GET";
             fetchResult postDetail = new fetchResult(sendURL, method);
