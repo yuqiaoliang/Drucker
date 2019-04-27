@@ -50,11 +50,11 @@ Below are the sample users we have in the database. This Account API will valida
 
  | username   |      password      |
 |----------|:-------------:|
-| testuser1 |  00000000 |
-| testuser2 |  11111111 |
-| testuser3 |  22222222 |
-| testuser4 |  33333333 |
-| testuser5 |  44444444 |
+| Ric       |  00000000 |
+| Piyush    |  11111111 |
+| Honglin   |  22222222 |
+| Mengting  |  33333333 |
+| Sihao     |  44444444 |
 
 Below are the URLs we have in the database given by our client. This URL API will be given a type name (either 'pdf' or 'video') and return an arraylist consisting of all the pdf links or video links we have in the database for the use of decision model module and best practices module.
 
@@ -170,6 +170,10 @@ Comment details:
 |5|Xiaohuan|2019-04-16 20:14:22|I will add the second part.|NULL|
 
 
+## Special Note When testing Decision Tool
+When using decision tool, you need to hit 'Add More' every time when you add new data into the form. For authentication reasons, you will be asked to input your username and password again.
+
+
 ## Deployment
 
 Currently, this application is binded to Duke Virtual Computing Manager for remote database access. It shall work normally 24-7. If not, please double check with Rui Sun - [Email](mailto:rui.sun585@duke.edu). 
@@ -183,6 +187,9 @@ For future advancement of the system, we plan to migrate the entire project to a
 ## Authors
 
 * **Tianrui Zhang** - *Initial work* - [Email](mailto:tianrui.zhang@duke.edu)
+* **Chong Xu**
+* **Yifan Xiao**
+* **Rui Sun**
 
 ## License
 
